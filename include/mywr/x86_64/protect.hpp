@@ -360,7 +360,7 @@ static memory_prot::Enum set_protect(const address& target,
 
   // Align address and size to _SC_PAGE_SIZE.
   address_t aligned_address = address & ~(sysconf(_SC_PAGE_SIZE) - 1u);
-  size_t aligned_size = size + ((address - aligned_address).value());
+  size_t aligned_size = size + (address - aligned_address);
 
   // Retrieve old protect on UNIX systems.
   memory_prot::Enum old_protect = get_protect(aligned_address);

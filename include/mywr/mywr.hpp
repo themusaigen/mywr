@@ -84,6 +84,10 @@ constexpr auto MYWR_VERSION_STR = "1.0.0";
 
   #include <Windows.h>
 #elif defined(MYWR_UNIX)
+  #include <filesystem>
+  #include <fstream>
+  #include <charconv>
+
   // clang-format off
   #if MYWR_HAS_INCLUDE(<sys/cachectl.h>)
     #include <sys/cachectl.h>

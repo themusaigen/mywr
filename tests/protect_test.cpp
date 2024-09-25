@@ -23,9 +23,9 @@ TEST(ProtectTest, ShouldConvertProtectionConstants) {
       {PROT_NONE, memory_prot::kNoAccess},
       {PROT_READ, memory_prot::kReadOnly},
       {PROT_READ | PROT_WRITE, memory_prot::kReadWrite},
-      {PROT_EXECUTE, memory_prot::kExecute},
-      {PROT_EXECUTE | PROT_READ, memory_prot::kExecuteRead},
-      {PROT_EXECUTE | PROT_READ | PROT_WRITE, memory_prot::kExecuteReadWrite}
+      {PROT_EXEC, memory_prot::kExecute},
+      {PROT_EXEC | PROT_READ, memory_prot::kExecuteRead},
+      {PROT_EXEC | PROT_READ | PROT_WRITE, memory_prot::kExecuteReadWrite}
   };
 #endif
 

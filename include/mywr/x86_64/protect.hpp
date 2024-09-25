@@ -138,7 +138,7 @@ static memory_prot::Enum to_protection_constant(const std::uint32_t protect) {
   default:
     return memory_prot::kUnknown;
   }
-#elif defined(MYWR_UNIX)
+#elif defined(MYWR_UNIX) && !defined(MYWR_FEATURE_NO_MPROTECT)
   switch (protect) {
   case PROT_NONE:
     return memory_prot::kNoAccess;
@@ -146,13 +146,13 @@ static memory_prot::Enum to_protection_constant(const std::uint32_t protect) {
     return memory_prot::kRead;
   case PROT_WRITE:
     return memory_prot::kWrite;
-  case PROT_EXECUTE:
+  case PROT_EXEC:
     return memory_prot::kExecute;
   case PROT_READ | PROT_WRITE:
     return memory_prot::kReadWrite;
-  case PROT_READ | PROT_EXECUTE:
+  case PROT_READ | PROT_EXEC:
     return memory_prot::kExecuteRead;
-  case PROT_READ | PROT_WRITE | PROT_EXECUTE:
+  case PROT_READ | PROT_WRITE | PROT_EXEC:
     return memory_prot::kExecuteReadWrite;
   default:
     return memory_prot::kUnknown;
@@ -201,7 +201,7 @@ static uint32_t from_protection_constant(const memory_prot::Enum protect) {
   default:
     return 0;
   }
-#elif defined(MYWR_UNIX)
+#elif defined(MYWR_UNIX) && !defined(MYWR_FEATURE_NO_MPROTECT)
   switch (protect) {
   case memory_prot::kNoAccess:
     return PROT_NONE;
@@ -212,13 +212,13 @@ static uint32_t from_protection_constant(const memory_prot::Enum protect) {
   case memory_prot::kWrite:
     return PROT_WRITE;
   case memory_prot::kExecute:
-    return PROT_EXECUTE;
+    return PROT_EXEC;
   case memory_prot::kReadWrite:
     return PROT_READ | PROT_WRITE;
-  case memory_prot::kExecutReadWrite:
-    return PROT_READ | PROT_WRITE | PROT_EXECUTE;
+  case memory_prot::kExecuteReadWrite:
+    return PROT_READ | PROT_WRITE | PROT_EXEC;
   case memory_prot::kExecuteRead:
-    return PROT_READ | PROT_EXECUTE;
+    return PROT_READ | PROT_EXEC;
   default:
     return PROT_NONE;
   }
@@ -360,13 +360,13 @@ static memory_prot::Enum set_protect(const address& target,
 
   // Align address and size to _SC_PAGE_SIZE.
   address_t aligned_address = address & ~(sysconf(_SC_PAGE_SIZE) - 1u);
-  size_t aligned_size = size + ((address - aligned).value());
+  size_t aligned_size = size + ((address - aligned_address).value());
 
   // Retrieve old protect on UNIX systems.
   memory_prot::Enum old_protect = get_protect(aligned_address);
 
   // Set new protect.
-  if (mprotect(aligned_address,
+  if (mprotect(reinterpret_cast<void*>(aligned_address),
                aligned_size,
                from_protection_constant(protect)) != 0)
     return memory_prot::kUnknown;

@@ -103,7 +103,7 @@ copy(const address& dest, const address& src, const std::size_t size) {
   // Unprotect memory region.
   protect::scoped_protect(dest, size, protect::memory_prot::kReadWrite);
   // Process `memcpy`.
-  std::memcpy(dest, src, size);
+  ::memcpy(dest, src, size);
   // And flush CPU`s cache.
   flush(dest, size);
 }
@@ -125,7 +125,7 @@ fill(const address& dest, const int value, const std::size_t size) {
   protect::scoped_protect(dest, size, protect::memory_prot::kReadWrite);
 
   // Process `memset`.
-  std::memset(dest, value, size);
+  ::memset(dest, value, size);
 
   // Flush CPU`s cache.
   flush(dest, size);
@@ -156,7 +156,7 @@ compare(const address& buf0, const address& buf1, const std::size_t size) {
   protect::scoped_protect(buf1, size, protect::memory_prot::kReadWrite);
 
   // Compare.
-  return std::memcmp(buf0, buf1, size);
+  return ::memcmp(buf0, buf1, size);
 }
 } // namespace llmo
 } // namespace mywr

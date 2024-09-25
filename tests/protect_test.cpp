@@ -21,12 +21,11 @@ TEST(ProtectTest, ShouldConvertProtectionConstants) {
 #elif defined(MYWR_UNIX)
   std::map<uint32_t, memory_prot::Enum> protect = {
       {PROT_NONE, memory_prot::kNoAccess},
-      {PROT_READ, memory_prot::kReadOnly},
+      {PROT_READ, memory_prot::kRead},
       {PROT_READ | PROT_WRITE, memory_prot::kReadWrite},
       {PROT_EXEC, memory_prot::kExecute},
       {PROT_EXEC | PROT_READ, memory_prot::kExecuteRead},
-      {PROT_EXEC | PROT_READ | PROT_WRITE, memory_prot::kExecuteReadWrite}
-  };
+      {PROT_EXEC | PROT_READ | PROT_WRITE, memory_prot::kExecuteReadWrite}};
 #endif
 
   // Implicit test.
@@ -54,6 +53,7 @@ TEST(ProtectTest, ShouldChangeProtection) {
   ASSERT_EQ(
       protect::set_protect(&value, sizeof(value), memory_prot::kReadWrite),
       memory_prot::kExecuteReadWrite);
+
 }
 
 TEST(ProtectTest, ShouldUseRAII) {

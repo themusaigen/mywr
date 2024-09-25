@@ -363,7 +363,7 @@ static memory_prot::Enum set_protect(const address& target,
   size_t aligned_size = size + (address - aligned_address);
 
   // Retrieve old protect on UNIX systems.
-  memory_prot::Enum old_protect = get_protect(aligned_address);
+  memory_prot::Enum old_protect = get_protect(address);
 
   // Set new protect.
   if (mprotect(reinterpret_cast<void*>(aligned_address),

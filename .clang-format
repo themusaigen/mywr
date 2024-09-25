@@ -1,0 +1,16 @@
+Language: Cpp
+BasedOnStyle: LLVM
+IndentWidth: 2
+Standard: c++20
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+IndentPPDirectives: BeforeHash
+AlwaysBreakTemplateDeclarations: Yes
+SortIncludes: Never
+AllowShortBlocksOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+BinPackArguments: false
+BinPackParameters: false
+BreakConstructorInitializers: BeforeComma
+PointerAlignment: Left
+ReferenceAlignment: Left

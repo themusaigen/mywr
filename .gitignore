@@ -1,0 +1,12 @@
+# Ignore CMake`s output.
+/out
+
+# Ignore VS CMake`s settings.
+/CMakeSettings.json
+
+# Ignore .VS folder
+/.vs
+
+# Ignore builded docs.
+/docs/doxygen/html
+/docs/doxygen/latex

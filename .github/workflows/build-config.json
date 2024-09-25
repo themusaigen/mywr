@@ -1,0 +1,9 @@
+{
+  "tests": [
+    {
+      "cmd": [
+        "memwrapper-tests"
+      ]
+    }
+  ]
+}

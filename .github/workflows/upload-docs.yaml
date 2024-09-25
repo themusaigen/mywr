@@ -1,0 +1,21 @@
+name: "Docs"
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  upload-docs:
+    name: Uploading docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create doxygen documentation
+        uses: mattnotmitt/doxygen-action@v1.9.5
+        with:
+          enable-latex: false
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/doxygen/html

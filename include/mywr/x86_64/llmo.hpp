@@ -33,7 +33,7 @@ namespace llmo {
 MYWR_FORCEINLINE bool flush(const address& dest, const std::size_t size) {
 #if defined(MYWR_WINDOWS)
   return FlushInstructionCache(GetCurrentProcess(), dest, size) != 0;
-#elif defined(MYWR_UNIX)
+#elif defined(MYWR_UNIX) && !defined(MYWR_FEATURE_NO_FLUSH_CACHE)
   return cacheflush(target, size, ICACHE) == 0;
 #else
   return true;

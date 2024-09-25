@@ -250,7 +250,7 @@ static memory_prot::Enum get_protect(const address& target) {
     return memory_prot::kUnknown;
 
   return to_protection_constant(mbi.Protect);
-#elif defined(MYWR_UNIX)
+#elif defined(MYWR_UNIX) && !defined(MYWR_FEATURE_NO_MPROTECT)
   // Source:
   // https://github.com/kin4stat/kthook/blob/main/include/kthook/x86_64/kthook_x86_64_detail.hpp#L591
   struct map_info {
@@ -353,7 +353,7 @@ static memory_prot::Enum set_protect(const address& target,
     return memory_prot::kUnknown;
 
   return to_protection_constant(old_protect);
-#elif defined(MYWR_UNIX)
+#elif defined(MYWR_UNIX) && !defined(MYWR_FEATURE_NO_MPROTECT)
   // Source:
   // https://github.com/kin4stat/kthook/blob/main/include/kthook/x86_64/kthook_x86_64_detail.hpp#L701
   address_t address = target.value();

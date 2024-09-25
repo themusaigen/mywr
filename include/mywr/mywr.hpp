@@ -85,20 +85,22 @@ constexpr auto MYWR_VERSION_STR = "1.0.0";
   #include <Windows.h>
 #elif defined(MYWR_UNIX)
   // clang-format off
-  #if MYWR_HAS_INCLUDE(<sys/cachetl.h>)
-    // clang-format on
+  #if MYWR_HAS_INCLUDE(<sys/cachectl.h>)
     #include <sys/cachectl.h>
-  #else
+  #elif MYWR_HAS_INCLUDE(<asm/cachectl.h>)
     #include <asm/cachectl.h>
+  #else
+    #define MYWR_FEATURE_NO_FLUSH_CACHE
   #endif
 
-  // clang-format off
   #if MYWR_HAS_INCLUDE(<sys/mman.h>)
-    // clang-format on
     #include <sys/mman.h>
-  #else
+  #elif MYWR_HAS_INCLUDE(<asm/mman.h>)
     #include <asm/mman.h>
+  #else
+    #define MYWR_FEATURE_NO_MPROTECT
   #endif
+  // clang-format on
 #endif // defined(MYWR_WINDOWS)
 
 /**

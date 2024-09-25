@@ -21,7 +21,7 @@ Install `mywr` using `FetchContent`.
 include(FetchContent)
 FetchContent_Declare(
     mywr
-    GIT_REPOSTITORY https://github.com/themusaigen/mywr/mywr.git
+    GIT_REPOSITORY https://github.com/themusaigen/mywr.git
     GIT_TAG <specify github tag here>
 )
 FetchContent_MakeAvailable(mywr)

@@ -1,8 +1,7 @@
 name: "Linux x64/x86"
 
 on:
-  push:
-    branches: ["main"]
+  workflow_dispatch
 
 defaults:
   run:
@@ -14,8 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { title: "linux"   , os: "ubuntu-latest" , cc: "clang-10", arch: "x86", build_type: "Release", defs: "MYWR_BUILD_TESTS=ON" }
-          - { title: "linux"   , os: "ubuntu-latest" , cc: "clang-10", arch: "x64", build_type: "Release", defs: "MYWR_BUILD_TESTS=ON" }
+          - { title: "linux"   , os: "ubuntu-latest" , cc: "clang-12", arch: "x86", build_type: "Release", defs: "MYWR_BUILD_TESTS=ON" }
+          - { title: "linux"   , os: "ubuntu-latest" , cc: "clang-12", arch: "x64", build_type: "Release", defs: "MYWR_BUILD_TESTS=ON" }
           - { title: "linux"   , os: "ubuntu-latest" , cc: "gcc-12"  , arch: "x86", build_type: "Release", defs: "MYWR_BUILD_TESTS=ON" }
           - { title: "linux"   , os: "ubuntu-latest" , cc: "gcc-12"  , arch: "x64", build_type: "Release", defs: "MYWR_BUILD_TESTS=ON" }
 

@@ -64,6 +64,12 @@ constexpr auto MYWR_VERSION_STR = "1.0.0";
   #define MYWR_FORCEINLINE MYWR_INLINE
 #endif
 
+#if defined(__has_include)
+  #define MYWR_HAS_INCLUDE __has_include
+#else
+  #define MYWR_HAS_INCLUDE 0
+#endif
+
 #if !(MYWR_CXX >= 202002L)
   #error "only c++20 and newer."
 #endif // !(MYWR_CXX >= 202002L)
@@ -78,8 +84,21 @@ constexpr auto MYWR_VERSION_STR = "1.0.0";
 
   #include <Windows.h>
 #elif defined(MYWR_UNIX)
-  #include <sys/cachectl.h>
-  #include <sys/mman.h>
+  // clang-format off
+  #if MYWR_HAS_INCLUDE(<sys/cachetl.h>)
+    // clang-format on
+    #include <sys/cachectl.h>
+  #else
+    #include <asm/cachectl.h>
+  #endif
+
+  // clang-format off
+  #if MYWR_HAS_INCLUDE(<sys/mman.h>)
+    // clang-format on
+    #include <sys/mman.h>
+  #else
+    #include <asm/mman.h>
+  #endif
 #endif // defined(MYWR_WINDOWS)
 
 /**

@@ -354,11 +354,7 @@ static memory_prot::Enum set_protect(const address& target,
 
   return to_protection_constant(old_protect);
 #elif defined(MYWR_UNIX) && !defined(MYWR_FEATURE_NO_MPROTECT)
-  // Source:
-  // https://github.com/kin4stat/kthook/blob/main/include/kthook/x86_64/kthook_x86_64_detail.hpp#L701
   address_t address = target.value();
-
-  // Align address and size to _SC_PAGE_SIZE.
   address_t aligned_address = address & ~(sysconf(_SC_PAGE_SIZE) - 1u);
   size_t aligned_size = size + (address - aligned_address);
 

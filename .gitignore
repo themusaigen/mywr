@@ -10,3 +10,15 @@
 # Ignore builded docs.
 /docs/doxygen/html
 /docs/doxygen/latex
+
+# Ignore style unused folders.
+/docs/style/.github/
+/docs/style/.gitignore
+/docs/style/.npmignore
+/docs/style/Doxyfile
+/docs/style/Makefile
+/docs/style/docs/
+/docs/style/doxygen-custom/
+/docs/style/img/
+/docs/style/include/
+/docs/style/package.json

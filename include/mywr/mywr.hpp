@@ -10,20 +10,16 @@
 #define MYWR_HPP_
 
 constexpr auto MYWR_MAJOR = 1;
-constexpr auto MYWR_MINOR = 0;
-constexpr auto MYWR_PATCH = 1;
+constexpr auto MYWR_MINOR = 1;
+constexpr auto MYWR_PATCH = 0;
 constexpr auto MYWR_VERSION =
     MYWR_MAJOR * 10000 + MYWR_MINOR * 100 + MYWR_PATCH * 10;
-constexpr auto MYWR_VERSION_STR = "1.0.1";
+constexpr auto MYWR_VERSION_STR = "1.1.0";
 
 #if defined(__GNUC__)
   #define MYWR_GCC
-#elif defined(__MINGW32__)
-  #define MYWR_MINGW
 #elif defined(_MSC_VER)
   #define MYWR_MSVC
-#else
-  #error "Unknown compiler."
 #endif
 
 #if defined(__x86_64__) || defined(_M_X64) || defined(__ppc64__) ||            \
@@ -51,7 +47,7 @@ constexpr auto MYWR_VERSION_STR = "1.0.1";
   #define MYWR_CXX _MSVC_LANG
 #else
   #define MYWR_CXX __cplusplus
-#endif // defined(_MSVC_LANG)
+#endif
 
 #if defined(MYWR_MSVC)
   #define MYWR_INLINE inline
@@ -59,7 +55,7 @@ constexpr auto MYWR_VERSION_STR = "1.0.1";
 #elif defined(MYWR_GCC)
   #define MYWR_INLINE inline __attribute__((always_inline))
   #define MYWR_FORCEINLINE MYWR_INLINE
-#elif defined(MYWR_MINGW)
+#else
   #define MYWR_INLINE inline
   #define MYWR_FORCEINLINE MYWR_INLINE
 #endif
@@ -72,7 +68,7 @@ constexpr auto MYWR_VERSION_STR = "1.0.1";
 
 #if !(MYWR_CXX >= 202002L)
   #error "only c++20 and newer."
-#endif // !(MYWR_CXX >= 202002L)
+#endif
 
 #if defined(MYWR_WINDOWS)
   #ifndef WIN32_LEAN_AND_MEAN
@@ -105,7 +101,7 @@ constexpr auto MYWR_VERSION_STR = "1.0.1";
     #define MYWR_FEATURE_NO_MPROTECT
   #endif
   // clang-format on
-#endif // defined(MYWR_WINDOWS)
+#endif
 
 /**
  * @brief The core namespace of the `memwrapper` library.
@@ -123,7 +119,7 @@ using byte_t = std::uint8_t;
 using address_t = std::uint32_t;
 #else
 using address_t = std::uint64_t;
-#endif // defined(MYWR_X86)
+#endif
 } // namespace mywr
 
 /// Cxx Libraries.
@@ -132,6 +128,7 @@ using address_t = std::uint64_t;
 
 /// Internal Libraries.
 #include "x86_64/address.hpp"
+#include "x86_64/detail.hpp"
 #include "x86_64/protect.hpp"
 #include "x86_64/llmo.hpp"
 

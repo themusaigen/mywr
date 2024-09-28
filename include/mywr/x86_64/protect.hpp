@@ -22,7 +22,6 @@ namespace protect {
 
 /**
  * @enum memory_prot::Enum
- * @hideenumvalues
  * @brief Enum that contains all possible memory`s protection constants for
  * Windows and Linux.
  */

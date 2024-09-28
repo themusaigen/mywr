@@ -57,7 +57,9 @@ MYWR_FORCEINLINE bool flush(const address& dest, const std::size_t size) {
 template <typename T>
 MYWR_FORCEINLINE T read(const address& dest) {
   // Unprotect memory region.
-  protect::scoped_protect protect(dest, sizeof(T), protect::memory_prot::kReadWrite);
+  protect::scoped_protect protect(dest,
+                                  sizeof(T),
+                                  protect::memory_prot::kExecuteReadWrite);
   // And read data.
   return *reinterpret_cast<T*>(dest.value());
 }
@@ -79,7 +81,7 @@ MYWR_FORCEINLINE void write(const address& dest, T value) {
   // Unprotect memory region.
   protect::scoped_protect protect(dest,
                                   sizeof(T),
-                                  protect::memory_prot::kReadWrite);
+                                  protect::memory_prot::kExecuteReadWrite);
 
   // Write data.
   *reinterpret_cast<T*>(dest.value()) = value;
@@ -103,7 +105,9 @@ MYWR_FORCEINLINE void write(const address& dest, T value) {
 MYWR_FORCEINLINE void
 copy(const address& dest, const address& src, const std::size_t size) {
   // Unprotect memory region.
-  protect::scoped_protect protect(dest, size, protect::memory_prot::kReadWrite);
+  protect::scoped_protect protect(dest,
+                                  size,
+                                  protect::memory_prot::kExecuteReadWrite);
   // Process `memcpy`.
   ::memcpy(dest, src, size);
   // And flush CPU`s cache.
@@ -124,7 +128,9 @@ copy(const address& dest, const address& src, const std::size_t size) {
 MYWR_FORCEINLINE void
 fill(const address& dest, const int value, const std::size_t size) {
   // Unprotect memory region.
-  protect::scoped_protect protect(dest, size, protect::memory_prot::kReadWrite);
+  protect::scoped_protect protect(dest,
+                                  size,
+                                  protect::memory_prot::kExecuteReadWrite);
 
   // Process `memset`.
   ::memset(dest, value, size);
@@ -154,8 +160,12 @@ fill(const address& dest, const int value, const std::size_t size) {
 MYWR_FORCEINLINE int
 compare(const address& buf0, const address& buf1, const std::size_t size) {
   // Unprotect the buffers.
-  protect::scoped_protect protect0(buf0, size, protect::memory_prot::kReadWrite);
-  protect::scoped_protect protect1(buf1, size, protect::memory_prot::kReadWrite);
+  protect::scoped_protect protect0(buf0,
+                                   size,
+                                   protect::memory_prot::kExecuteReadWrite);
+  protect::scoped_protect protect1(buf1,
+                                   size,
+                                   protect::memory_prot::kExecuteReadWrite);
 
   // Compare.
   return ::memcmp(buf0, buf1, size);

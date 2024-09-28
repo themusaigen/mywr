@@ -1,5 +1,9 @@
 var namespacemywr =
 [
+    [ "detail", "d8/dc3/namespacemywr_1_1detail.html", [
+      [ "compute_relative_address", "d8/dc3/namespacemywr_1_1detail.html#a3112c14d0f66f89642dfc57321aaf92d", null ],
+      [ "restore_absolute_address", "d8/dc3/namespacemywr_1_1detail.html#a9acce57028be489c3561f25faff52173", null ]
+    ] ],
     [ "llmo", "df/d31/namespacemywr_1_1llmo.html", [
       [ "compare", "df/d31/namespacemywr_1_1llmo.html#a6659d696f53947ba1037d730a85ef94b", null ],
       [ "copy", "df/d31/namespacemywr_1_1llmo.html#aa232efe50ac9e04b4030cbf3a95c8c63", null ],

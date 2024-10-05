@@ -226,6 +226,13 @@ struct function_traits<Ret MYWR_CDECL(Args...)> : function_trait<Ret, Args...> {
       detail::calling_convention_by_abi_v<detail::calling_conventions::kCdecl>;
 };
 
+template <typename Ret, typename Class, typename... Args>
+struct function_traits<Ret (Class::*)(Args...)>
+    : function_trait<Ret, Class*, Args...> {
+  static constexpr auto convention = detail::calling_convention_by_abi_v<
+      detail::calling_conventions::kThiscall>;
+};
+
 #if defined(MYWR_WINDOWS)
 template <typename Ret, typename... Args>
 struct function_traits<Ret(MYWR_STDCALL*)(Args...)>
@@ -244,13 +251,6 @@ struct function_traits<Ret MYWR_STDCALL(Args...)>
 template <typename Ret, typename... Args>
 struct function_traits<Ret(MYWR_THISCALL*)(Args...)>
     : function_trait<Ret, Args...> {
-  static constexpr auto convention = detail::calling_convention_by_abi_v<
-      detail::calling_conventions::kThiscall>;
-};
-
-template <typename Ret, typename Class, typename... Args>
-struct function_traits<Ret (Class::*)(Args...)>
-    : function_trait<Ret, Class*, Args...> {
   static constexpr auto convention = detail::calling_convention_by_abi_v<
       detail::calling_conventions::kThiscall>;
 };

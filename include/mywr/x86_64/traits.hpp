@@ -226,6 +226,7 @@ struct function_traits<Ret MYWR_CDECL(Args...)> : function_trait<Ret, Args...> {
       detail::calling_convention_by_abi_v<detail::calling_conventions::kCdecl>;
 };
 
+#if defined(MYWR_WINDOWS)
 template <typename Ret, typename... Args>
 struct function_traits<Ret(MYWR_STDCALL*)(Args...)>
     : function_trait<Ret, Args...> {
@@ -260,6 +261,7 @@ struct function_traits<Ret(MYWR_FASTCALL*)(Args...)>
   static constexpr auto convention = detail::calling_convention_by_abi_v<
       detail::calling_conventions::kFastcall>;
 };
+#endif
 
 template <typename Fun>
 using return_type_t = typename function_traits<Fun>::return_type;

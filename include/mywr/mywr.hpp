@@ -125,10 +125,12 @@ using address_t = std::uint64_t;
 /// Cxx Libraries.
 #include <type_traits>
 #include <map>
+#include <tuple>
 
 /// Internal Libraries.
 #include "x86_64/address.hpp"
 #include "x86_64/detail.hpp"
+#include "x86_64/traits.hpp"
 #include "x86_64/protect.hpp"
 #include "x86_64/llmo.hpp"
 

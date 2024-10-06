@@ -28,7 +28,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">memwrapper<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">memwrapper<span id="projectnumber">&#160;1.2.0</span>
    </div>
    <div id="projectbrief">Wrapper for memory manipulation</div>
   </td>
@@ -94,7 +94,9 @@ $(document).ready(function(){initNavTree('d8/dc3/namespacemywr_1_1detail.html','
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">mywr::detail Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -102,6 +104,18 @@ $(document).ready(function(){initNavTree('d8/dc3/namespacemywr_1_1detail.html','
 <p>Namespace that contains utilities for other modules or user.  
 <a href="../../d8/dc3/namespacemywr_1_1detail.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/db2/classmywr_1_1detail_1_1calling__conventions.html">calling_conventions</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all supported calling conventions on 86 and 64-bit architecture.  <a href="../../d8/db2/classmywr_1_1detail_1_1calling__conventions.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dbd/structmywr_1_1detail_1_1is__non__pod.html">is_non_pod</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the specified type is not a POD (Plain old data) type.  <a href="../../d0/dbd/structmywr_1_1detail_1_1is__non__pod.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dea/classmywr_1_1detail_1_1system__abi.html">system_abi</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all supported ABI.  <a href="../../d2/dea/classmywr_1_1detail_1_1system__abi.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3112c14d0f66f89642dfc57321aaf92d"><td class="memItemLeft" align="right" valign="top">MYWR_FORCEINLINE <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dc3/namespacemywr_1_1detail.html#a3112c14d0f66f89642dfc57321aaf92d">compute_relative_address</a> (const <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a> &amp;dest, const <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a> &amp;src, const std::size_t oplen=5u)</td></tr>
@@ -110,6 +124,61 @@ Functions</h2></td></tr>
 <tr class="memitem:a9acce57028be489c3561f25faff52173"><td class="memItemLeft" align="right" valign="top">MYWR_FORCEINLINE <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dc3/namespacemywr_1_1detail.html#a9acce57028be489c3561f25faff52173">restore_absolute_address</a> (const <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a> &amp;ip, const <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a> &amp;src, const std::size_t oplen=5u)</td></tr>
 <tr class="memdesc:a9acce57028be489c3561f25faff52173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restores an absolute address through a relative one.  <a href="../../d8/dc3/namespacemywr_1_1detail.html#a9acce57028be489c3561f25faff52173">More...</a><br /></td></tr>
 <tr class="separator:a9acce57028be489c3561f25faff52173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2610f42a1a370d112aa9534b8aad1c41"><td class="memTemplParams" colspan="2"><a id="a2610f42a1a370d112aa9534b8aad1c41" name="a2610f42a1a370d112aa9534b8aad1c41"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a2610f42a1a370d112aa9534b8aad1c41"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>align_parameter_size</b> ()</td></tr>
+<tr class="memdesc:a2610f42a1a370d112aa9534b8aad1c41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the type by aligning it to match the stack alignment. <br /></td></tr>
+<tr class="separator:a2610f42a1a370d112aa9534b8aad1c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17395e72f19f588391b89428f8dcb0f6"><td class="memTemplParams" colspan="2"><a id="a17395e72f19f588391b89428f8dcb0f6" name="a17395e72f19f588391b89428f8dcb0f6"></a>
+template&lt;typename T , typename... Ts&gt; </td></tr>
+<tr class="memitem:a17395e72f19f588391b89428f8dcb0f6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>align_parameters_size</b> ()</td></tr>
+<tr class="memdesc:a17395e72f19f588391b89428f8dcb0f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the types by aligning them to match the stack alignment. <br /></td></tr>
+<tr class="separator:a17395e72f19f588391b89428f8dcb0f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f9ac340b20da35f2541acea03daab8e"><td class="memTemplParams" colspan="2"><a id="a1f9ac340b20da35f2541acea03daab8e" name="a1f9ac340b20da35f2541acea03daab8e"></a>
+template&lt;typename T , typename... Ts&gt; </td></tr>
+<tr class="memitem:a1f9ac340b20da35f2541acea03daab8e"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sizeof_parameters_size</b> ()</td></tr>
+<tr class="memdesc:a1f9ac340b20da35f2541acea03daab8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the passed parameters. <br /></td></tr>
+<tr class="separator:a1f9ac340b20da35f2541acea03daab8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:af4e08161ace56e721e2c3f9fcd3b4ef0"><td class="memItemLeft" align="right" valign="top"><a id="af4e08161ace56e721e2c3f9fcd3b4ef0" name="af4e08161ace56e721e2c3f9fcd3b4ef0"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>abi_v</b> = <a class="el" href="../../d2/dea/classmywr_1_1detail_1_1system__abi.html#ae57695197ba0e9dc70f0ab80ec360884">system_abi::abi</a></td></tr>
+<tr class="memdesc:af4e08161ace56e721e2c3f9fcd3b4ef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains current ABI based on preprocessor defines. <br /></td></tr>
+<tr class="separator:af4e08161ace56e721e2c3f9fcd3b4ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a049cb7c9bdc5fd686b2da3297d1466c0"><td class="memItemLeft" align="right" valign="top"><a id="a049cb7c9bdc5fd686b2da3297d1466c0" name="a049cb7c9bdc5fd686b2da3297d1466c0"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>is_win32_abi</b> = <a class="el" href="../../d8/dc3/namespacemywr_1_1detail.html#af4e08161ace56e721e2c3f9fcd3b4ef0">abi_v</a> == <a class="el" href="../../d2/dea/classmywr_1_1detail_1_1system__abi.html#a5a03e23f0605df9d84f20daba16cc4c6a8dd96f9894f89448bd8fe178e7779f40">system_abi::kWin32</a></td></tr>
+<tr class="memdesc:a049cb7c9bdc5fd686b2da3297d1466c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile-time flag is current ABI is Win32. <br /></td></tr>
+<tr class="separator:a049cb7c9bdc5fd686b2da3297d1466c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9d5b21048c4eb9edbf675b111287b52"><td class="memItemLeft" align="right" valign="top"><a id="ad9d5b21048c4eb9edbf675b111287b52" name="ad9d5b21048c4eb9edbf675b111287b52"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>is_unix_abi</b> = <a class="el" href="../../d8/dc3/namespacemywr_1_1detail.html#af4e08161ace56e721e2c3f9fcd3b4ef0">abi_v</a> == <a class="el" href="../../d2/dea/classmywr_1_1detail_1_1system__abi.html#a5a03e23f0605df9d84f20daba16cc4c6a474f7e50cae80bc0ed81f920f71a5593">system_abi::kUnix</a></td></tr>
+<tr class="memdesc:ad9d5b21048c4eb9edbf675b111287b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile-time flag is current ABI is Unix-like 32-bit. <br /></td></tr>
+<tr class="separator:ad9d5b21048c4eb9edbf675b111287b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19ba141b99d0259b45242a0f1f79c14b"><td class="memItemLeft" align="right" valign="top"><a id="a19ba141b99d0259b45242a0f1f79c14b" name="a19ba141b99d0259b45242a0f1f79c14b"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>is_win64_abi</b> = <a class="el" href="../../d8/dc3/namespacemywr_1_1detail.html#af4e08161ace56e721e2c3f9fcd3b4ef0">abi_v</a> == <a class="el" href="../../d2/dea/classmywr_1_1detail_1_1system__abi.html#a5a03e23f0605df9d84f20daba16cc4c6a8856f8cf6e73816faa2edd42a51701e5">system_abi::kWin64</a></td></tr>
+<tr class="memdesc:a19ba141b99d0259b45242a0f1f79c14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile-time flag is current ABI is Win64. <br /></td></tr>
+<tr class="separator:a19ba141b99d0259b45242a0f1f79c14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e60bc3cafdffb142a400640feceb585"><td class="memItemLeft" align="right" valign="top"><a id="a6e60bc3cafdffb142a400640feceb585" name="a6e60bc3cafdffb142a400640feceb585"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>is_systemv_abi</b> = <a class="el" href="../../d8/dc3/namespacemywr_1_1detail.html#af4e08161ace56e721e2c3f9fcd3b4ef0">abi_v</a> == <a class="el" href="../../d2/dea/classmywr_1_1detail_1_1system__abi.html#a5a03e23f0605df9d84f20daba16cc4c6a7e3d640013f63c9cc3e2f27fcdd62222">system_abi::kSystemV</a></td></tr>
+<tr class="memdesc:a6e60bc3cafdffb142a400640feceb585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile-time flag is current ABI is SystemV. <br /></td></tr>
+<tr class="separator:a6e60bc3cafdffb142a400640feceb585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a290dbcc048b751fb7b8425637a66e606"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../d8/db2/classmywr_1_1detail_1_1calling__conventions.html#a2d79ad4b1e3b167a9f1c70f83a37d9e2">calling_conventions::Enum</a> Convention&gt; </td></tr>
+<tr class="memitem:a290dbcc048b751fb7b8425637a66e606"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d8/dc3/namespacemywr_1_1detail.html#a290dbcc048b751fb7b8425637a66e606">calling_convention_by_abi_v</a></td></tr>
+<tr class="memdesc:a290dbcc048b751fb7b8425637a66e606"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the calling convention according to the current system ABI.  <a href="../../d8/dc3/namespacemywr_1_1detail.html#a290dbcc048b751fb7b8425637a66e606">More...</a><br /></td></tr>
+<tr class="separator:a290dbcc048b751fb7b8425637a66e606"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a22ca8328c3f9612031e659928418fc"><td class="memItemLeft" align="right" valign="top"><a id="a5a22ca8328c3f9612031e659928418fc" name="a5a22ca8328c3f9612031e659928418fc"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>kStackAlignment</b> = sizeof(<a class="el" href="../../d1/d3f/namespacemywr.html#a9f0561fe5a8dd0cf531fbf11fa3bafd3">mywr::address_t</a>)</td></tr>
+<tr class="memdesc:a5a22ca8328c3f9612031e659928418fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The alignment of the size of each type on the stack. <br /></td></tr>
+<tr class="separator:a5a22ca8328c3f9612031e659928418fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe6b373f98eadaf4a789b4f44e888683"><td class="memTemplParams" colspan="2"><a id="afe6b373f98eadaf4a789b4f44e888683" name="afe6b373f98eadaf4a789b4f44e888683"></a>
+template&lt;typename Tuple &gt; </td></tr>
+<tr class="memitem:afe6b373f98eadaf4a789b4f44e888683"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sizeof_tuple_params_v</b> = sizeof_tuple_params&lt;Tuple&gt;::value</td></tr>
+<tr class="memdesc:afe6b373f98eadaf4a789b4f44e888683"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the parameter types in the tuple. <br /></td></tr>
+<tr class="separator:afe6b373f98eadaf4a789b4f44e888683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76fccec6874ad4ac8ac06b9eee8ccc05"><td class="memTemplParams" colspan="2">template&lt;typename Tuple &gt; </td></tr>
+<tr class="memitem:a76fccec6874ad4ac8ac06b9eee8ccc05"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d8/dc3/namespacemywr_1_1detail.html#a76fccec6874ad4ac8ac06b9eee8ccc05">align_tuple_params_size_v</a></td></tr>
+<tr class="memdesc:a76fccec6874ad4ac8ac06b9eee8ccc05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the parameter types in the tuple aligned them to match stack alignment.  <a href="../../d8/dc3/namespacemywr_1_1detail.html#a76fccec6874ad4ac8ac06b9eee8ccc05">More...</a><br /></td></tr>
+<tr class="separator:a76fccec6874ad4ac8ac06b9eee8ccc05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Namespace that contains utilities for other modules or user. </p>
@@ -208,6 +277,64 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Absolute address. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a76fccec6874ad4ac8ac06b9eee8ccc05" name="a76fccec6874ad4ac8ac06b9eee8ccc05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76fccec6874ad4ac8ac06b9eee8ccc05">&#9670;&#160;</a></span>align_tuple_params_size_v</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tuple &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto mywr::detail::align_tuple_params_size_v</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    align_tuple_params_size&lt;Tuple&gt;::value</div>
+</div><!-- fragment -->
+<p>Returns the size of the parameter types in the tuple aligned them to match stack alignment. </p>
+
+</div>
+</div>
+<a id="a290dbcc048b751fb7b8425637a66e606" name="a290dbcc048b751fb7b8425637a66e606"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a290dbcc048b751fb7b8425637a66e606">&#9670;&#160;</a></span>calling_convention_by_abi_v</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../d8/db2/classmywr_1_1detail_1_1calling__conventions.html#a2d79ad4b1e3b167a9f1c70f83a37d9e2">calling_conventions::Enum</a> Convention&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto mywr::detail::calling_convention_by_abi_v</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    calling_convention_by_abi&lt;Convention, system_abi::abi&gt;::value</div>
+</div><!-- fragment -->
+<p>Converts the calling convention according to the current system ABI. </p>
+<p >Each architecture or system has its own unique calling convention. On Windows 32 bit, there are basic conventions: cdecl, stdcall, thiscall, fastcall, and so on. On Unix-like 32 bit, there is only one calling convention: cdecl. On Windows and Unix-like systems with 64-bit architecture, there is only one calling convention used by all functions. </p>
 
 </div>
 </div>

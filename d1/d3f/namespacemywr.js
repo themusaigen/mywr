@@ -1,9 +1,6 @@
 var namespacemywr =
 [
-    [ "detail", "d8/dc3/namespacemywr_1_1detail.html", [
-      [ "compute_relative_address", "d8/dc3/namespacemywr_1_1detail.html#a3112c14d0f66f89642dfc57321aaf92d", null ],
-      [ "restore_absolute_address", "d8/dc3/namespacemywr_1_1detail.html#a9acce57028be489c3561f25faff52173", null ]
-    ] ],
+    [ "detail", "d8/dc3/namespacemywr_1_1detail.html", "d8/dc3/namespacemywr_1_1detail" ],
     [ "llmo", "df/d31/namespacemywr_1_1llmo.html", [
       [ "compare", "df/d31/namespacemywr_1_1llmo.html#a6659d696f53947ba1037d730a85ef94b", null ],
       [ "copy", "df/d31/namespacemywr_1_1llmo.html#aa232efe50ac9e04b4030cbf3a95c8c63", null ],
@@ -13,6 +10,7 @@ var namespacemywr =
       [ "write", "df/d31/namespacemywr_1_1llmo.html#a17ce928b28db87d36e18aef8ab2db9f0", null ]
     ] ],
     [ "protect", "dc/da7/namespacemywr_1_1protect.html", "dc/da7/namespacemywr_1_1protect" ],
+    [ "traits", "d3/d7b/namespacemywr_1_1traits.html", "d3/d7b/namespacemywr_1_1traits" ],
     [ "address", "d2/d1e/classmywr_1_1address.html", "d2/d1e/classmywr_1_1address" ],
     [ "address_t", "d1/d3f/namespacemywr.html#a9f0561fe5a8dd0cf531fbf11fa3bafd3", null ],
     [ "byte_t", "d1/d3f/namespacemywr.html#abe466c63ef0a249135f03eb35da765e6", null ]

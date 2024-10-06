@@ -28,7 +28,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">memwrapper<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">memwrapper<span id="projectnumber">&#160;1.2.0</span>
    </div>
    <div id="projectbrief">Wrapper for memory manipulation</div>
   </td>
@@ -108,11 +108,11 @@ $(document).ready(function(){initNavTree('d4/d64/mywr_8hpp_source.html','../../'
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define MYWR_HPP_</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> MYWR_MAJOR = 1;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> MYWR_MINOR = 1;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> MYWR_MINOR = 2;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> MYWR_PATCH = 0;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> MYWR_VERSION =</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    MYWR_MAJOR * 10000 + MYWR_MINOR * 100 + MYWR_PATCH * 10;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> MYWR_VERSION_STR = <span class="stringliteral">&quot;1.1.0&quot;</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> MYWR_VERSION_STR = <span class="stringliteral">&quot;1.2.0&quot;</span>;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#if defined(__GNUC__)</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">  #define MYWR_GCC</span></div>
@@ -212,13 +212,15 @@ $(document).ready(function(){initNavTree('d4/d64/mywr_8hpp_source.html','../../'
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="preprocessor">#include &quot;x86_64/address.hpp&quot;</span></div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="preprocessor">#include &quot;x86_64/detail.hpp&quot;</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="preprocessor">#include &quot;x86_64/protect.hpp&quot;</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">#include &quot;x86_64/llmo.hpp&quot;</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="preprocessor">#endif </span><span class="comment">// !MYWR_HPP_</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="preprocessor">#include &quot;x86_64/address.hpp&quot;</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="preprocessor">#include &quot;x86_64/detail.hpp&quot;</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">#include &quot;x86_64/traits.hpp&quot;</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="preprocessor">#include &quot;x86_64/protect.hpp&quot;</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="preprocessor">#include &quot;x86_64/llmo.hpp&quot;</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="preprocessor">#endif </span><span class="comment">// !MYWR_HPP_</span></div>
 <div class="ttc" id="anamespacemywr_html"><div class="ttname"><a href="../../d1/d3f/namespacemywr.html">mywr</a></div><div class="ttdoc">The core namespace of the memwrapper library.</div><div class="ttdef"><b>Definition:</b> mywr.hpp:109</div></div>
 <div class="ttc" id="anamespacemywr_html_a9f0561fe5a8dd0cf531fbf11fa3bafd3"><div class="ttname"><a href="../../d1/d3f/namespacemywr.html#a9f0561fe5a8dd0cf531fbf11fa3bafd3">mywr::address_t</a></div><div class="ttdeci">std::uint64_t address_t</div><div class="ttdoc">An alias for uint32_t or uint64_t based on current architecture.</div><div class="ttdef"><b>Definition:</b> mywr.hpp:121</div></div>
 <div class="ttc" id="anamespacemywr_html_abe466c63ef0a249135f03eb35da765e6"><div class="ttname"><a href="../../d1/d3f/namespacemywr.html#abe466c63ef0a249135f03eb35da765e6">mywr::byte_t</a></div><div class="ttdeci">std::uint8_t byte_t</div><div class="ttdoc">An alias for uint8_t.</div><div class="ttdef"><b>Definition:</b> mywr.hpp:113</div></div>

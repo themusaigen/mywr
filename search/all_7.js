@@ -1,8 +1,23 @@
 var searchData=
 [
-  ['detail_0',['detail',['../d8/dc3/namespacemywr_1_1detail.html',1,'mywr']]],
-  ['llmo_1',['llmo',['../df/d31/namespacemywr_1_1llmo.html',1,'mywr']]],
-  ['memory_5fprot_2',['memory_prot',['../dd/def/classmywr_1_1protect_1_1memory__prot.html',1,'mywr::protect']]],
-  ['mywr_3',['mywr',['../d1/d3f/namespacemywr.html',1,'']]],
-  ['protect_4',['protect',['../dc/da7/namespacemywr_1_1protect.html',1,'mywr']]]
+  ['kcdecl_0',['kCdecl',['../d8/db2/classmywr_1_1detail_1_1calling__conventions.html#a2d79ad4b1e3b167a9f1c70f83a37d9e2a13c992eeeef75cfb855b3452f0282777',1,'mywr::detail::calling_conventions']]],
+  ['kexecute_1',['kExecute',['../dd/def/classmywr_1_1protect_1_1memory__prot.html#af443cc5b5df49da846eca8ef785e8f83a2981e5020bc73413f47dc5055fa6b06b',1,'mywr::protect::memory_prot']]],
+  ['kexecuteread_2',['kExecuteRead',['../dd/def/classmywr_1_1protect_1_1memory__prot.html#af443cc5b5df49da846eca8ef785e8f83a2dd697e90337645d6432722e4aa22fed',1,'mywr::protect::memory_prot']]],
+  ['kexecutereadwrite_3',['kExecuteReadWrite',['../dd/def/classmywr_1_1protect_1_1memory__prot.html#af443cc5b5df49da846eca8ef785e8f83a6a59eca015b1d79af1fe204dbc482260',1,'mywr::protect::memory_prot']]],
+  ['kexecutewritecopy_4',['kExecuteWriteCopy',['../dd/def/classmywr_1_1protect_1_1memory__prot.html#af443cc5b5df49da846eca8ef785e8f83a2272173c21fffb09d1afc97badd2d873',1,'mywr::protect::memory_prot']]],
+  ['kfastcall_5',['kFastcall',['../d8/db2/classmywr_1_1detail_1_1calling__conventions.html#a2d79ad4b1e3b167a9f1c70f83a37d9e2a85f50eb6397cef83fb3e87fb0f640937',1,'mywr::detail::calling_conventions']]],
+  ['knoaccess_6',['kNoAccess',['../dd/def/classmywr_1_1protect_1_1memory__prot.html#af443cc5b5df49da846eca8ef785e8f83aa4c9440d2ddca6e27eb5d501e25a1688',1,'mywr::protect::memory_prot']]],
+  ['kread_7',['kRead',['../dd/def/classmywr_1_1protect_1_1memory__prot.html#af443cc5b5df49da846eca8ef785e8f83afd868119aa46fd953408e54d51ec95c3',1,'mywr::protect::memory_prot']]],
+  ['kreadonly_8',['kReadOnly',['../dd/def/classmywr_1_1protect_1_1memory__prot.html#af443cc5b5df49da846eca8ef785e8f83a60776bc9f5cef3bf41ad6cc7d7209dde',1,'mywr::protect::memory_prot']]],
+  ['kreadwrite_9',['kReadWrite',['../dd/def/classmywr_1_1protect_1_1memory__prot.html#af443cc5b5df49da846eca8ef785e8f83a3f7734db0dc74d636a17efb32c77e4da',1,'mywr::protect::memory_prot']]],
+  ['kstackalignment_10',['kStackAlignment',['../d8/dc3/namespacemywr_1_1detail.html#a5a22ca8328c3f9612031e659928418fc',1,'mywr::detail']]],
+  ['kstdcall_11',['kStdcall',['../d8/db2/classmywr_1_1detail_1_1calling__conventions.html#a2d79ad4b1e3b167a9f1c70f83a37d9e2a1e601cf782ba27a741f667b3f646f92c',1,'mywr::detail::calling_conventions']]],
+  ['ksystemv_12',['kSystemV',['../d8/db2/classmywr_1_1detail_1_1calling__conventions.html#a2d79ad4b1e3b167a9f1c70f83a37d9e2a7fb4c2f7ecec554b2460473471cece14',1,'mywr::detail::calling_conventions::kSystemV()'],['../d2/dea/classmywr_1_1detail_1_1system__abi.html#a5a03e23f0605df9d84f20daba16cc4c6a7e3d640013f63c9cc3e2f27fcdd62222',1,'mywr::detail::system_abi::kSystemV()']]],
+  ['kthiscall_13',['kThiscall',['../d8/db2/classmywr_1_1detail_1_1calling__conventions.html#a2d79ad4b1e3b167a9f1c70f83a37d9e2a032fa79a15f790ae184f8617f8931493',1,'mywr::detail::calling_conventions']]],
+  ['kunix_14',['kUnix',['../d2/dea/classmywr_1_1detail_1_1system__abi.html#a5a03e23f0605df9d84f20daba16cc4c6a474f7e50cae80bc0ed81f920f71a5593',1,'mywr::detail::system_abi']]],
+  ['kunknown_15',['kUnknown',['../dd/def/classmywr_1_1protect_1_1memory__prot.html#af443cc5b5df49da846eca8ef785e8f83a1dc4cc377d185d46664443a2cfc713a7',1,'mywr::protect::memory_prot::kUnknown()'],['../d8/db2/classmywr_1_1detail_1_1calling__conventions.html#a2d79ad4b1e3b167a9f1c70f83a37d9e2abad61ce6511f51a8046e435bb612948d',1,'mywr::detail::calling_conventions::kUnknown()'],['../d2/dea/classmywr_1_1detail_1_1system__abi.html#a5a03e23f0605df9d84f20daba16cc4c6a66dbb287a946044920f9f1f155168824',1,'mywr::detail::system_abi::kUnknown()']]],
+  ['kwin32_16',['kWin32',['../d2/dea/classmywr_1_1detail_1_1system__abi.html#a5a03e23f0605df9d84f20daba16cc4c6a8dd96f9894f89448bd8fe178e7779f40',1,'mywr::detail::system_abi']]],
+  ['kwin64_17',['kWin64',['../d8/db2/classmywr_1_1detail_1_1calling__conventions.html#a2d79ad4b1e3b167a9f1c70f83a37d9e2a84a129cd2b4a028ff922a2229e11a410',1,'mywr::detail::calling_conventions::kWin64()'],['../d2/dea/classmywr_1_1detail_1_1system__abi.html#a5a03e23f0605df9d84f20daba16cc4c6a8856f8cf6e73816faa2edd42a51701e5',1,'mywr::detail::system_abi::kWin64()']]],
+  ['kwrite_18',['kWrite',['../dd/def/classmywr_1_1protect_1_1memory__prot.html#af443cc5b5df49da846eca8ef785e8f83a87b9365a26048300c0fb8aef152fbef5',1,'mywr::protect::memory_prot']]],
+  ['kwritecopy_19',['kWriteCopy',['../dd/def/classmywr_1_1protect_1_1memory__prot.html#af443cc5b5df49da846eca8ef785e8f83adef67d8897c8f4e07451b1db58f9c68c',1,'mywr::protect::memory_prot']]]
 ];

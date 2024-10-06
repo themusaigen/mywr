@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['memory_5fprot_0',['memory_prot',['../dd/def/classmywr_1_1protect_1_1memory__prot.html',1,'mywr::protect']]]
+  ['calling_5fconventions_0',['calling_conventions',['../d8/db2/classmywr_1_1detail_1_1calling__conventions.html',1,'mywr::detail']]]
 ];

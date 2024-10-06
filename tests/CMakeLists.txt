@@ -17,7 +17,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
-add_executable(memwrapper-tests "address_test.cpp" "protect_test.cpp" "llmo_test.cpp" "traits_test.cpp")
+add_executable(memwrapper-tests "address_test.cpp" "protect_test.cpp" "llmo_test.cpp" "traits_test.cpp" "invoker_test.cpp")
 target_link_libraries(memwrapper-tests gtest gtest_main ${PROJECT_NAME})
 
 include(GoogleTest)

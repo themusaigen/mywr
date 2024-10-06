@@ -133,5 +133,6 @@ using address_t = std::uint64_t;
 #include "x86_64/traits.hpp"
 #include "x86_64/protect.hpp"
 #include "x86_64/llmo.hpp"
+#include "x86_64/invoker.hpp"
 
 #endif // !MYWR_HPP_

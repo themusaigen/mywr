@@ -24,6 +24,24 @@ struct invoker<detail::calling_conventions::kCdecl> {
   }
 };
 
+template <>
+struct invoker<detail::calling_conventions::kWin64> {
+  template <typename Ret, typename... Args>
+  static MYWR_INLINE Ret invoke(const address& fn, Args... args) {
+    return reinterpret_cast<Ret(*)(Args...)>(fn.value())(
+        std::forward<Args>(args)...);
+  }
+};
+
+template <>
+struct invoker<detail::calling_conventions::kSystemV> {
+  template <typename Ret, typename... Args>
+  static MYWR_INLINE Ret invoke(const address& fn, Args... args) {
+    return reinterpret_cast<Ret(*)(Args...)>(fn.value())(
+        std::forward<Args>(args)...);
+  }
+};
+
 #if defined(MYWR_WINDOWS)
 template <>
 struct invoker<detail::calling_conventions::kStdcall> {

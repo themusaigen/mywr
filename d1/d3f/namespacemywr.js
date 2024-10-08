@@ -1,6 +1,7 @@
 var namespacemywr =
 [
     [ "detail", "d8/dc3/namespacemywr_1_1detail.html", "d8/dc3/namespacemywr_1_1detail" ],
+    [ "invoker", "d6/de5/namespacemywr_1_1invoker.html", "d6/de5/namespacemywr_1_1invoker" ],
     [ "llmo", "df/d31/namespacemywr_1_1llmo.html", [
       [ "compare", "df/d31/namespacemywr_1_1llmo.html#a6659d696f53947ba1037d730a85ef94b", null ],
       [ "copy", "df/d31/namespacemywr_1_1llmo.html#aa232efe50ac9e04b4030cbf3a95c8c63", null ],

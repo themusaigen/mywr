@@ -6,6 +6,16 @@ var annotated_dup =
         [ "is_non_pod", "d0/dbd/structmywr_1_1detail_1_1is__non__pod.html", null ],
         [ "system_abi", "d2/dea/classmywr_1_1detail_1_1system__abi.html", "d2/dea/classmywr_1_1detail_1_1system__abi" ]
       ] ],
+      [ "invoker", "d6/de5/namespacemywr_1_1invoker.html", [
+        [ "impl", null, [
+          [ "invoke", "d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html", null ],
+          [ "invoke< Fun, std::tuple< Args... > >", "d5/d03/structmywr_1_1invoker_1_1impl_1_1invoke_3_01Fun_00_01std_1_1tuple_3_01Args_8_8_8_01_4_01_4.html", null ],
+          [ "invoker", "de/d96/structmywr_1_1invoker_1_1impl_1_1invoker.html", null ],
+          [ "invoker< detail::calling_conventions::kCdecl >", "d9/d61/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kCdecl_01_4.html", null ],
+          [ "invoker< detail::calling_conventions::kSystemV >", "da/d0a/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kSystemV_01_4.html", null ],
+          [ "invoker< detail::calling_conventions::kWin64 >", "db/d1a/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kWin64_01_4.html", null ]
+        ] ]
+      ] ],
       [ "protect", "dc/da7/namespacemywr_1_1protect.html", [
         [ "memory_prot", "dd/def/classmywr_1_1protect_1_1memory__prot.html", "dd/def/classmywr_1_1protect_1_1memory__prot" ],
         [ "scoped_protect", "d4/d09/classmywr_1_1protect_1_1scoped__protect.html", "d4/d09/classmywr_1_1protect_1_1scoped__protect" ]

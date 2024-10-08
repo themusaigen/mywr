@@ -42,7 +42,7 @@ struct invoker<detail::calling_conventions::kSystemV> {
   }
 };
 
-#if defined(MYWR_WINDOWS)
+#if defined(MYWR_WINDOWS) && defined(MYWR_X86)
 template <>
 struct invoker<detail::calling_conventions::kStdcall> {
   template <typename Ret, typename... Args>

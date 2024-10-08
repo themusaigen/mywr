@@ -15,6 +15,8 @@ public:
     out += " transformed!";
     return out;
   }
+  static void double_value(int& a) { a *= 2; }
+  static int double_value_rv(int&& a) { return a * 2; }
 };
 
 TEST(InvokerTest, HandlesBasicCalls) {
@@ -22,6 +24,14 @@ TEST(InvokerTest, HandlesBasicCalls) {
 
   // In .dll code it would be like...
   // invoke<sum_t>(0xDEADBEEF, 1, 1);
+}
+
+TEST(InvokerTest, PerfectForwardsRefs) {
+  int value = 2;
+
+  EXPECT_NO_THROW(invoke<decltype(&A::double_value)>(&A::double_value, value));
+  EXPECT_EQ(value, 4);
+  EXPECT_EQ(invoke<decltype(&A::double_value_rv)>(&A::double_value_rv, 2), 4);
 }
 
 TEST(InvokerTest, HandlesNonPodTypes) {

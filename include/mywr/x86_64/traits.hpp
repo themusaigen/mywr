@@ -439,7 +439,7 @@ struct function_traits<Ret (Class::*)(Args...)>
       detail::calling_conventions::kThiscall>;
 };
 
-#if defined(MYWR_WINDOWS) && defined(MYWR_X86)
+  #if defined(MYWR_WINDOWS) && defined(MYWR_X86)
 template <typename Ret, typename... Args>
 struct function_traits<Ret(MYWR_STDCALL*)(Args...)>
     : function_trait<Ret, Args...> {

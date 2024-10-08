@@ -18,7 +18,7 @@ struct invoker;
 template <>
 struct invoker<detail::calling_conventions::kCdecl> {
   template <typename Ret, typename... Args>
-  static MYWR_INLINE Ret invoke(const address& fn, Args... args) {
+  static MYWR_INLINE Ret invoke(const address& fn, Args&&... args) {
     return reinterpret_cast<Ret(MYWR_CDECL*)(Args...)>(fn.value())(
         std::forward<Args>(args)...);
   }
@@ -27,7 +27,7 @@ struct invoker<detail::calling_conventions::kCdecl> {
 template <>
 struct invoker<detail::calling_conventions::kWin64> {
   template <typename Ret, typename... Args>
-  static MYWR_INLINE Ret invoke(const address& fn, Args... args) {
+  static MYWR_INLINE Ret invoke(const address& fn, Args&&... args) {
     return reinterpret_cast<Ret(*)(Args...)>(fn.value())(
         std::forward<Args>(args)...);
   }
@@ -36,7 +36,7 @@ struct invoker<detail::calling_conventions::kWin64> {
 template <>
 struct invoker<detail::calling_conventions::kSystemV> {
   template <typename Ret, typename... Args>
-  static MYWR_INLINE Ret invoke(const address& fn, Args... args) {
+  static MYWR_INLINE Ret invoke(const address& fn, Args&&... args) {
     return reinterpret_cast<Ret(*)(Args...)>(fn.value())(
         std::forward<Args>(args)...);
   }
@@ -46,7 +46,7 @@ struct invoker<detail::calling_conventions::kSystemV> {
 template <>
 struct invoker<detail::calling_conventions::kStdcall> {
   template <typename Ret, typename... Args>
-  static MYWR_INLINE Ret invoke(const address& fn, Args... args) {
+  static MYWR_INLINE Ret invoke(const address& fn, Args&&... args) {
     return reinterpret_cast<Ret(MYWR_STDCALL*)(Args...)>(fn.value())(
         std::forward<Args>(args)...);
   }
@@ -55,7 +55,7 @@ struct invoker<detail::calling_conventions::kStdcall> {
 template <>
 struct invoker<detail::calling_conventions::kThiscall> {
   template <typename Ret, typename... Args>
-  static MYWR_INLINE Ret invoke(const address& fn, Args... args) {
+  static MYWR_INLINE Ret invoke(const address& fn, Args&&... args) {
     return reinterpret_cast<Ret(MYWR_THISCALL*)(Args...)>(fn.value())(
         std::forward<Args>(args)...);
   }
@@ -64,7 +64,7 @@ struct invoker<detail::calling_conventions::kThiscall> {
 template <>
 struct invoker<detail::calling_conventions::kFastcall> {
   template <typename Ret, typename... Args>
-  static MYWR_INLINE Ret invoke(const address& fn, Args... args) {
+  static MYWR_INLINE Ret invoke(const address& fn, Args&&... args) {
     return reinterpret_cast<Ret(MYWR_FASTCALL*)(Args...)>(fn.value())(
         std::forward<Args>(args)...);
   }
@@ -80,7 +80,7 @@ private:
   using Ret = traits::return_type_t<Fun>;
 
 public:
-  Ret operator()(const address& fn, Args... args) {
+  Ret operator()(const address& fn, Args&&... args) {
     return invoker<traits::convention_v<Fun>>::template invoke<Ret, Args...>(
         fn,
         std::forward<Args>(args)...);
@@ -97,7 +97,7 @@ using apply = invoke<Fun, traits::arguments_t<Fun>>;
 namespace mywr {
 namespace invoker {
 template <typename Fun, typename... Args>
-MYWR_INLINE traits::return_type_t<Fun> invoke(const address& fn, Args... args) {
+MYWR_INLINE traits::return_type_t<Fun> invoke(const address& fn, Args&&... args) {
   return impl::apply<Fun>()(fn, std::forward<Args>(args)...);
 }
 } // namespace invoker

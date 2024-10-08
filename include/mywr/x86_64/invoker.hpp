@@ -28,7 +28,7 @@ template <>
 struct invoker<detail::calling_conventions::kWin64> {
   template <typename Ret, typename... Args>
   static MYWR_INLINE Ret invoke(const address& fn, Args&&... args) {
-    return reinterpret_cast<Ret(*)(Args...)>(fn.value())(
+    return reinterpret_cast<Ret (*)(Args...)>(fn.value())(
         std::forward<Args>(args)...);
   }
 };
@@ -37,7 +37,7 @@ template <>
 struct invoker<detail::calling_conventions::kSystemV> {
   template <typename Ret, typename... Args>
   static MYWR_INLINE Ret invoke(const address& fn, Args&&... args) {
-    return reinterpret_cast<Ret(*)(Args...)>(fn.value())(
+    return reinterpret_cast<Ret (*)(Args...)>(fn.value())(
         std::forward<Args>(args)...);
   }
 };
@@ -95,9 +95,32 @@ using apply = invoke<Fun, traits::arguments_t<Fun>>;
 } // namespace mywr
 
 namespace mywr {
+/**
+ * @brief Namespace containing API to call stored in memory functions.
+ */
 namespace invoker {
+/**
+ * @brief Invokes the function stored in the process memory.
+ *
+ * @details
+ * Uses own written backend to match function`s calling convention by their
+ * signature. Produces perfect forwarding.
+ *
+ * @code{.cpp}
+ * int sum(int a, int b) { return a + b; } // in memory 0xDEADBEEF
+ *
+ * // Let's pretend that the sum function exists only in the memory of some
+ * // process, and we are the DLL plugin that will call it.
+ * using sum_t = int(__cdecl*)(int, int);
+ *
+ * mywr::invoker::invoke<sum_t>(0xDEADBEEF, 2, 2);
+ * @endcode
+ *
+ * @tparam Fun Function`s signature to call.
+ */
 template <typename Fun, typename... Args>
-MYWR_INLINE traits::return_type_t<Fun> invoke(const address& fn, Args&&... args) {
+MYWR_INLINE traits::return_type_t<Fun> invoke(const address& fn,
+                                              Args&&... args) {
   return impl::apply<Fun>()(fn, std::forward<Args>(args)...);
 }
 } // namespace invoker

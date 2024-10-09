@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['invoke_0',['invoke',['../d6/de5/namespacemywr_1_1invoker.html#adda7ca4c485e43ea4efcde521e2313c7',1,'mywr::invoker']]]
+  ['good_0',['good',['../d4/d09/classmywr_1_1protect_1_1scoped__protect.html#a83bd28b91f533ce3ea7703c03f80c0f8',1,'mywr::protect::scoped_protect']]]
 ];

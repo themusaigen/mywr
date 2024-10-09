@@ -1,6 +1,10 @@
 var namespacemywr =
 [
     [ "detail", "d8/dc3/namespacemywr_1_1detail.html", "d8/dc3/namespacemywr_1_1detail" ],
+    [ "disassembler", "d0/d60/namespacemywr_1_1disassembler.html", [
+      [ "instruction", "d0/d60/namespacemywr_1_1disassembler.html#a5e18996bca3c130c14c6e1e973b1c14e", null ],
+      [ "disassemble", "d0/d60/namespacemywr_1_1disassembler.html#ae28a2f487bb835d5690aaa922f08d08a", null ]
+    ] ],
     [ "invoker", "d6/de5/namespacemywr_1_1invoker.html", "d6/de5/namespacemywr_1_1invoker" ],
     [ "llmo", "df/d31/namespacemywr_1_1llmo.html", [
       [ "compare", "df/d31/namespacemywr_1_1llmo.html#a6659d696f53947ba1037d730a85ef94b", null ],

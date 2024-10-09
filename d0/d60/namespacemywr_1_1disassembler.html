@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>memwrapper: mywr::invoker::impl::invoker&lt; detail::calling_conventions::kWin64 &gt; Struct Reference</title>
+<title>memwrapper: mywr::disassembler Namespace Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -67,7 +67,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('db/d1a/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kWin64_01_4.html','../../'); initResizable(); });
+$(document).ready(function(){initNavTree('d0/d60/namespacemywr_1_1disassembler.html','../../'); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -94,28 +94,64 @@ $(document).ready(function(){initNavTree('db/d1a/structmywr_1_1invoker_1_1impl_1
 
 <div class="header">
   <div class="summary">
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="../../db/db3/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kWin64_01_4-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">mywr::invoker::impl::invoker&lt; detail::calling_conventions::kWin64 &gt; Struct Reference</div></div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">mywr::disassembler Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Namespace containing wrapper about <code>Hacker Disassembler Engine</code>.  
+<a href="../../d0/d60/namespacemywr_1_1disassembler.html#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6526948b079fb2435a9b513a0989ba43"><td class="memTemplParams" colspan="2"><a id="a6526948b079fb2435a9b513a0989ba43" name="a6526948b079fb2435a9b513a0989ba43"></a>
-template&lt;typename Ret , typename... Args&gt; </td></tr>
-<tr class="memitem:a6526948b079fb2435a9b513a0989ba43"><td class="memTemplItemLeft" align="right" valign="top">static MYWR_INLINE Ret&#160;</td><td class="memTemplItemRight" valign="bottom"><b>invoke</b> (const <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a> &amp;fn, Args &amp;&amp;... args)</td></tr>
-<tr class="separator:a6526948b079fb2435a9b513a0989ba43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a5e18996bca3c130c14c6e1e973b1c14e"><td class="memItemLeft" align="right" valign="top"><a id="a5e18996bca3c130c14c6e1e973b1c14e" name="a5e18996bca3c130c14c6e1e973b1c14e"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>instruction</b> = hde64s</td></tr>
+<tr class="memdesc:a5e18996bca3c130c14c6e1e973b1c14e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassembled instruction structure. <br /></td></tr>
+<tr class="separator:a5e18996bca3c130c14c6e1e973b1c14e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ae28a2f487bb835d5690aaa922f08d08a"><td class="memItemLeft" align="right" valign="top">MYWR_INLINE <a class="el" href="../../d0/d60/namespacemywr_1_1disassembler.html#a5e18996bca3c130c14c6e1e973b1c14e">instruction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d60/namespacemywr_1_1disassembler.html#ae28a2f487bb835d5690aaa922f08d08a">disassemble</a> (const <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a> &amp;code)</td></tr>
+<tr class="memdesc:ae28a2f487bb835d5690aaa922f08d08a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces disassembling of specified code.  <a href="../../d0/d60/namespacemywr_1_1disassembler.html#ae28a2f487bb835d5690aaa922f08d08a">More...</a><br /></td></tr>
+<tr class="separator:ae28a2f487bb835d5690aaa922f08d08a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/mywr/x86_64/<a class="el" href="../../d8/d4c/invoker_8hpp_source.html">invoker.hpp</a></li>
-</ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Namespace containing wrapper about <code>Hacker Disassembler Engine</code>. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ae28a2f487bb835d5690aaa922f08d08a" name="ae28a2f487bb835d5690aaa922f08d08a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae28a2f487bb835d5690aaa922f08d08a">&#9670;&#160;</a></span>disassemble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MYWR_INLINE <a class="el" href="../../d0/d60/namespacemywr_1_1disassembler.html#a5e18996bca3c130c14c6e1e973b1c14e">instruction</a> mywr::disassembler::disassemble </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a> &amp;&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Produces disassembling of specified code. </p>
+<p >Produces architecture specific (x86 or x64) disassembling and returns the structure with results (length, opcode, imm, disp, etc...).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">code</td><td>The code to disassemble. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../d1/d3f/namespacemywr.html">mywr</a></li><li class="navelem"><a class="el" href="../../d6/de5/namespacemywr_1_1invoker.html">invoker</a></li><li class="navelem"><b>impl</b></li><li class="navelem"><a class="el" href="../../db/d1a/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kWin64_01_4.html">invoker&lt; detail::calling_conventions::kWin64 &gt;</a></li>
+    <li class="navelem"><a class="el" href="../../d1/d3f/namespacemywr.html">mywr</a></li><li class="navelem"><a class="el" href="../../d0/d60/namespacemywr_1_1disassembler.html">disassembler</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

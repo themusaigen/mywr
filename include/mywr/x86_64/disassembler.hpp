@@ -38,7 +38,7 @@ using instruction = hde64s;
  * @details
  * Produces architecture specific (x86 or x64) disassembling and returns the
  * structure with results (length, opcode, imm, disp, etc...).
- * 
+ *
  * @param[in] code The code to disassemble.
  */
 MYWR_INLINE instruction disassemble(const address& code) {

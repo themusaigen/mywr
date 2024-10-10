@@ -11,26 +11,14 @@
 
 #if defined(MYWR_GCC)
   #define MYWR_CDECL __attribute__((cdecl))
-  #if defined(MYWR_WINDOWS)
-    #define MYWR_STDCALL __attribute__((stdcall))
-    #define MYWR_THISCALL __attribute__((thiscall))
-    #define MYWR_FASTCALL __attribute__((fastcall))
-  #else
-    #define MYWR_STDCALL MYWR_CDECL
-    #define MYWR_THISCALL MYWR_CDECL
-    #define MYWR_FASTCALL MYWR_CDECL
-  #endif
+  #define MYWR_STDCALL __attribute__((stdcall))
+  #define MYWR_THISCALL __attribute__((thiscall))
+  #define MYWR_FASTCALL __attribute__((fastcall))
 #else
   #define MYWR_CDECL __cdecl
-  #if defined(MYWR_WINDOWS)
-    #define MYWR_STDCALL __stdcall
-    #define MYWR_THISCALL __thiscall
-    #define MYWR_FASTCALL __fastcall
-  #else
-    #define MYWR_STDCALL MYWR_CDECL
-    #define MYWR_THISCALL MYWR_CDECL
-    #define MYWR_FASTCALL MYWR_CDECL
-  #endif
+  #define MYWR_STDCALL __stdcall
+  #define MYWR_THISCALL __thiscall
+  #define MYWR_FASTCALL __fastcall
 #endif
 
 namespace mywr {
@@ -138,7 +126,7 @@ public:
 
 /**
  * @var system_abi::Enum system_abi::kUnix
- * @brief Unix-like 32-bit systems ABI with only one calling convention: cdecl.
+ * @brief Unix-like 32-bit systems ABI.
  */
 
 /**
@@ -215,7 +203,7 @@ struct calling_convention_by_abi<Convention, system_abi::kWin32> {
 
 template <calling_conventions::Enum Convention>
 struct calling_convention_by_abi<Convention, system_abi::kUnix> {
-  static constexpr auto value = calling_conventions::kCdecl;
+  static constexpr auto value = Convention;
 };
 
 template <calling_conventions::Enum Convention>
@@ -435,11 +423,15 @@ struct function_traits<Ret MYWR_CDECL(Args...)> : function_trait<Ret, Args...> {
 template <typename Ret, typename Class, typename... Args>
 struct function_traits<Ret (Class::*)(Args...)>
     : function_trait<Ret, Class*, Args...> {
+  #if defined(MYWR_WINDOWS)
   static constexpr auto convention = detail::calling_convention_by_abi_v<
       detail::calling_conventions::kThiscall>;
+  #else
+  static constexpr auto convention =
+      detail::calling_convention_by_abi_v<detail::calling_conventions::kCdecl>;
+  #endif
 };
 
-  #if defined(MYWR_WINDOWS) && defined(MYWR_X86)
 template <typename Ret, typename... Args>
 struct function_traits<Ret(MYWR_STDCALL*)(Args...)>
     : function_trait<Ret, Args...> {
@@ -467,7 +459,6 @@ struct function_traits<Ret(MYWR_FASTCALL*)(Args...)>
   static constexpr auto convention = detail::calling_convention_by_abi_v<
       detail::calling_conventions::kFastcall>;
 };
-  #endif
 #endif
 
 /**
@@ -513,6 +504,48 @@ constexpr auto is_return_non_pod_v = function_traits<Fun>::is_return_non_pod;
  */
 template <typename Fun>
 constexpr auto convention_v = function_traits<Fun>::convention;
+
+/**
+ * @brief A shortcut to identify is function a cdecl.
+ */
+template<typename Fun>
+constexpr auto is_cdecl_v =
+    convention_v<Fun> == detail::calling_conventions::kCdecl;
+
+/**
+ * @brief A shortcut to identify is function a stdcall.
+ */
+template<typename Fun>
+constexpr auto is_stdcall_v =
+    convention_v<Fun> == detail::calling_conventions::kStdcall;
+
+/**
+ * @brief A shortcut to identify is function a thiscall.
+ */
+template<typename Fun>
+constexpr auto is_thiscall_v =
+    convention_v<Fun> == detail::calling_conventions::kThiscall;
+
+/**
+ * @brief A shortcut to identify is function a fastcall.
+ */
+template<typename Fun>
+constexpr auto is_fastcall_v =
+    convention_v<Fun> == detail::calling_conventions::kFastcall;
+
+/**
+ * @brief A shortcut to identify is function have Win64 calling convention.
+ */
+template<typename Fun>
+constexpr auto is_win64_v =
+    convention_v<Fun> == detail::calling_conventions::kWin64;
+
+/**
+ * @brief A shortcut to identify is function have SystemV calling convention.
+ */
+template<typename Fun>
+constexpr auto is_systemv_v =
+    convention_v<Fun> == detail::calling_conventions::kSystemV;
 
 } // namespace traits
 } // namespace mywr

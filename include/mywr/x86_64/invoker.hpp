@@ -42,7 +42,6 @@ struct invoker<detail::calling_conventions::kSystemV> {
   }
 };
 
-#if defined(MYWR_WINDOWS) && defined(MYWR_X86)
 template <>
 struct invoker<detail::calling_conventions::kStdcall> {
   template <typename Ret, typename... Args>
@@ -69,7 +68,6 @@ struct invoker<detail::calling_conventions::kFastcall> {
         std::forward<Args>(args)...);
   }
 };
-#endif
 
 template <typename, typename>
 struct invoke;

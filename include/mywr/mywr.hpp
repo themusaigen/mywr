@@ -10,11 +10,11 @@
 #define MYWR_HPP_
 
 constexpr auto MYWR_MAJOR = 1;
-constexpr auto MYWR_MINOR = 31;
+constexpr auto MYWR_MINOR = 32;
 constexpr auto MYWR_PATCH = 0;
 constexpr auto MYWR_VERSION =
     MYWR_MAJOR * 10000 + MYWR_MINOR * 100 + MYWR_PATCH * 10;
-constexpr auto MYWR_VERSION_STR = "1.31.0";
+constexpr auto MYWR_VERSION_STR = "1.32.0";
 
 #if defined(__GNUC__)
   #define MYWR_GCC

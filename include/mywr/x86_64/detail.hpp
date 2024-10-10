@@ -65,6 +65,19 @@ restore_absolute_address(const address& ip,
                          const std::size_t oplen = 5u) {
   return ip.value() + src.value() + oplen;
 }
+
+/**
+ * @brief Performs forced cast to an arbitary pointer.
+ *
+ * @details
+ * Mostly used to force cast member function pointer to arbitary pointer.
+ */
+template <typename Out, typename In>
+constexpr Out force_cast(In in) {
+  Out out;
+  ::memcpy(&out, &in, sizeof(Out));
+  return out;
+}
 } // namespace detail
 } // namespace mywr
 

@@ -432,6 +432,7 @@ struct function_traits<Ret (Class::*)(Args...)>
   #endif
 };
 
+  #if defined(MYWR_X86)
 template <typename Ret, typename... Args>
 struct function_traits<Ret(MYWR_STDCALL*)(Args...)>
     : function_trait<Ret, Args...> {
@@ -459,6 +460,7 @@ struct function_traits<Ret(MYWR_FASTCALL*)(Args...)>
   static constexpr auto convention = detail::calling_convention_by_abi_v<
       detail::calling_conventions::kFastcall>;
 };
+  #endif
 #endif
 
 /**
@@ -508,42 +510,42 @@ constexpr auto convention_v = function_traits<Fun>::convention;
 /**
  * @brief A shortcut to identify is function a cdecl.
  */
-template<typename Fun>
+template <typename Fun>
 constexpr auto is_cdecl_v =
     convention_v<Fun> == detail::calling_conventions::kCdecl;
 
 /**
  * @brief A shortcut to identify is function a stdcall.
  */
-template<typename Fun>
+template <typename Fun>
 constexpr auto is_stdcall_v =
     convention_v<Fun> == detail::calling_conventions::kStdcall;
 
 /**
  * @brief A shortcut to identify is function a thiscall.
  */
-template<typename Fun>
+template <typename Fun>
 constexpr auto is_thiscall_v =
     convention_v<Fun> == detail::calling_conventions::kThiscall;
 
 /**
  * @brief A shortcut to identify is function a fastcall.
  */
-template<typename Fun>
+template <typename Fun>
 constexpr auto is_fastcall_v =
     convention_v<Fun> == detail::calling_conventions::kFastcall;
 
 /**
  * @brief A shortcut to identify is function have Win64 calling convention.
  */
-template<typename Fun>
+template <typename Fun>
 constexpr auto is_win64_v =
     convention_v<Fun> == detail::calling_conventions::kWin64;
 
 /**
  * @brief A shortcut to identify is function have SystemV calling convention.
  */
-template<typename Fun>
+template <typename Fun>
 constexpr auto is_systemv_v =
     convention_v<Fun> == detail::calling_conventions::kSystemV;
 

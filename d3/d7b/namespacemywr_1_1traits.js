@@ -8,5 +8,11 @@ var namespacemywr_1_1traits =
     [ "args_count_v", "d3/d7b/namespacemywr_1_1traits.html#a5efca166b0ecb78671b8e12683113986", null ],
     [ "args_size_v", "d3/d7b/namespacemywr_1_1traits.html#a5649b9b6e2f4e3fa5955be8b8d9fe1b6", null ],
     [ "convention_v", "d3/d7b/namespacemywr_1_1traits.html#a682e48d67a762b46e77516904d970c1f", null ],
-    [ "is_return_non_pod_v", "d3/d7b/namespacemywr_1_1traits.html#af44a3204e587955f7a159db50da807a4", null ]
+    [ "is_cdecl_v", "d3/d7b/namespacemywr_1_1traits.html#ae44cf21c5a53ce3dd6961a49519fcb68", null ],
+    [ "is_fastcall_v", "d3/d7b/namespacemywr_1_1traits.html#ae2522b16dd9f110d9505527cbc69ed07", null ],
+    [ "is_return_non_pod_v", "d3/d7b/namespacemywr_1_1traits.html#af44a3204e587955f7a159db50da807a4", null ],
+    [ "is_stdcall_v", "d3/d7b/namespacemywr_1_1traits.html#a08ee92aa8465356c6472d39d418cb27f", null ],
+    [ "is_systemv_v", "d3/d7b/namespacemywr_1_1traits.html#a004f0de22c641464698495495fb5337d", null ],
+    [ "is_thiscall_v", "d3/d7b/namespacemywr_1_1traits.html#a12b77a8e24a0514bff519e17764d1932", null ],
+    [ "is_win64_v", "d3/d7b/namespacemywr_1_1traits.html#a5d778ec6519f7e25ce9bf538968fb607", null ]
 ];

@@ -28,7 +28,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">memwrapper<span id="projectnumber">&#160;1.31.1</span>
+   <div id="projectname">memwrapper<span id="projectnumber">&#160;1.32.0</span>
    </div>
    <div id="projectbrief">Wrapper for memory manipulation</div>
   </td>
@@ -123,13 +123,21 @@ $(document).ready(function(){initNavTree('d7/dc2/detail_8hpp_source.html','../..
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                         <span class="keyword">const</span> std::size_t oplen = 5u) {</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keywordflow">return</span> ip.<a class="code hl_function" href="../../d2/d1e/classmywr_1_1address.html#a9eaea708dcb0f2da2872825fda164f53">value</a>() + src.<a class="code hl_function" href="../../d2/d1e/classmywr_1_1address.html#a9eaea708dcb0f2da2872825fda164f53">value</a>() + oplen;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>} <span class="comment">// namespace detail</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>} <span class="comment">// namespace mywr</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif </span><span class="comment">// !MYWR_DETAIL_HPP_</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Out, <span class="keyword">typename</span> In&gt;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="../../d8/dc3/namespacemywr_1_1detail.html#a5af90fdf888427905f39ac2fca30e666">   76</a></span><span class="keyword">constexpr</span> Out <a class="code hl_function" href="../../d8/dc3/namespacemywr_1_1detail.html#a5af90fdf888427905f39ac2fca30e666">force_cast</a>(In in) {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  Out out;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  ::memcpy(&amp;out, &amp;in, <span class="keyword">sizeof</span>(Out));</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <span class="keywordflow">return</span> out;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>} <span class="comment">// namespace detail</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>} <span class="comment">// namespace mywr</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif </span><span class="comment">// !MYWR_DETAIL_HPP_</span></div>
 <div class="ttc" id="aclassmywr_1_1address_html"><div class="ttname"><a href="../../d2/d1e/classmywr_1_1address.html">mywr::address</a></div><div class="ttdoc">A class for converting pointers to addresses.</div><div class="ttdef"><b>Definition:</b> address.hpp:13</div></div>
 <div class="ttc" id="aclassmywr_1_1address_html_a9eaea708dcb0f2da2872825fda164f53"><div class="ttname"><a href="../../d2/d1e/classmywr_1_1address.html#a9eaea708dcb0f2da2872825fda164f53">mywr::address::value</a></div><div class="ttdeci">MYWR_INLINE const address_t value() const</div><div class="ttdoc">Returns the address of the passed value.</div><div class="ttdef"><b>Definition:</b> address.hpp:105</div></div>
 <div class="ttc" id="anamespacemywr_1_1detail_html_a3112c14d0f66f89642dfc57321aaf92d"><div class="ttname"><a href="../../d8/dc3/namespacemywr_1_1detail.html#a3112c14d0f66f89642dfc57321aaf92d">mywr::detail::compute_relative_address</a></div><div class="ttdeci">MYWR_FORCEINLINE address compute_relative_address(const address &amp;dest, const address &amp;src, const std::size_t oplen=5u)</div><div class="ttdoc">Calculates the relative address.</div><div class="ttdef"><b>Definition:</b> detail.hpp:39</div></div>
+<div class="ttc" id="anamespacemywr_1_1detail_html_a5af90fdf888427905f39ac2fca30e666"><div class="ttname"><a href="../../d8/dc3/namespacemywr_1_1detail.html#a5af90fdf888427905f39ac2fca30e666">mywr::detail::force_cast</a></div><div class="ttdeci">constexpr Out force_cast(In in)</div><div class="ttdoc">Performs forced cast to an arbitary pointer.</div><div class="ttdef"><b>Definition:</b> detail.hpp:76</div></div>
 <div class="ttc" id="anamespacemywr_1_1detail_html_a9acce57028be489c3561f25faff52173"><div class="ttname"><a href="../../d8/dc3/namespacemywr_1_1detail.html#a9acce57028be489c3561f25faff52173">mywr::detail::restore_absolute_address</a></div><div class="ttdeci">MYWR_FORCEINLINE address restore_absolute_address(const address &amp;ip, const address &amp;src, const std::size_t oplen=5u)</div><div class="ttdoc">Restores an absolute address through a relative one.</div><div class="ttdef"><b>Definition:</b> detail.hpp:63</div></div>
 <div class="ttc" id="anamespacemywr_html"><div class="ttname"><a href="../../d1/d3f/namespacemywr.html">mywr</a></div><div class="ttdoc">The core namespace of the memwrapper library.</div><div class="ttdef"><b>Definition:</b> mywr.hpp:109</div></div>
 </div><!-- fragment --></div><!-- contents -->

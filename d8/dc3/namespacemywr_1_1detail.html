@@ -28,7 +28,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">memwrapper<span id="projectnumber">&#160;1.31.1</span>
+   <div id="projectname">memwrapper<span id="projectnumber">&#160;1.32.0</span>
    </div>
    <div id="projectbrief">Wrapper for memory manipulation</div>
   </td>
@@ -124,6 +124,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a9acce57028be489c3561f25faff52173"><td class="memItemLeft" align="right" valign="top">MYWR_FORCEINLINE <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dc3/namespacemywr_1_1detail.html#a9acce57028be489c3561f25faff52173">restore_absolute_address</a> (const <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a> &amp;ip, const <a class="el" href="../../d2/d1e/classmywr_1_1address.html">address</a> &amp;src, const std::size_t oplen=5u)</td></tr>
 <tr class="memdesc:a9acce57028be489c3561f25faff52173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restores an absolute address through a relative one.  <a href="../../d8/dc3/namespacemywr_1_1detail.html#a9acce57028be489c3561f25faff52173">More...</a><br /></td></tr>
 <tr class="separator:a9acce57028be489c3561f25faff52173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5af90fdf888427905f39ac2fca30e666"><td class="memTemplParams" colspan="2">template&lt;typename Out , typename In &gt; </td></tr>
+<tr class="memitem:a5af90fdf888427905f39ac2fca30e666"><td class="memTemplItemLeft" align="right" valign="top">constexpr Out&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d8/dc3/namespacemywr_1_1detail.html#a5af90fdf888427905f39ac2fca30e666">force_cast</a> (In in)</td></tr>
+<tr class="memdesc:a5af90fdf888427905f39ac2fca30e666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs forced cast to an arbitary pointer.  <a href="../../d8/dc3/namespacemywr_1_1detail.html#a5af90fdf888427905f39ac2fca30e666">More...</a><br /></td></tr>
+<tr class="separator:a5af90fdf888427905f39ac2fca30e666"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2610f42a1a370d112aa9534b8aad1c41"><td class="memTemplParams" colspan="2"><a id="a2610f42a1a370d112aa9534b8aad1c41" name="a2610f42a1a370d112aa9534b8aad1c41"></a>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a2610f42a1a370d112aa9534b8aad1c41"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>align_parameter_size</b> ()</td></tr>
@@ -229,6 +233,37 @@ template&lt;typename Tuple &gt; </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Relative address. </dd></dl>
+
+</div>
+</div>
+<a id="a5af90fdf888427905f39ac2fca30e666" name="a5af90fdf888427905f39ac2fca30e666"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5af90fdf888427905f39ac2fca30e666">&#9670;&#160;</a></span>force_cast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Out , typename In &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr Out mywr::detail::force_cast </td>
+          <td>(</td>
+          <td class="paramtype">In&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs forced cast to an arbitary pointer. </p>
+<p >Mostly used to force cast member function pointer to arbitary pointer. </p>
 
 </div>
 </div>

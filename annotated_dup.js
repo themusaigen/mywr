@@ -12,7 +12,10 @@ var annotated_dup =
           [ "invoke< Fun, std::tuple< Args... > >", "d5/d03/structmywr_1_1invoker_1_1impl_1_1invoke_3_01Fun_00_01std_1_1tuple_3_01Args_8_8_8_01_4_01_4.html", null ],
           [ "invoker", "de/d96/structmywr_1_1invoker_1_1impl_1_1invoker.html", null ],
           [ "invoker< detail::calling_conventions::kCdecl >", "d9/d61/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kCdecl_01_4.html", null ],
+          [ "invoker< detail::calling_conventions::kFastcall >", "dd/d72/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kFastcall_01_4.html", null ],
+          [ "invoker< detail::calling_conventions::kStdcall >", "d6/d8d/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kStdcall_01_4.html", null ],
           [ "invoker< detail::calling_conventions::kSystemV >", "da/d0a/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kSystemV_01_4.html", null ],
+          [ "invoker< detail::calling_conventions::kThiscall >", "db/d93/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kThiscall_01_4.html", null ],
           [ "invoker< detail::calling_conventions::kWin64 >", "db/d1a/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kWin64_01_4.html", null ]
         ] ]
       ] ],

@@ -28,7 +28,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">memwrapper<span id="projectnumber">&#160;1.31.1</span>
+   <div id="projectname">memwrapper<span id="projectnumber">&#160;1.32.0</span>
    </div>
    <div id="projectbrief">Wrapper for memory manipulation</div>
   </td>
@@ -140,75 +140,73 @@ $(document).ready(function(){initNavTree('d8/d4c/invoker_8hpp_source.html','../.
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  }</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#if defined(MYWR_WINDOWS) &amp;&amp; defined(MYWR_X86)</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">struct </span><a class="code hl_struct" href="../../de/d96/structmywr_1_1invoker_1_1impl_1_1invoker.html">invoker</a>&lt;detail::calling_conventions::kStdcall&gt; {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Ret, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keyword">static</span> MYWR_INLINE Ret <a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d2/d1e/classmywr_1_1address.html">address</a>&amp; fn, Args&amp;&amp;... args) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>Ret(MYWR_STDCALL*)(Args...)<span class="keyword">&gt;</span>(fn.<a class="code hl_function" href="../../d2/d1e/classmywr_1_1address.html#a9eaea708dcb0f2da2872825fda164f53">value</a>())(</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  }</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>};</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">struct </span>invoker&lt;detail::calling_conventions::kThiscall&gt; {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Ret, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keyword">static</span> MYWR_INLINE Ret invoke(<span class="keyword">const</span> <a class="code hl_class" href="../../d2/d1e/classmywr_1_1address.html">address</a>&amp; fn, Args&amp;&amp;... args) {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>Ret(MYWR_THISCALL*)(Args...)<span class="keyword">&gt;</span>(fn.<a class="code hl_function" href="../../d2/d1e/classmywr_1_1address.html#a9eaea708dcb0f2da2872825fda164f53">value</a>())(</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  }</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">struct </span>invoker&lt;detail::calling_conventions::kFastcall&gt; {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Ret, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <span class="keyword">static</span> MYWR_INLINE Ret <a class="code hl_function" href="../../d6/de5/namespacemywr_1_1invoker.html#adda7ca4c485e43ea4efcde521e2313c7">invoke</a>(<span class="keyword">const</span> address&amp; fn, Args&amp;&amp;... args) {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>Ret(MYWR_FASTCALL*)(Args...)<span class="keyword">&gt;</span>(fn.value())(</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>, <span class="keyword">typename</span>&gt;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">   75</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke</a>;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Fun, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="../../d5/d03/structmywr_1_1invoker_1_1impl_1_1invoke_3_01Fun_00_01std_1_1tuple_3_01Args_8_8_8_01_4_01_4.html">   78</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke</a>&lt;Fun, std::tuple&lt;Args...&gt;&gt; {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keyword">using </span>Ret = <a class="code hl_typedef" href="../../d3/d7b/namespacemywr_1_1traits.html#a3db1f3ba4ee84f4458bab7ddd299e170">traits::return_type_t&lt;Fun&gt;</a>;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  Ret operator()(<span class="keyword">const</span> <a class="code hl_class" href="../../d2/d1e/classmywr_1_1address.html">address</a>&amp; fn, Args&amp;&amp;... args) {</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">return</span> <a class="code hl_struct" href="../../de/d96/structmywr_1_1invoker_1_1impl_1_1invoker.html">invoker&lt;traits::convention_v&lt;Fun&gt;</a>&gt;::template <a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke</a>&lt;Ret, Args...&gt;(</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        fn,</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  }</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Fun&gt;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keyword">using </span><a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">apply</a> = <a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke&lt;Fun, traits::arguments_t&lt;Fun&gt;</a>&gt;;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>} <span class="comment">// namespace impl</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>} <span class="comment">// namespace invoker</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>} <span class="comment">// namespace mywr</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d1/d3f/namespacemywr.html">mywr</a> {</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keyword">namespace </span>invoker {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Fun, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="../../d6/de5/namespacemywr_1_1invoker.html#adda7ca4c485e43ea4efcde521e2313c7">  122</a></span>MYWR_INLINE <a class="code hl_typedef" href="../../d3/d7b/namespacemywr_1_1traits.html#a3db1f3ba4ee84f4458bab7ddd299e170">traits::return_type_t&lt;Fun&gt;</a> <a class="code hl_function" href="../../d6/de5/namespacemywr_1_1invoker.html#adda7ca4c485e43ea4efcde521e2313c7">invoke</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d2/d1e/classmywr_1_1address.html">address</a>&amp; fn,</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                                              Args&amp;&amp;... args) {</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">impl::apply&lt;Fun&gt;</a>()(fn, std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>}</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>} <span class="comment">// namespace invoker</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>} <span class="comment">// namespace mywr</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="preprocessor">#endif </span><span class="comment">// !MYWR_INVOKER_HPP_</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="../../d6/d8d/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kStdcall_01_4.html">   46</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../de/d96/structmywr_1_1invoker_1_1impl_1_1invoker.html">invoker</a>&lt;detail::calling_conventions::kStdcall&gt; {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Ret, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">static</span> MYWR_INLINE Ret <a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d2/d1e/classmywr_1_1address.html">address</a>&amp; fn, Args&amp;&amp;... args) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>Ret(MYWR_STDCALL*)(Args...)<span class="keyword">&gt;</span>(fn.<a class="code hl_function" href="../../d2/d1e/classmywr_1_1address.html#a9eaea708dcb0f2da2872825fda164f53">value</a>())(</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>};</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="../../db/d93/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kThiscall_01_4.html">   55</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../de/d96/structmywr_1_1invoker_1_1impl_1_1invoker.html">invoker</a>&lt;detail::calling_conventions::kThiscall&gt; {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Ret, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keyword">static</span> MYWR_INLINE Ret <a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d2/d1e/classmywr_1_1address.html">address</a>&amp; fn, Args&amp;&amp;... args) {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>Ret(MYWR_THISCALL*)(Args...)<span class="keyword">&gt;</span>(fn.<a class="code hl_function" href="../../d2/d1e/classmywr_1_1address.html#a9eaea708dcb0f2da2872825fda164f53">value</a>())(</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>};</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="../../dd/d72/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kFastcall_01_4.html">   64</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../de/d96/structmywr_1_1invoker_1_1impl_1_1invoker.html">invoker</a>&lt;detail::calling_conventions::kFastcall&gt; {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Ret, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keyword">static</span> MYWR_INLINE Ret <a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d2/d1e/classmywr_1_1address.html">address</a>&amp; fn, Args&amp;&amp;... args) {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>Ret(MYWR_FASTCALL*)(Args...)<span class="keyword">&gt;</span>(fn.<a class="code hl_function" href="../../d2/d1e/classmywr_1_1address.html#a9eaea708dcb0f2da2872825fda164f53">value</a>())(</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>};</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>, <span class="keyword">typename</span>&gt;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">   73</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Fun, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="../../d5/d03/structmywr_1_1invoker_1_1impl_1_1invoke_3_01Fun_00_01std_1_1tuple_3_01Args_8_8_8_01_4_01_4.html">   76</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke</a>&lt;Fun, std::tuple&lt;Args...&gt;&gt; {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="keyword">using </span>Ret = <a class="code hl_typedef" href="../../d3/d7b/namespacemywr_1_1traits.html#a3db1f3ba4ee84f4458bab7ddd299e170">traits::return_type_t&lt;Fun&gt;</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  Ret operator()(<span class="keyword">const</span> <a class="code hl_class" href="../../d2/d1e/classmywr_1_1address.html">address</a>&amp; fn, Args&amp;&amp;... args) {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">return</span> <a class="code hl_struct" href="../../de/d96/structmywr_1_1invoker_1_1impl_1_1invoker.html">invoker&lt;traits::convention_v&lt;Fun&gt;</a>&gt;::template <a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke</a>&lt;Ret, Args...&gt;(</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        fn,</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>};</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Fun&gt;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">using </span><a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">apply</a> = <a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">invoke&lt;Fun, traits::arguments_t&lt;Fun&gt;</a>&gt;;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>} <span class="comment">// namespace impl</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>} <span class="comment">// namespace invoker</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>} <span class="comment">// namespace mywr</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d1/d3f/namespacemywr.html">mywr</a> {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keyword">namespace </span>invoker {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Fun, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="../../d6/de5/namespacemywr_1_1invoker.html#adda7ca4c485e43ea4efcde521e2313c7">  120</a></span>MYWR_INLINE <a class="code hl_typedef" href="../../d3/d7b/namespacemywr_1_1traits.html#a3db1f3ba4ee84f4458bab7ddd299e170">traits::return_type_t&lt;Fun&gt;</a> <a class="code hl_function" href="../../d6/de5/namespacemywr_1_1invoker.html#adda7ca4c485e43ea4efcde521e2313c7">invoke</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d2/d1e/classmywr_1_1address.html">address</a>&amp; fn,</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                                              Args&amp;&amp;... args) {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">impl::apply&lt;Fun&gt;</a>()(fn, std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>} <span class="comment">// namespace invoker</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>} <span class="comment">// namespace mywr</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#endif </span><span class="comment">// !MYWR_INVOKER_HPP_</span></div>
 <div class="ttc" id="aclassmywr_1_1address_html"><div class="ttname"><a href="../../d2/d1e/classmywr_1_1address.html">mywr::address</a></div><div class="ttdoc">A class for converting pointers to addresses.</div><div class="ttdef"><b>Definition:</b> address.hpp:13</div></div>
 <div class="ttc" id="aclassmywr_1_1address_html_a9eaea708dcb0f2da2872825fda164f53"><div class="ttname"><a href="../../d2/d1e/classmywr_1_1address.html#a9eaea708dcb0f2da2872825fda164f53">mywr::address::value</a></div><div class="ttdeci">MYWR_INLINE const address_t value() const</div><div class="ttdoc">Returns the address of the passed value.</div><div class="ttdef"><b>Definition:</b> address.hpp:105</div></div>
-<div class="ttc" id="anamespacemywr_1_1invoker_html_adda7ca4c485e43ea4efcde521e2313c7"><div class="ttname"><a href="../../d6/de5/namespacemywr_1_1invoker.html#adda7ca4c485e43ea4efcde521e2313c7">mywr::invoker::invoke</a></div><div class="ttdeci">MYWR_INLINE traits::return_type_t&lt; Fun &gt; invoke(const address &amp;fn, Args &amp;&amp;... args)</div><div class="ttdoc">Invokes the function stored in the process memory.</div><div class="ttdef"><b>Definition:</b> invoker.hpp:122</div></div>
-<div class="ttc" id="anamespacemywr_1_1traits_html_a3db1f3ba4ee84f4458bab7ddd299e170"><div class="ttname"><a href="../../d3/d7b/namespacemywr_1_1traits.html#a3db1f3ba4ee84f4458bab7ddd299e170">mywr::traits::return_type_t</a></div><div class="ttdeci">typename function_traits&lt; Fun &gt;::return_type return_type_t</div><div class="ttdoc">A shortcut to get the function`s return type.</div><div class="ttdef"><b>Definition:</b> traits.hpp:470</div></div>
+<div class="ttc" id="anamespacemywr_1_1invoker_html_adda7ca4c485e43ea4efcde521e2313c7"><div class="ttname"><a href="../../d6/de5/namespacemywr_1_1invoker.html#adda7ca4c485e43ea4efcde521e2313c7">mywr::invoker::invoke</a></div><div class="ttdeci">MYWR_INLINE traits::return_type_t&lt; Fun &gt; invoke(const address &amp;fn, Args &amp;&amp;... args)</div><div class="ttdoc">Invokes the function stored in the process memory.</div><div class="ttdef"><b>Definition:</b> invoker.hpp:120</div></div>
+<div class="ttc" id="anamespacemywr_1_1traits_html_a3db1f3ba4ee84f4458bab7ddd299e170"><div class="ttname"><a href="../../d3/d7b/namespacemywr_1_1traits.html#a3db1f3ba4ee84f4458bab7ddd299e170">mywr::traits::return_type_t</a></div><div class="ttdeci">typename function_traits&lt; Fun &gt;::return_type return_type_t</div><div class="ttdoc">A shortcut to get the function`s return type.</div><div class="ttdef"><b>Definition:</b> traits.hpp:468</div></div>
 <div class="ttc" id="anamespacemywr_html"><div class="ttname"><a href="../../d1/d3f/namespacemywr.html">mywr</a></div><div class="ttdoc">The core namespace of the memwrapper library.</div><div class="ttdef"><b>Definition:</b> mywr.hpp:109</div></div>
-<div class="ttc" id="astructmywr_1_1invoker_1_1impl_1_1invoke_html"><div class="ttname"><a href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">mywr::invoker::impl::invoke</a></div><div class="ttdef"><b>Definition:</b> invoker.hpp:75</div></div>
+<div class="ttc" id="astructmywr_1_1invoker_1_1impl_1_1invoke_html"><div class="ttname"><a href="../../d8/dd6/structmywr_1_1invoker_1_1impl_1_1invoke.html">mywr::invoker::impl::invoke</a></div><div class="ttdef"><b>Definition:</b> invoker.hpp:73</div></div>
 <div class="ttc" id="astructmywr_1_1invoker_1_1impl_1_1invoker_html"><div class="ttname"><a href="../../de/d96/structmywr_1_1invoker_1_1impl_1_1invoker.html">mywr::invoker::impl::invoker</a></div><div class="ttdef"><b>Definition:</b> invoker.hpp:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

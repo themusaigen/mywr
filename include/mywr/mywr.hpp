@@ -85,8 +85,8 @@ constexpr auto MYWR_VERSION_STR = "1.32.1";
   #include <charconv>
 
   #if defined(MYWR_DEBUG)
-    #if !defined(MYWR_FEATURE_PROC_PARSER_DUMP)
-      #define MYWR_FEATURE_PROC_PARSER_DUMP
+    #if !defined(MYWR_FEATURE_PROCFS_PARSER_DUMP)
+      #define MYWR_FEATURE_PROCFS_PARSER_DUMP
     #endif
   #endif
 
@@ -138,7 +138,7 @@ using address_t = std::uint64_t;
 
 /// Internal Libraries.
 #include "x86_64/address.hpp"
-#include "x86_64/proc.hpp"
+#include "x86_64/procfs.hpp"
 #include "x86_64/detail.hpp"
 #include "x86_64/traits.hpp"
 #include "x86_64/protect.hpp"

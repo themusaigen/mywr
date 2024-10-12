@@ -1,5 +1,5 @@
 /*********************************************************************
- * @file   proc.hpp
+ * @file   procfs.hpp
  * @brief  Module containing UNIX `proc` filesystem parsers.
  *
  * @author themusaigen
@@ -7,15 +7,15 @@
  * @copyright MIT License.
  *********************************************************************/
 #if defined(MYWR_UNIX)
-  #ifndef MYWR_PROC_HPP_
-    #define MYWR_PROC_HPP_
+  #ifndef MYWR_PROCFS_HPP_
+    #define MYWR_PROCFS_HPP_
 
-    #if defined(MYWR_FEATURE_PROC_PARSER_DUMP)
+    #if defined(MYWR_FEATURE_PROCFS_PARSER_DUMP)
       #include <iostream>
     #endif
 
 namespace mywr {
-namespace proc {
+namespace procfs {
 struct memory_region {
   enum path_type : std::uint32_t {
     kUnknown,
@@ -90,7 +90,7 @@ public:
     m_cursor = 0;
   }
 
-    #if defined(MYWR_FEATURE_PROC_PARSER_DUMP)
+    #if defined(MYWR_FEATURE_PROCFS_PARSER_DUMP)
   void dump_from_cursor() {
     std::cout << m_line.substr(m_cursor, m_line.size() - m_cursor) << '\n';
   }
@@ -206,7 +206,7 @@ static void parse_maps(std::vector<memory_region>& regions) {
 
     region.pathname = std::move(parser.grab_string());
 
-    #if defined(MYWR_FEATURE_PROC_PATHTYPE_DEDUCTION)
+    #if defined(MYWR_FEATURE_PROCFS_PATHTYPE_DEDUCTION)
     if (region.pathname == kStack)
       region.pathtype = memory_region::kStack;
     else if (region.pathname == kHeap)
@@ -232,8 +232,8 @@ static void parse_maps(std::vector<memory_region>& regions) {
     parser.next_line();
   }
 }
-} // namespace proc
+} // namespace procfs
 } // namespace mywr
 
-  #endif // !MYWR_PROC_HPP_
+  #endif // !MYWR_PROCFS_HPP_
 #endif

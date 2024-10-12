@@ -3,7 +3,7 @@
 #include "mywr/mywr.hpp"
 
 #if defined(MYWR_UNIX)
-using namespace mywr::proc;
+using namespace mywr::procfs;
 
 std::vector<memory_region> regions;
 

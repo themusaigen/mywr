@@ -253,8 +253,8 @@ static memory_prot::Enum get_protect(const address& target) {
   /**
    * Parse /proc/self/maps to retrieve memory protect information.
    */
-  std::vector<proc::memory_region> regions;
-  proc::parse_maps(regions);
+  std::vector<procfs::memory_region> regions;
+  procfs::parse_maps(regions);
 
   /**
    * Get address of passed `target`.

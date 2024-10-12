@@ -22,6 +22,10 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(hde)
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+  add_definitions(-DMYWR_DEBUG)
+endif()
+
 add_library(${PROJECT_NAME} INTERFACE)
 target_link_libraries(${PROJECT_NAME} INTERFACE hde)
 target_include_directories(${PROJECT_NAME} INTERFACE

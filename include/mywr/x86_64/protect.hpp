@@ -250,76 +250,23 @@ static memory_prot::Enum get_protect(const address& target) {
 
   return to_protection_constant(mbi.Protect);
 #elif defined(MYWR_UNIX) && !defined(MYWR_FEATURE_NO_MPROTECT)
-  // Source:
-  // https://github.com/kin4stat/kthook/blob/main/include/kthook/x86_64/kthook_x86_64_detail.hpp#L591
-  struct map_info {
-    std::uintptr_t start;
-    std::uintptr_t end;
+  /**
+   * Parse /proc/self/maps to retrieve memory protect information.
+   */
+  std::vector<proc::memory_region> regions;
+  proc::parse_maps(regions);
 
-    unsigned prot;
-  };
-
-  std::vector<map_info> result;
-
-  #ifdef __FreeBSD__
-  std::ifstream proc_maps{"/proc/curproc/map"};
-  #else
-  std::ifstream proc_maps{"/proc/self/maps"};
-  #endif
-  std::string line;
-
-  while (std::getline(proc_maps, line)) {
-    map_info parse_result{};
-
-    auto start = 0u;
-    auto i = 0u;
-    while (line[i] != '-') {
-      ++i;
-    }
-
-    std::from_chars(&line[start], &line[i], parse_result.start, 16);
-
-    start = ++i;
-    while (line[i] != '\t' && line[i] != ' ') {
-      ++i;
-    }
-    std::from_chars(&line[start], &line[i], parse_result.end, 16);
-
-  #ifdef __FreeBSD__
-    while (line[i] != '\t' && line[i] != ' ') {
-      ++i;
-    }
-    ++i; // skip
-    while (line[i] != '\t' && line[i] != ' ') {
-      ++i;
-    }
-    ++i; // skip
-    while (line[i] != '\t' && line[i] != ' ') {
-      ++i;
-    }
-    ++i; // skip
-  #endif
-
-    start = ++i;
-    while (line[i] != '\t' && line[i] != ' ') {
-      ++i;
-    }
-
-    if (line[start++] == 'r')
-      parse_result.prot |= PROT_READ;
-    if (line[start++] == 'w')
-      parse_result.prot |= PROT_WRITE;
-    if (line[start++] == 'x')
-      parse_result.prot |= PROT_EXEC;
-    result.push_back(parse_result);
-  }
-
+  /**
+   * Get address of passed `target`.
+   */
   address_t address = target.value();
-  for (auto& mi : result) {
-    if (address >= mi.start && address <= mi.end) {
-      return to_protection_constant(mi.prot);
-    }
-  }
+
+  /**
+   * Foreach all region and check for protect.
+   */
+  for (auto& region : regions)
+    if (address >= region.begin && address <= region.end)
+      return to_protection_constant(region.permissions);
 
   return memory_prot::kUnknown;
 #else

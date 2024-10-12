@@ -84,6 +84,12 @@ constexpr auto MYWR_VERSION_STR = "1.32.1";
   #include <fstream>
   #include <charconv>
 
+  #if defined(MYWR_DEBUG)
+    #if !defined(MYWR_FEATURE_PROC_PARSER_DUMP)
+      #define MYWR_FEATURE_PROC_PARSER_DUMP
+    #endif
+  #endif
+
   // clang-format off
   #if MYWR_HAS_INCLUDE(<sys/cachectl.h>)
     #include <sys/cachectl.h>
@@ -126,9 +132,13 @@ using address_t = std::uint64_t;
 #include <type_traits>
 #include <map>
 #include <tuple>
+#include <vector>
+#include <string>
+#include <string_view>
 
 /// Internal Libraries.
 #include "x86_64/address.hpp"
+#include "x86_64/proc.hpp"
 #include "x86_64/detail.hpp"
 #include "x86_64/traits.hpp"
 #include "x86_64/protect.hpp"

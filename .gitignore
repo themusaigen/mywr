@@ -4,6 +4,9 @@
 # Ignore VS CMake`s settings.
 /CMakeSettings.json
 
+# Ignore VS CMake`s presets. (For WSL)
+/CMakePresets.json
+
 # Ignore .VS folder
 /.vs
 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_0',['value',['../d2/d1e/classmywr_1_1address.html#a9eaea708dcb0f2da2872825fda164f53',1,'mywr::address']]]
+  ['parser_0',['parser',['../d6/d9c/classmywr_1_1procfs_1_1parser.html#a440128eb3e6f42971b9aa07b9909eb5f',1,'mywr::procfs::parser']]]
 ];

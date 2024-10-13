@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['scoped_5fprotect_0',['scoped_protect',['../d4/d09/classmywr_1_1protect_1_1scoped__protect.html',1,'mywr::protect::scoped_protect'],['../d4/d09/classmywr_1_1protect_1_1scoped__protect.html#a707ae0a559ced63a682949cc9c7fc050',1,'mywr::protect::scoped_protect::scoped_protect()=delete'],['../d4/d09/classmywr_1_1protect_1_1scoped__protect.html#afe879ba630dcaf7f3421592dcd371235',1,'mywr::protect::scoped_protect::scoped_protect(const scoped_protect &amp;)=delete'],['../d4/d09/classmywr_1_1protect_1_1scoped__protect.html#a2b2998caea40221440e414dffc4a408f',1,'mywr::protect::scoped_protect::scoped_protect(scoped_protect &amp;&amp;)=delete'],['../d4/d09/classmywr_1_1protect_1_1scoped__protect.html#ae929a5eaecbbb5f4b7dc8d187d7cd52f',1,'mywr::protect::scoped_protect::scoped_protect(const address &amp;target, const std::size_t size, const memory_prot::Enum protect)']]],
-  ['sizeof_5fparameters_5fsize_1',['sizeof_parameters_size',['../d8/dc3/namespacemywr_1_1detail.html#a1f9ac340b20da35f2541acea03daab8e',1,'mywr::detail']]],
-  ['sizeof_5ftuple_5fparams_5fv_2',['sizeof_tuple_params_v',['../d8/dc3/namespacemywr_1_1detail.html#afe6b373f98eadaf4a789b4f44e888683',1,'mywr::detail']]],
-  ['system_5fabi_3',['system_abi',['../d2/dea/classmywr_1_1detail_1_1system__abi.html',1,'mywr::detail']]]
+  ['parser_0',['parser',['../d6/d9c/classmywr_1_1procfs_1_1parser.html',1,'mywr::procfs::parser'],['../d6/d9c/classmywr_1_1procfs_1_1parser.html#a440128eb3e6f42971b9aa07b9909eb5f',1,'mywr::procfs::parser::parser()']]],
+  ['path_5ftype_1',['path_type',['../d6/dee/structmywr_1_1procfs_1_1memory__region.html#a5567eb6ccead81cd5a1b3b21196a82fc',1,'mywr::procfs::memory_region']]],
+  ['pathname_2',['pathname',['../d6/dee/structmywr_1_1procfs_1_1memory__region.html#a3d3a16e9a97c4d0f15cc0008555a7fe5',1,'mywr::procfs::memory_region']]],
+  ['pathtype_3',['pathtype',['../d6/dee/structmywr_1_1procfs_1_1memory__region.html#af91937d6c466602aac31fcced4dd1af4',1,'mywr::procfs::memory_region']]],
+  ['permissions_4',['permissions',['../d6/dee/structmywr_1_1procfs_1_1memory__region.html#a2638f3a75ed0ad5b28e63300f84781cc',1,'mywr::procfs::memory_region']]]
 ];

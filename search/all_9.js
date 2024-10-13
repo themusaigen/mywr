@@ -5,7 +5,9 @@ var searchData=
   ['invoker_2',['invoker',['../d6/de5/namespacemywr_1_1invoker.html',1,'mywr']]],
   ['llmo_3',['llmo',['../df/d31/namespacemywr_1_1llmo.html',1,'mywr']]],
   ['memory_5fprot_4',['memory_prot',['../dd/def/classmywr_1_1protect_1_1memory__prot.html',1,'mywr::protect']]],
-  ['mywr_5',['mywr',['../d1/d3f/namespacemywr.html',1,'']]],
-  ['protect_6',['protect',['../dc/da7/namespacemywr_1_1protect.html',1,'mywr']]],
-  ['traits_7',['traits',['../d3/d7b/namespacemywr_1_1traits.html',1,'mywr']]]
+  ['memory_5fregion_5',['memory_region',['../d6/dee/structmywr_1_1procfs_1_1memory__region.html',1,'mywr::procfs']]],
+  ['mywr_6',['mywr',['../d1/d3f/namespacemywr.html',1,'']]],
+  ['procfs_7',['procfs',['../dc/dc4/namespacemywr_1_1procfs.html',1,'mywr']]],
+  ['protect_8',['protect',['../dc/da7/namespacemywr_1_1protect.html',1,'mywr']]],
+  ['traits_9',['traits',['../d3/d7b/namespacemywr_1_1traits.html',1,'mywr']]]
 ];

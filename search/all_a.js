@@ -1,13 +1,11 @@
 var searchData=
 [
-  ['operator_20address_5ft_0',['operator address_t',['../d2/d1e/classmywr_1_1address.html#afff3475e2e863d76d747e66bcbb32339',1,'mywr::address']]],
-  ['operator_20const_20void_20_2a_1',['operator const void *',['../d2/d1e/classmywr_1_1address.html#a89e8a4b91c8072fb74a5f0c430e5194c',1,'mywr::address']]],
-  ['operator_20void_20_2a_2',['operator void *',['../d2/d1e/classmywr_1_1address.html#aa74d185b5b46191ffb4e46381fc827ca',1,'mywr::address']]],
-  ['operator_21_3d_3',['operator!=',['../d2/d1e/classmywr_1_1address.html#a844ccc3902d50645ef12933cc600263a',1,'mywr::address']]],
-  ['operator_2b_4',['operator+',['../d2/d1e/classmywr_1_1address.html#aed96333eee0a680e6b070823c5f68804',1,'mywr::address']]],
-  ['operator_2b_3d_5',['operator+=',['../d2/d1e/classmywr_1_1address.html#a34ad2494251d835d2a4e7b5a4665415a',1,'mywr::address']]],
-  ['operator_2d_6',['operator-',['../d2/d1e/classmywr_1_1address.html#a47066540a9e182120dfed3e7ebee7b03',1,'mywr::address']]],
-  ['operator_2d_3d_7',['operator-=',['../d2/d1e/classmywr_1_1address.html#ae79a1ed01fcb242b352104f4d852cbc0',1,'mywr::address']]],
-  ['operator_3d_8',['operator=',['../d4/d09/classmywr_1_1protect_1_1scoped__protect.html#ac501cd8b094276bb76fa1cd76676538f',1,'mywr::protect::scoped_protect::operator=(const scoped_protect &amp;)=delete'],['../d4/d09/classmywr_1_1protect_1_1scoped__protect.html#aafa12b8264d452ebd02419af0bf4352b',1,'mywr::protect::scoped_protect::operator=(scoped_protect &amp;&amp;)=delete']]],
-  ['operator_3d_3d_9',['operator==',['../d2/d1e/classmywr_1_1address.html#ac92903f4eb94745685960dfe3a30b4d1',1,'mywr::address']]]
+  ['next_0',['next',['../d6/d9c/classmywr_1_1procfs_1_1parser.html#a56a904705459bc180daa99e5814111da',1,'mywr::procfs::parser']]],
+  ['next_5ffor_1',['next_for',['../d6/d9c/classmywr_1_1procfs_1_1parser.html#a752f196924a804d193a4e13c9f735ae2',1,'mywr::procfs::parser']]],
+  ['next_5fline_2',['next_line',['../d6/d9c/classmywr_1_1procfs_1_1parser.html#a04c08dd7082a0ed82cd5e1a7a66ba86e',1,'mywr::procfs::parser']]],
+  ['next_5fto_5feol_3',['next_to_eol',['../d6/d9c/classmywr_1_1procfs_1_1parser.html#a51163b9075d7b7dfe3f333a34ef61ce5',1,'mywr::procfs::parser']]],
+  ['next_5funtil_4',['next_until',['../d6/d9c/classmywr_1_1procfs_1_1parser.html#a5c7c2cacb177025ef3bf8414816a2a95',1,'mywr::procfs::parser']]],
+  ['next_5funtil_5fany_5fchar_5',['next_until_any_char',['../d6/d9c/classmywr_1_1procfs_1_1parser.html#af2218c1909a2f5ba7be7e1e39889487f',1,'mywr::procfs::parser']]],
+  ['next_5funtil_5fspace_6',['next_until_space',['../d6/d9c/classmywr_1_1procfs_1_1parser.html#a8410ccb63a28b0aff776f36edb05e8a0',1,'mywr::procfs::parser']]],
+  ['now_7',['now',['../d6/d9c/classmywr_1_1procfs_1_1parser.html#ace294c1bafdcb257cfda6543cdc4c77a',1,'mywr::procfs::parser']]]
 ];

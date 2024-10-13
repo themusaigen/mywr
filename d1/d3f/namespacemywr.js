@@ -14,6 +14,7 @@ var namespacemywr =
       [ "read", "df/d31/namespacemywr_1_1llmo.html#a663cf28ee3aef2581cea70a4461c95e5", null ],
       [ "write", "df/d31/namespacemywr_1_1llmo.html#a17ce928b28db87d36e18aef8ab2db9f0", null ]
     ] ],
+    [ "procfs", "dc/dc4/namespacemywr_1_1procfs.html", "dc/dc4/namespacemywr_1_1procfs" ],
     [ "protect", "dc/da7/namespacemywr_1_1protect.html", "dc/da7/namespacemywr_1_1protect" ],
     [ "traits", "d3/d7b/namespacemywr_1_1traits.html", "d3/d7b/namespacemywr_1_1traits" ],
     [ "address", "d2/d1e/classmywr_1_1address.html", "d2/d1e/classmywr_1_1address" ],

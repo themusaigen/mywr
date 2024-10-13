@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sizeof_5ftuple_5fparams_5fv_0',['sizeof_tuple_params_v',['../d8/dc3/namespacemywr_1_1detail.html#afe6b373f98eadaf4a789b4f44e888683',1,'mywr::detail']]]
+  ['end_0',['end',['../d6/dee/structmywr_1_1procfs_1_1memory__region.html#ab6d78d3a7270d0423cf942634e54af21',1,'mywr::procfs::memory_region']]]
 ];

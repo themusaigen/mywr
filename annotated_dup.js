@@ -19,6 +19,10 @@ var annotated_dup =
           [ "invoker< detail::calling_conventions::kWin64 >", "db/d1a/structmywr_1_1invoker_1_1impl_1_1invoker_3_01detail_1_1calling__conventions_1_1kWin64_01_4.html", null ]
         ] ]
       ] ],
+      [ "procfs", "dc/dc4/namespacemywr_1_1procfs.html", [
+        [ "memory_region", "d6/dee/structmywr_1_1procfs_1_1memory__region.html", "d6/dee/structmywr_1_1procfs_1_1memory__region" ],
+        [ "parser", "d6/d9c/classmywr_1_1procfs_1_1parser.html", "d6/d9c/classmywr_1_1procfs_1_1parser" ]
+      ] ],
       [ "protect", "dc/da7/namespacemywr_1_1protect.html", [
         [ "memory_prot", "dd/def/classmywr_1_1protect_1_1memory__prot.html", "dd/def/classmywr_1_1protect_1_1memory__prot" ],
         [ "scoped_protect", "d4/d09/classmywr_1_1protect_1_1scoped__protect.html", "d4/d09/classmywr_1_1protect_1_1scoped__protect" ]

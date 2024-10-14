@@ -23,6 +23,10 @@ public:
     install(value);
   }
 
+  ~scoped_write() {
+    remove();
+  }
+
   bool install(T value) {
     if (m_installed)
       return false;

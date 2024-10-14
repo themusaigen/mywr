@@ -10,7 +10,7 @@ TEST(PatchTest, ProcessesScopedWrites) {
   {
     scoped_write<int> scoped{&value, 26};
 
-    EXPECT_EQ(value, 26);
+    EXPECT_EQ(value, 26);    
   }
 
   EXPECT_EQ(value, 24);

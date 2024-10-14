@@ -11,10 +11,10 @@
 
 constexpr auto MYWR_MAJOR = 1;
 constexpr auto MYWR_MINOR = 33;
-constexpr auto MYWR_PATCH = 0;
+constexpr auto MYWR_PATCH = 1;
 constexpr auto MYWR_VERSION =
     MYWR_MAJOR * 10000 + MYWR_MINOR * 100 + MYWR_PATCH * 10;
-constexpr auto MYWR_VERSION_STR = "1.33.0";
+constexpr auto MYWR_VERSION_STR = "1.33.1";
 
 #if defined(__GNUC__)
   #define MYWR_GCC
@@ -80,10 +80,6 @@ constexpr auto MYWR_VERSION_STR = "1.33.0";
 
   #include <Windows.h>
 #elif defined(MYWR_UNIX)
-  #include <filesystem>
-  #include <fstream>
-  #include <charconv>
-
   #if defined(MYWR_DEBUG)
     #if !defined(MYWR_FEATURE_PROCFS_PARSER_DUMP)
       #define MYWR_FEATURE_PROCFS_PARSER_DUMP
@@ -135,6 +131,9 @@ using address_t = std::uint64_t;
 #include <vector>
 #include <string>
 #include <string_view>
+#include <filesystem>
+#include <fstream>
+#include <charconv>
 
 /// Internal Libraries.
 #include "x86_64/address.hpp"

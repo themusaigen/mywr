@@ -66,8 +66,8 @@ constexpr auto MYWR_VERSION_STR = "1.33.1";
   #define MYWR_HAS_INCLUDE 0
 #endif
 
-#if !(MYWR_CXX >= 202002L)
-  #error "only c++20 and newer."
+#if !(MYWR_CXX >= 201703L)
+  #error "only c++17 and newer."
 #endif
 
 #if defined(MYWR_WINDOWS)

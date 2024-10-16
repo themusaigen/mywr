@@ -5,7 +5,6 @@ A wrapper for memory manipulation. Includes: low-level memory operations (read, 
 
 [![Windows](https://github.com/themusaigen/mywr/actions/workflows/windows-compile-check.yaml/badge.svg)](https://github.com/themusaigen/mywr/actions/workflows/windows-compile-check.yaml)
 [![Linux](https://github.com/themusaigen/mywr/actions/workflows/linux-compile-check.yaml/badge.svg)](https://github.com/themusaigen/mywr/actions/workflows/linux-compile-check.yaml)
-[![Format](https://github.com/themusaigen/mywr/actions/workflows/format-check.yaml/badge.svg)](https://github.com/themusaigen/mywr/actions/workflows/format-check.yaml)
 [![Doxygen](https://github.com/themusaigen/mywr/actions/workflows/upload-docs.yaml/badge.svg)](https://github.com/themusaigen/mywr/actions/workflows/upload-docs.yaml)
 
 ## Installation

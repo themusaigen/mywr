@@ -4,7 +4,7 @@
 
 using namespace mywr::disassembler;
 
-// HDE already "tested" by some of projects like MinHook, etc... 
+// HDE already "tested" by some of projects like MinHook, etc...
 // So we create basic test that verifies anything compiles and runs.
 TEST(DisassemblerTest, ProducesBasicDisassembling) {
   const mywr::byte_t code[]{
@@ -29,4 +29,3 @@ TEST(DisassemblerTest, ProducesBasicDisassembling) {
     offset += insn.len;
   }
 }
-

@@ -147,7 +147,13 @@ public:
  */
 class system_abi {
 public:
-  enum Enum : std::uint32_t { kUnknown, kWin32, kUnix, kWin64, kSystemV };
+  enum Enum : std::uint32_t {
+    kUnknown,
+    kWin32,
+    kUnix,
+    kWin64,
+    kSystemV
+  };
 
 #if defined(MYWR_X86)
   #if defined(MYWR_WINDOWS)
@@ -193,25 +199,25 @@ constexpr auto is_systemv_abi = abi_v == system_abi::kSystemV;
 
 // This trick is used to avoid doxygen documentation.
 #if (true)
-template <calling_conventions::Enum, system_abi::Enum>
+template<calling_conventions::Enum, system_abi::Enum>
 struct calling_convention_by_abi;
 
-template <calling_conventions::Enum Convention>
+template<calling_conventions::Enum Convention>
 struct calling_convention_by_abi<Convention, system_abi::kWin32> {
   static constexpr auto value = Convention;
 };
 
-template <calling_conventions::Enum Convention>
+template<calling_conventions::Enum Convention>
 struct calling_convention_by_abi<Convention, system_abi::kUnix> {
   static constexpr auto value = Convention;
 };
 
-template <calling_conventions::Enum Convention>
+template<calling_conventions::Enum Convention>
 struct calling_convention_by_abi<Convention, system_abi::kWin64> {
   static constexpr auto value = calling_conventions::kWin64;
 };
 
-template <calling_conventions::Enum Convention>
+template<calling_conventions::Enum Convention>
 struct calling_convention_by_abi<Convention, system_abi::kSystemV> {
   static constexpr auto value = calling_conventions::kSystemV;
 };
@@ -228,7 +234,7 @@ struct calling_convention_by_abi<Convention, system_abi::kSystemV> {
  * On Windows and Unix-like systems with 64-bit architecture, there is only one
  * calling convention used by all functions.
  */
-template <calling_conventions::Enum Convention>
+template<calling_conventions::Enum Convention>
 constexpr auto calling_convention_by_abi_v =
     calling_convention_by_abi<Convention, system_abi::abi>::value;
 
@@ -236,16 +242,16 @@ constexpr auto calling_convention_by_abi_v =
  * @brief Indicates whether the specified type is not a POD (Plain old data)
  * type
  */
-template <typename T>
+template<typename T>
 struct is_non_pod;
 
 #if (true)
-template <>
+template<>
 struct is_non_pod<void> {
   static constexpr auto value = false;
 };
 
-template <typename T>
+template<typename T>
 struct is_non_pod {
   #if defined(MYWR_WINDOWS)
   static constexpr auto value = sizeof(T) > 8 || !std::is_trivial_v<T> ||
@@ -257,7 +263,7 @@ struct is_non_pod {
   #endif
 };
 
-template <typename T>
+template<typename T>
 constexpr auto is_non_pod_v = is_non_pod<T>::value;
 #endif
 
@@ -275,7 +281,7 @@ constexpr auto kStackAlignment = sizeof(mywr::address_t);
  * @brief Returns the size of the type by aligning it to match the stack
  * alignment.
  */
-template <typename T>
+template<typename T>
 constexpr auto align_parameter_size() {
   if constexpr (std::is_reference_v<T> || std::is_pointer_v<T>)
     return kStackAlignment;
@@ -288,7 +294,7 @@ constexpr auto align_parameter_size() {
  * @brief Returns the size of the types by aligning them to match the stack
  * alignment.
  */
-template <typename T, typename... Ts>
+template<typename T, typename... Ts>
 constexpr auto align_parameters_size() {
   if constexpr (sizeof...(Ts) > 0)
     return align_parameter_size<T>() + align_parameters_size<Ts...>();
@@ -299,7 +305,7 @@ constexpr auto align_parameters_size() {
 /**
  * @brief Returns the size of the passed parameters.
  */
-template <typename T, typename... Ts>
+template<typename T, typename... Ts>
 constexpr auto sizeof_parameters_size() {
   if constexpr (sizeof...(Ts) > 0)
     return sizeof(T) + sizeof_parameters_size<Ts...>();
@@ -308,15 +314,15 @@ constexpr auto sizeof_parameters_size() {
 }
 
 #if (true)
-template <typename T>
+template<typename T>
 struct sizeof_tuple_params;
 
-template <>
+template<>
 struct sizeof_tuple_params<std::tuple<>> {
   static constexpr auto value = 0;
 };
 
-template <typename... Args>
+template<typename... Args>
 struct sizeof_tuple_params<std::tuple<Args...>> {
   static constexpr auto value = sizeof_parameters_size<Args...>();
 };
@@ -325,19 +331,19 @@ struct sizeof_tuple_params<std::tuple<Args...>> {
 /**
  * @brief Returns the size of the parameter types in the tuple.
  */
-template <typename Tuple>
+template<typename Tuple>
 constexpr auto sizeof_tuple_params_v = sizeof_tuple_params<Tuple>::value;
 
 #if (true)
-template <typename>
+template<typename>
 struct align_tuple_params_size;
 
-template <>
+template<>
 struct align_tuple_params_size<std::tuple<>> {
   static constexpr auto value = 0;
 };
 
-template <typename... Args>
+template<typename... Args>
 struct align_tuple_params_size<std::tuple<Args...>> {
   static constexpr auto value = align_parameters_size<Args...>();
 };
@@ -347,7 +353,7 @@ struct align_tuple_params_size<std::tuple<Args...>> {
  * @brief Returns the size of the parameter types in the tuple aligned them to
  * match stack alignment.
  */
-template <typename Tuple>
+template<typename Tuple>
 constexpr auto align_tuple_params_size_v =
     align_tuple_params_size<Tuple>::value;
 } // namespace detail
@@ -363,7 +369,7 @@ namespace traits {
  * @brief Characterizes a function based on the type of return value and
  * arguments.
  */
-template <typename Ret, typename... Args>
+template<typename Ret, typename... Args>
 struct function_trait {
   /**
    * @brief The type of return value.
@@ -403,24 +409,24 @@ struct function_trait {
  * @brief Gives a more detailed description of the function by adding a calling
  * convention according to the current ABI.
  */
-template <typename Fun>
+template<typename Fun>
 struct function_traits;
 
 #if (true)
-template <typename Ret, typename... Args>
+template<typename Ret, typename... Args>
 struct function_traits<Ret(MYWR_CDECL*)(Args...)>
     : function_trait<Ret, Args...> {
   static constexpr auto convention =
       detail::calling_convention_by_abi_v<detail::calling_conventions::kCdecl>;
 };
 
-template <typename Ret, typename... Args>
+template<typename Ret, typename... Args>
 struct function_traits<Ret MYWR_CDECL(Args...)> : function_trait<Ret, Args...> {
   static constexpr auto convention =
       detail::calling_convention_by_abi_v<detail::calling_conventions::kCdecl>;
 };
 
-template <typename Ret, typename Class, typename... Args>
+template<typename Ret, typename Class, typename... Args>
 struct function_traits<Ret (Class::*)(Args...)>
     : function_trait<Ret, Class*, Args...> {
   #if defined(MYWR_WINDOWS)
@@ -433,28 +439,28 @@ struct function_traits<Ret (Class::*)(Args...)>
 };
 
   #if defined(MYWR_X86)
-template <typename Ret, typename... Args>
+template<typename Ret, typename... Args>
 struct function_traits<Ret(MYWR_STDCALL*)(Args...)>
     : function_trait<Ret, Args...> {
   static constexpr auto convention = detail::calling_convention_by_abi_v<
       detail::calling_conventions::kStdcall>;
 };
 
-template <typename Ret, typename... Args>
+template<typename Ret, typename... Args>
 struct function_traits<Ret MYWR_STDCALL(Args...)>
     : function_trait<Ret, Args...> {
   static constexpr auto convention = detail::calling_convention_by_abi_v<
       detail::calling_conventions::kStdcall>;
 };
 
-template <typename Ret, typename... Args>
+template<typename Ret, typename... Args>
 struct function_traits<Ret(MYWR_THISCALL*)(Args...)>
     : function_trait<Ret, Args...> {
   static constexpr auto convention = detail::calling_convention_by_abi_v<
       detail::calling_conventions::kThiscall>;
 };
 
-template <typename Ret, typename... Args>
+template<typename Ret, typename... Args>
 struct function_traits<Ret(MYWR_FASTCALL*)(Args...)>
     : function_trait<Ret, Args...> {
   static constexpr auto convention = detail::calling_convention_by_abi_v<
@@ -466,86 +472,86 @@ struct function_traits<Ret(MYWR_FASTCALL*)(Args...)>
 /**
  * @brief A shortcut to get the function`s return type.
  */
-template <typename Fun>
+template<typename Fun>
 using return_type_t = typename function_traits<Fun>::return_type;
 
 /**
  * @brief A shortcut to get the function`s arguments tuple.
  */
-template <typename Fun>
+template<typename Fun>
 using arguments_t = typename function_traits<Fun>::arguments;
 
 /**
  * @brief A shortcut to get the function`s arguments count.
  */
-template <typename Fun>
+template<typename Fun>
 constexpr auto args_count_v = function_traits<Fun>::args_count;
 
 /**
  * @brief A shortcut to get the functions`s arguments size.
  */
-template <typename Fun>
+template<typename Fun>
 constexpr auto args_size_v = function_traits<Fun>::args_size;
 
 /**
  * @brief A shortcut to get the functions`s arguments size aligned to match
  * stack alignment.
  */
-template <typename Fun>
+template<typename Fun>
 constexpr auto aligned_args_size_to_stack_v =
     function_traits<Fun>::aligned_args_size;
 
 /**
  * @brief A shortcut to identify is function returnin non-pod type.
  */
-template <typename Fun>
+template<typename Fun>
 constexpr auto is_return_non_pod_v = function_traits<Fun>::is_return_non_pod;
 
 /**
  * @brief A shortcut to get the function`s calling convention.
  */
-template <typename Fun>
+template<typename Fun>
 constexpr auto convention_v = function_traits<Fun>::convention;
 
 /**
  * @brief A shortcut to identify is function a cdecl.
  */
-template <typename Fun>
+template<typename Fun>
 constexpr auto is_cdecl_v =
     convention_v<Fun> == detail::calling_conventions::kCdecl;
 
 /**
  * @brief A shortcut to identify is function a stdcall.
  */
-template <typename Fun>
+template<typename Fun>
 constexpr auto is_stdcall_v =
     convention_v<Fun> == detail::calling_conventions::kStdcall;
 
 /**
  * @brief A shortcut to identify is function a thiscall.
  */
-template <typename Fun>
+template<typename Fun>
 constexpr auto is_thiscall_v =
     convention_v<Fun> == detail::calling_conventions::kThiscall;
 
 /**
  * @brief A shortcut to identify is function a fastcall.
  */
-template <typename Fun>
+template<typename Fun>
 constexpr auto is_fastcall_v =
     convention_v<Fun> == detail::calling_conventions::kFastcall;
 
 /**
  * @brief A shortcut to identify is function have Win64 calling convention.
  */
-template <typename Fun>
+template<typename Fun>
 constexpr auto is_win64_v =
     convention_v<Fun> == detail::calling_conventions::kWin64;
 
 /**
  * @brief A shortcut to identify is function have SystemV calling convention.
  */
-template <typename Fun>
+template<typename Fun>
 constexpr auto is_systemv_v =
     convention_v<Fun> == detail::calling_conventions::kSystemV;
 

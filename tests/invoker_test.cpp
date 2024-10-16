@@ -8,15 +8,23 @@ using namespace mywr::invoker;
 
 class A {
 public:
-  static int sum(int a, int b) { return a + b; }
-  static std::string to_str(int a) { return std::to_string(a); }
+  static int sum(int a, int b) {
+    return a + b;
+  }
+  static std::string to_str(int a) {
+    return std::to_string(a);
+  }
   static std::string transform(std::string_view str) {
     std::string out{str};
     out += " transformed!";
     return out;
   }
-  static void double_value(int& a) { a *= 2; }
-  static int double_value_rv(int&& a) { return a * 2; }
+  static void double_value(int& a) {
+    a *= 2;
+  }
+  static int double_value_rv(int&& a) {
+    return a * 2;
+  }
 };
 
 TEST(InvokerTest, HandlesBasicCalls) {
@@ -43,8 +51,12 @@ TEST(InvokerTest, HandlesNonPodTypes) {
 #if defined(MYWR_WINDOWS)
 class B {
 public:
-  static int MYWR_STDCALL get_doubled(int a) { return a * 2; }
-  int return_len_of_str(std::string_view str) { return str.size(); }
+  static int MYWR_STDCALL get_doubled(int a) {
+    return a * 2;
+  }
+  int return_len_of_str(std::string_view str) {
+    return str.size();
+  }
   static std::string MYWR_FASTCALL transform(std::string_view str) {
     std::string out{str};
     out += " transformed!";
@@ -53,9 +65,9 @@ public:
 };
 
 TEST(InvokerTest, HandlesNonDefaultCC) {
-  using get_doubled_t = decltype(&B::get_doubled);
+  using get_doubled_t       = decltype(&B::get_doubled);
   using return_len_of_str_t = decltype(&B::return_len_of_str);
-  using transform_t = decltype(&B::transform);
+  using transform_t         = decltype(&B::transform);
 
   B b;
 

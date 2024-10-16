@@ -182,17 +182,23 @@ public:
    * @brief Indicates whether the end of the file has been reached.
    * @return True if file ended or fail opening failed.
    */
-  bool eof() const { return m_file.eof() || fail(); }
+  bool eof() const {
+    return m_file.eof() || fail();
+  }
 
   /**
    * @brief Indicates whether the end of the current line has been reached.
    */
-  bool eol() const { return m_cursor >= m_line.size(); }
+  bool eol() const {
+    return m_cursor >= m_line.size();
+  }
 
   /**
    * @brief Indicates wherther the file opening failed.
    */
-  bool fail() const { return m_file.fail(); }
+  bool fail() const {
+    return m_file.fail();
+  }
 
   /**
    * @brief Announces a new capture area. It is necessary to capture numbers or
@@ -205,7 +211,9 @@ public:
    * parser.grab_number(my_struct.some_hex_number, 16);
    * @endcode
    */
-  void scope() { m_scope = m_cursor; }
+  void scope() {
+    m_scope = m_cursor;
+  }
 
   /**
    * @brief Moves the reading cursor until it encounters the desired character.
@@ -244,7 +252,9 @@ public:
   /**
    * @brief Moves the reading cursor to end of the line.
    */
-  void next_to_eol() { m_cursor = m_line.size(); }
+  void next_to_eol() {
+    m_cursor = m_line.size();
+  }
 
   /**
    * @brief Converts the characters received through the capture area into a
@@ -256,11 +266,11 @@ public:
    * @param[in] value The variable to write the result to.
    * @param[in] radix The system of calculation of number.
    */
-  template <typename T,
-            typename = std::enable_if_t<
-                std::is_integral_v<T> || std::is_floating_point_v<T> ||
-                    std::is_same_v<T, double> || std::is_same_v<T, long double>,
-                T>>
+  template<typename T,
+           typename = std::enable_if_t<
+               std::is_integral_v<T> || std::is_floating_point_v<T> ||
+                   std::is_same_v<T, double> || std::is_same_v<T, long double>,
+               T>>
   void grab_number(T& value, int radix = 10) {
     std::from_chars(&m_line[m_scope], &m_line[m_cursor], value, radix);
   }
@@ -275,12 +285,16 @@ public:
   /**
    * @brief Returns the current character without moving the reading cursor.
    */
-  char now() const { return m_line[m_cursor]; }
+  char now() const {
+    return m_line[m_cursor];
+  }
 
   /**
    * @brief Returns the current character, and then moves the reading cursor..
    */
-  char next() { return m_line[m_cursor++]; }
+  char next() {
+    return m_line[m_cursor++];
+  }
 
   /**
    * @brief Moves to the next line.
@@ -289,7 +303,7 @@ public:
     if (!fail())
       std::getline(m_file, m_line);
 
-    m_scope = 0;
+    m_scope  = 0;
     m_cursor = 0;
   }
 
@@ -305,7 +319,9 @@ public:
   /**
    * @brief Outputs whole line.
    */
-  void dump_line() { std::cout << m_line << '\n'; }
+  void dump_line() {
+    std::cout << m_line << '\n';
+  }
 #endif
 
 private:
@@ -344,13 +360,13 @@ static void parse_maps(std::vector<memory_region>& regions) {
   #else
   constexpr auto kProcMapsPath = "/proc/self/maps";
   #endif
-  constexpr auto kVdso = "[vdso]";
-  constexpr auto kVvar = "[vvar]";
-  constexpr auto kStack = "[stack]";
+  constexpr auto kVdso        = "[vdso]";
+  constexpr auto kVvar        = "[vvar]";
+  constexpr auto kStack       = "[stack]";
   constexpr auto kThreadstack = "[stack:";
-  constexpr auto kAnon = "[anon:";
-  constexpr auto kAnonShmem = "[anon_shmem:";
-  constexpr auto kHeap = "[heap]";
+  constexpr auto kAnon        = "[anon:";
+  constexpr auto kAnonShmem   = "[anon_shmem:";
+  constexpr auto kHeap        = "[heap]";
 
   parser parser{kProcMapsPath};
 

@@ -88,16 +88,16 @@ namespace protect {
 class memory_prot {
 public:
   enum Enum : std::uint32_t {
-    kUnknown = 0,
-    kNoAccess = (1 << 0),
-    kReadOnly = (1 << 1),
+    kUnknown   = 0,
+    kNoAccess  = (1 << 0),
+    kReadOnly  = (1 << 1),
     kWriteCopy = (1 << 2),
-    kExecute = (1 << 3),
-    kRead = (1 << 4),
-    kWrite = (1 << 5),
+    kExecute   = (1 << 3),
+    kRead      = (1 << 4),
+    kWrite     = (1 << 5),
 
-    kReadWrite = kRead | kWrite,
-    kExecuteRead = kRead | kExecute,
+    kReadWrite        = kRead | kWrite,
+    kExecuteRead      = kRead | kExecute,
     kExecuteReadWrite = kExecute | kRead | kWrite,
     kExecuteWriteCopy = kExecute | kRead | kWriteCopy
   };
@@ -118,43 +118,27 @@ public:
 static memory_prot::Enum to_protection_constant(const std::uint32_t protect) {
 #if defined(MYWR_WINDOWS)
   switch (protect) {
-  case PAGE_NOACCESS:
-    return memory_prot::kNoAccess;
-  case PAGE_READONLY:
-    return memory_prot::kReadOnly;
-  case PAGE_READWRITE:
-    return memory_prot::kReadWrite;
-  case PAGE_WRITECOPY:
-    return memory_prot::kWriteCopy;
-  case PAGE_EXECUTE:
-    return memory_prot::kExecute;
-  case PAGE_EXECUTE_READ:
-    return memory_prot::kExecuteRead;
-  case PAGE_EXECUTE_READWRITE:
-    return memory_prot::kExecuteReadWrite;
-  case PAGE_EXECUTE_WRITECOPY:
-    return memory_prot::kExecuteWriteCopy;
-  default:
-    return memory_prot::kUnknown;
+  case PAGE_NOACCESS: return memory_prot::kNoAccess;
+  case PAGE_READONLY: return memory_prot::kReadOnly;
+  case PAGE_READWRITE: return memory_prot::kReadWrite;
+  case PAGE_WRITECOPY: return memory_prot::kWriteCopy;
+  case PAGE_EXECUTE: return memory_prot::kExecute;
+  case PAGE_EXECUTE_READ: return memory_prot::kExecuteRead;
+  case PAGE_EXECUTE_READWRITE: return memory_prot::kExecuteReadWrite;
+  case PAGE_EXECUTE_WRITECOPY: return memory_prot::kExecuteWriteCopy;
+  default: return memory_prot::kUnknown;
   }
 #elif defined(MYWR_UNIX) && !defined(MYWR_FEATURE_NO_MPROTECT)
   switch (protect) {
-  case PROT_NONE:
-    return memory_prot::kNoAccess;
-  case PROT_READ:
-    return memory_prot::kRead;
-  case PROT_WRITE:
-    return memory_prot::kWrite;
-  case PROT_EXEC:
-    return memory_prot::kExecute;
-  case PROT_READ | PROT_WRITE:
-    return memory_prot::kReadWrite;
-  case PROT_READ | PROT_EXEC:
-    return memory_prot::kExecuteRead;
+  case PROT_NONE: return memory_prot::kNoAccess;
+  case PROT_READ: return memory_prot::kRead;
+  case PROT_WRITE: return memory_prot::kWrite;
+  case PROT_EXEC: return memory_prot::kExecute;
+  case PROT_READ | PROT_WRITE: return memory_prot::kReadWrite;
+  case PROT_READ | PROT_EXEC: return memory_prot::kExecuteRead;
   case PROT_READ | PROT_WRITE | PROT_EXEC:
     return memory_prot::kExecuteReadWrite;
-  default:
-    return memory_prot::kUnknown;
+  default: return memory_prot::kUnknown;
   }
 #else
   return memory_prot::kRead | memory_prot::kWrite | memory_prot::kExecute;
@@ -181,45 +165,28 @@ static memory_prot::Enum to_protection_constant(const std::uint32_t protect) {
 static uint32_t from_protection_constant(const memory_prot::Enum protect) {
 #if defined(MYWR_WINDOWS)
   switch (protect) {
-  case memory_prot::kNoAccess:
-    return PAGE_NOACCESS;
-  case memory_prot::kReadOnly:
-    return PAGE_READONLY;
-  case memory_prot::kReadWrite:
-    return PAGE_READWRITE;
-  case memory_prot::kWriteCopy:
-    return PAGE_WRITECOPY;
-  case memory_prot::kExecute:
-    return PAGE_EXECUTE;
-  case memory_prot::kExecuteRead:
-    return PAGE_EXECUTE_READ;
-  case memory_prot::kExecuteReadWrite:
-    return PAGE_EXECUTE_READWRITE;
-  case memory_prot::kExecuteWriteCopy:
-    return PAGE_EXECUTE_WRITECOPY;
-  default:
-    return 0;
+  case memory_prot::kNoAccess: return PAGE_NOACCESS;
+  case memory_prot::kReadOnly: return PAGE_READONLY;
+  case memory_prot::kReadWrite: return PAGE_READWRITE;
+  case memory_prot::kWriteCopy: return PAGE_WRITECOPY;
+  case memory_prot::kExecute: return PAGE_EXECUTE;
+  case memory_prot::kExecuteRead: return PAGE_EXECUTE_READ;
+  case memory_prot::kExecuteReadWrite: return PAGE_EXECUTE_READWRITE;
+  case memory_prot::kExecuteWriteCopy: return PAGE_EXECUTE_WRITECOPY;
+  default: return 0;
   }
 #elif defined(MYWR_UNIX) && !defined(MYWR_FEATURE_NO_MPROTECT)
   switch (protect) {
-  case memory_prot::kNoAccess:
-    return PROT_NONE;
-  case memory_prot::kReadOnly:
-    return PROT_READ;
-  case memory_prot::kRead:
-    return PROT_READ;
-  case memory_prot::kWrite:
-    return PROT_WRITE;
-  case memory_prot::kExecute:
-    return PROT_EXEC;
-  case memory_prot::kReadWrite:
-    return PROT_READ | PROT_WRITE;
+  case memory_prot::kNoAccess: return PROT_NONE;
+  case memory_prot::kReadOnly: return PROT_READ;
+  case memory_prot::kRead: return PROT_READ;
+  case memory_prot::kWrite: return PROT_WRITE;
+  case memory_prot::kExecute: return PROT_EXEC;
+  case memory_prot::kReadWrite: return PROT_READ | PROT_WRITE;
   case memory_prot::kExecuteReadWrite:
     return PROT_READ | PROT_WRITE | PROT_EXEC;
-  case memory_prot::kExecuteRead:
-    return PROT_READ | PROT_EXEC;
-  default:
-    return PROT_NONE;
+  case memory_prot::kExecuteRead: return PROT_READ | PROT_EXEC;
+  default: return PROT_NONE;
   }
 #else
   return 0;
@@ -287,22 +254,20 @@ static memory_prot::Enum get_protect(const address& target) {
  * memory_prot::kExecuteReadWrite);
  * @endcode
  */
-static memory_prot::Enum set_protect(const address& target,
-                                     const std::size_t size,
+static memory_prot::Enum set_protect(const address&          target,
+                                     const std::size_t       size,
                                      const memory_prot::Enum protect) {
 #if defined(MYWR_WINDOWS)
   DWORD old_protect{};
-  if (!VirtualProtect(target,
-                      size,
-                      from_protection_constant(protect),
-                      &old_protect))
+  if (!VirtualProtect(
+          target, size, from_protection_constant(protect), &old_protect))
     return memory_prot::kUnknown;
 
   return to_protection_constant(old_protect);
 #elif defined(MYWR_UNIX) && !defined(MYWR_FEATURE_NO_MPROTECT)
-  address_t address = target.value();
+  address_t address         = target.value();
   address_t aligned_address = address & ~(sysconf(_SC_PAGE_SIZE) - 1u);
-  size_t aligned_size = size + (address - aligned_address);
+  size_t    aligned_size    = size + (address - aligned_address);
 
   // Retrieve old protect on UNIX systems.
   memory_prot::Enum old_protect = get_protect(address);
@@ -381,8 +346,8 @@ public:
    * @param[in] protect A new memory protection that will be installed to this
    * memory area.
    */
-  scoped_protect(const address& target,
-                 const std::size_t size,
+  scoped_protect(const address&          target,
+                 const std::size_t       size,
                  const memory_prot::Enum protect)
       : m_target(target)
       , m_size(size)

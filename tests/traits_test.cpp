@@ -55,7 +55,7 @@ TEST(TraitsTest, HandlesNonPod) {
   };
 
   union B {
-    int a;
+    int   a;
     short c;
   };
 

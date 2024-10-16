@@ -5,9 +5,9 @@
 namespace llmo = mywr::llmo;
 
 TEST(LLMOTest, ShouldProcessDefaultLLMOperations) {
-  int value = 2;
+  int value     = 2;
   int copyValue = 90;
-  int cmpValue = 24;
+  int cmpValue  = 24;
 
   ASSERT_EQ(llmo::read<int>(&value), 2);
 

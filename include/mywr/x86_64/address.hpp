@@ -54,7 +54,7 @@ public:
    * mywr::address addr{0xDEADBEEF};
    * @endcode
    */
-  template <class T>
+  template<class T>
     requires(std::is_integral_v<T>)
   address(T value)
       : m_address(value) {}
@@ -73,7 +73,7 @@ public:
    * mywr::address addr{str};
    * @endcode
    */
-  template <class T>
+  template<class T>
   address(T* pointer)
       : m_address(reinterpret_cast<address_t>(pointer)) {}
 
@@ -102,7 +102,9 @@ public:
    * @par Parameters
    *  None.
    */
-  MYWR_INLINE const address_t value() const { return m_address; }
+  MYWR_INLINE const address_t value() const {
+    return m_address;
+  }
 
   /**
    * @}
@@ -117,7 +119,9 @@ public:
    * @brief Returns the address of the passed value.
    * @see address::value()
    */
-  MYWR_INLINE operator address_t() const { return m_address; }
+  MYWR_INLINE operator address_t() const {
+    return m_address;
+  }
 
   /**
    * @brief Returns the address casted to pointer.
@@ -150,12 +154,16 @@ public:
   /**
    * @brief Adds the value of the passed one to the current address.
    */
-  MYWR_INLINE void operator+=(const address& rhs) { m_address += rhs.value(); }
+  MYWR_INLINE void operator+=(const address& rhs) {
+    m_address += rhs.value();
+  }
 
   /**
    * @brief Reduces the value of the passed address for the current address.
    */
-  MYWR_INLINE void operator-=(const address& rhs) { m_address -= rhs.value(); }
+  MYWR_INLINE void operator-=(const address& rhs) {
+    m_address -= rhs.value();
+  }
 
   /**
    * @brief Compares two addresses for equality.

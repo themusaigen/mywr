@@ -36,9 +36,9 @@ namespace detail {
  * @return Relative address.
  */
 MYWR_FORCEINLINE address
-compute_relative_address(const address& dest,
-                         const address& src,
-                         const std::size_t oplen = 5u) {
+    compute_relative_address(const address&    dest,
+                             const address&    src,
+                             const std::size_t oplen = 5u) {
   return dest.value() - src.value() - oplen;
 }
 
@@ -60,9 +60,9 @@ compute_relative_address(const address& dest,
  * @return Absolute address.
  */
 MYWR_FORCEINLINE address
-restore_absolute_address(const address& ip,
-                         const address& src,
-                         const std::size_t oplen = 5u) {
+    restore_absolute_address(const address&    ip,
+                             const address&    src,
+                             const std::size_t oplen = 5u) {
   return ip.value() + src.value() + oplen;
 }
 
@@ -72,7 +72,7 @@ restore_absolute_address(const address& ip,
  * @details
  * Mostly used to force cast member function pointer to arbitary pointer.
  */
-template <typename Out, typename In>
+template<typename Out, typename In>
 constexpr Out force_cast(In in) {
   Out out;
   ::memcpy(&out, &in, sizeof(Out));

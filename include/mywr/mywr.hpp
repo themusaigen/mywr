@@ -134,6 +134,7 @@ using address_t = std::uint64_t;
 #include <filesystem>
 #include <fstream>
 #include <charconv>
+#include <bitset>
 
 /// Internal Libraries.
 #include "x86_64/address.hpp"
@@ -144,5 +145,6 @@ using address_t = std::uint64_t;
 #include "x86_64/llmo.hpp"
 #include "x86_64/invoker.hpp"
 #include "x86_64/disassembler.hpp"
+#include "x86_64/hook.hpp"
 
 #endif // !MYWR_HPP_

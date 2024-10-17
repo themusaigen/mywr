@@ -159,7 +159,7 @@ public:
   #if defined(MYWR_WINDOWS)
   static constexpr auto abi = kWin32;
   #elif defined(MYWR_UNIX)
-  static constexpr auto abi   = kUnix;
+  static constexpr auto abi = kUnix;
   #endif
 #elif defined(MYWR_X64)
   #if defined(MYWR_WINDOWS)

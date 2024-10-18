@@ -33,12 +33,12 @@ TEST(HookTest, HandlesCdecl) {
   hook<decltype(&sum)> hook;
   hook.set(&sum);
   hook.set([](const auto& hook, int a, int b) {
-    return a + b;
+    return a + b * 2;
   });
 
   hook.install();
 
-  EXPECT_EQ(sum(2, 2), 4);
+  EXPECT_EQ(sum(2, 2), 6);
 }
 
 TEST(HookTest, HandlesNonPod) {

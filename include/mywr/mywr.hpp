@@ -20,6 +20,8 @@ constexpr auto MYWR_VERSION_STR = "1.33.1";
   #define MYWR_GCC
 #elif defined(_MSC_VER)
   #define MYWR_MSVC
+#elif defined(__clang__)
+  #define MYWR_CLANG
 #endif
 
 #if defined(__x86_64__) || defined(_M_X64) || defined(__ppc64__) ||            \
@@ -58,6 +60,17 @@ constexpr auto MYWR_VERSION_STR = "1.33.1";
 #else
   #define MYWR_INLINE inline
   #define MYWR_FORCEINLINE MYWR_INLINE
+#endif
+
+#if defined(MYWR_MSVC)
+  #define MYWR_NO_OPTIMIZE __declspec(noinline)
+#elif defined(MYWR_GCC)
+  #define MYWR_NO_OPTIMIZE __attribute__((__noinline__))
+#elif defined(MYWR_CLANG)
+  #define MYWR_NO_OPTIMIZE                                                     \
+    __attribute__((__noinline__)) __attribute__((optnone))
+#else
+  #define MYWR_NO_OPTIMIZE
 #endif
 
 #if defined(__has_include)
@@ -102,8 +115,27 @@ constexpr auto MYWR_VERSION_STR = "1.33.1";
   #else
     #define MYWR_FEATURE_NO_MPROTECT
   #endif
-  // clang-format on
+// clang-format on
 #endif
+
+/**
+ * The STL headers.
+ */
+#include <cstdint>     // uint*_t
+#include <type_traits> // meta-programming: sfinae, traits, etc...
+#include <cstring>     // memcpy, memset, memcmp
+#include <cstddef>     // std::size_t, also defined in cstring
+#include <utility>     // std::forward, std::move, etc...
+#include <string>      // std::string, std::getline
+#include <string_view> // std::string_view
+#include <fstream>     // std::ifstream
+#include <algorithm>   // std::min
+#include <charconv>    // std::from_chars
+#include <vector>      // std::vector
+#include <tuple>       // std::tuple
+#include <functional>  // std::function
+#include <bitset>      // std::bitset
+#include <memory>      // std::shared/unique_ptr, std::make_unique/shared
 
 /**
  * @brief The core namespace of the `memwrapper` library.
@@ -124,19 +156,9 @@ using address_t = std::uint64_t;
 #endif
 } // namespace mywr
 
-/// Cxx Libraries.
-#include <type_traits>
-#include <map>
-#include <tuple>
-#include <vector>
-#include <string>
-#include <string_view>
-#include <filesystem>
-#include <fstream>
-#include <charconv>
-#include <bitset>
-
-/// Internal Libraries.
+/**
+ * The mywr headers.
+ */
 #include "x86_64/address.hpp"
 #include "x86_64/procfs.hpp"
 #include "x86_64/detail.hpp"

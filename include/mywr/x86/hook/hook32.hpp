@@ -147,11 +147,6 @@ public:
                            size_t                size,
                            Xbyak::CodeGenerator* code) {
     /**
-     * Main.
-     */
-    byte_t* cursor = reinterpret_cast<byte_t*>(dest);
-
-    /**
      * Relative instruction structures.
      */
     jmp  jmp{0xE9, 0x00000000u};
@@ -168,15 +163,21 @@ public:
     while (true) {
       using namespace disassembler;
 
-      instruction insn = disassemble(cursor);
+      instruction insn = disassemble(dest);
 
       if (insn.flags & F_ERROR)
         break;
 
+      /**
+       * Setup opcode and oplen by default.
+       */
+      opcode = reinterpret_cast<void*>(dest);
+      oplen  = insn.len;
+
       // TODO: Fix magic values
       if (insn.opcode == 0xE8) {
         address rip =
-            detail::restore_absolute_address(insn.imm.imm32, cursor, insn.len);
+            detail::restore_absolute_address(insn.imm.imm32, dest, insn.len);
 
         call.operand = detail::compute_relative_address(
             rip, code->getCurr(), sizeof(call));
@@ -184,7 +185,7 @@ public:
         opcode = &call;
         oplen  = sizeof(call);
       } else if ((insn.opcode & 0xFD) == 0xE9) {
-        address_t rip = reinterpret_cast<uintptr_t>(cursor) + insn.len;
+        address_t rip = dest + insn.len;
 
         if (insn.opcode == 0xEB)
           rip += insn.imm.imm8;
@@ -198,7 +199,7 @@ public:
         oplen  = sizeof(jmp);
       } else if ((insn.opcode & 0xF0) == 0x70 || (insn.opcode & 0xFC) == 0xE0 ||
                  (insn.opcode2 & 0xF0) == 0x80) {
-        address_t rip = reinterpret_cast<uintptr_t>(cursor) + insn.len;
+        address_t rip = dest + insn.len;
 
         if ((insn.opcode & 0xF0) == 0x70 || (insn.opcode & 0xFC) == 0xE0)
           rip += insn.imm.imm8;
@@ -218,18 +219,15 @@ public:
           opcode = &jcc;
           oplen  = sizeof(jcc);
         }
-      } else {
-        opcode = &cursor;
-        oplen  = insn.len;
       }
 
       code->db(reinterpret_cast<byte_t*>(opcode), oplen);
 
-      cursor += oplen;
+      dest += oplen;
       offset += oplen;
 
       if (offset >= size) {
-        code->jmp(cursor);
+        code->jmp(reinterpret_cast<void*>(dest));
         break;
       }
     }

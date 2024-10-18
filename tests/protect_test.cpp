@@ -2,6 +2,8 @@
 
 #include "mywr/mywr.hpp"
 
+#include <map>
+
 namespace protect = mywr::protect;
 
 using protect::memory_prot;

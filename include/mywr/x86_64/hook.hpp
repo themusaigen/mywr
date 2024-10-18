@@ -184,6 +184,9 @@ public:
        */
       m_code = code_gen.get();
 
+      std::printf("%X\n", reinterpret_cast<std::uint32_t>(m_code->getCode()));
+      std::printf("%X\n", m_dest);
+
       /**
        * Patch this region to install our hook.
        */

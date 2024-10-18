@@ -12,6 +12,7 @@
 namespace mywr {
 namespace hook {
 namespace impl {
+
 template<typename Ret, typename Hook, typename... Args>
 MYWR_FORCEINLINE Ret common_relay(Hook* hook, Args... args) {
   auto& callback = hook->callback();
@@ -29,7 +30,7 @@ struct relay_generator<detail::calling_conventions::kCdecl,
                        Hook,
                        Ret,
                        std::tuple<Args...>> {
-  static Ret MYWR_CDECL relay(Hook* hook, Args... args) {
+  static Ret MYWR_NO_OPTIMIZE MYWR_CDECL relay(Hook* hook, Args... args) {
     return common_relay<Ret>(hook, args...);
   }
 };
@@ -39,7 +40,7 @@ struct relay_generator<detail::calling_conventions::kStdcall,
                        Hook,
                        Ret,
                        std::tuple<Args...>> {
-  static Ret MYWR_STDCALL relay(Hook* hook, Args... args) {
+  static Ret MYWR_NO_OPTIMIZE MYWR_STDCALL relay(Hook* hook, Args... args) {
     return common_relay<Ret>(hook, args...);
   }
 };
@@ -49,7 +50,7 @@ struct relay_generator<detail::calling_conventions::kThiscall,
                        Hook,
                        Ret,
                        std::tuple<Args...>> {
-  static Ret MYWR_STDCALL relay(Hook* hook, Args... args) {
+  static Ret MYWR_NO_OPTIMIZE MYWR_STDCALL relay(Hook* hook, Args... args) {
     return common_relay<Ret>(hook, args...);
   }
 };
@@ -66,7 +67,7 @@ struct relay_generator<detail::calling_conventions::kFastcall,
     Hook* hook;
   };
 
-  static Ret MYWR_FASTCALL relay(trick arg, Args... args) {
+  static Ret MYWR_NO_OPTIMIZE MYWR_FASTCALL relay(trick arg, Args... args) {
     return common_relay<Ret>(arg.hook, args...);
   }
 };

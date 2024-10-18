@@ -31,8 +31,8 @@ non_pod ret_non_pod() {
 
 TEST(HookTest, HandlesCdecl) {
   hook<decltype(&sum)> hook;
-  hook.set(&sum);
-  hook.set([](const auto& hook, int a, int b) {
+  hook.target(&sum);
+  hook.redirect([](const auto& hook, int a, int b) {
     return a + b * 2;
   });
 
@@ -43,8 +43,8 @@ TEST(HookTest, HandlesCdecl) {
 
 TEST(HookTest, HandlesNonPod) {
   hook<decltype(&ret_non_pod)> hook;
-  hook.set(&ret_non_pod);
-  hook.set([](const auto& hook) {
+  hook.target(&ret_non_pod);
+  hook.redirect([](const auto& hook) {
     return non_pod{40, 30, 20, 10};
   });
 

@@ -114,12 +114,12 @@ public:
   hook& operator=(hook&&)      = delete;
 
   hook(const address& dest) {
-    set(dest);
+    target(dest);
   }
 
   hook(const address& dest, callback_t callback) {
-    set(dest);
-    set(std::move(callback));
+    target(dest);
+    redirect(callback);
   }
 
   ~hook() {
@@ -127,7 +127,13 @@ public:
   }
 
   bool install() {
-    if (m_installed || !m_can_install)
+    if (m_installed)
+      return false;
+
+    if (!is_executable(m_dest))
+      return false;
+
+    if (m_size < 5)
       return false;
 
     /**
@@ -223,8 +229,7 @@ public:
       m_code->rewrite(0, m_usercode_backup, sizeof(std::uint64_t));
     }
 
-    m_installed = true;
-    return true;
+    return (m_installed = true);
   }
 
   bool remove() {
@@ -250,8 +255,7 @@ public:
       /**
        * Change flags.
        */
-      m_installed = false;
-      return true;
+      return (m_installed = false, true);
     };
 
     /**
@@ -273,8 +277,7 @@ public:
       /**
        * Change flags.
        */
-      m_installed = false;
-      return true;
+      return (m_installed = false, true);
     };
 
     if (!is_executable(m_dest))
@@ -316,16 +319,15 @@ public:
   /**
    * @brief Set new hook destination.
    */
-  void set(const address& dest) {
-    m_dest        = dest.value();
-    m_size        = get_at_least_n_bytes(m_dest);
-    m_can_install = is_executable(m_dest) && m_size >= 5u;
+  void target(const address& dest) {
+    m_dest = dest.value();
+    m_size = get_at_least_n_bytes(m_dest);
   }
 
   /**
    * @brief Sets new callback.
    */
-  void set(callback_t callback) {
+  void redirect(callback_t callback) {
     m_callback = std::move(callback);
   }
 
@@ -373,25 +375,17 @@ public:
   }
 
 private:
-  address_t  m_dest{};
-  callback_t m_callback;
-
-  size_t m_size{};
-
-  std::unique_ptr<byte_t[]> m_original_bytes;
-
-  std::shared_ptr<Xbyak::CodeGenerator> m_code;
-
-  std::bitset<8> m_options{};
-
-  impl::context m_context{};
-
+  address_t     m_dest{};
+  address_t     m_trampoline{};
+  size_t        m_size{};
   std::uint64_t m_usercode_backup{};
+  bool          m_installed{};
+  callback_t    m_callback;
 
-  address_t m_trampoline{};
-
-  bool m_installed{};
-  bool m_can_install{};
+  std::unique_ptr<byte_t[]>             m_original_bytes;
+  std::shared_ptr<Xbyak::CodeGenerator> m_code;
+  std::bitset<8>                        m_options{};
+  impl::context                         m_context{};
 };
 
 } // namespace impl

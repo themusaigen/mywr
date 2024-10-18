@@ -136,7 +136,15 @@ public:
    * @brief Returns code ready to execute.
    */
   auto get() {
+    /**
+     * Make sure code is protected properly.
+     */
     m_code->ready();
+
+    /**
+     * Flush CPU cache and return.
+     */
+    llmo::flush(m_code->getCode(), m_code->getSize());
     return m_code;
   }
 

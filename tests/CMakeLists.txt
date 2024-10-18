@@ -7,5 +7,3 @@ target_compile_features(memwrapper-tests PUBLIC cxx_std_17)
 
 include(GoogleTest)
 gtest_discover_tests(memwrapper-tests)
-
-

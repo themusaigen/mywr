@@ -18,6 +18,15 @@
  * @brief The core namespace of the `mywr` library.
  */
 namespace mywr {
+/**
+ * @brief A utility class that converts incoming pointers to integer types
+ * (address).
+ * @details A utility class that, when constructed from a pointer, converts it
+ * to an integer type (address), otherwise, when constructed from an integer
+ * value, it retains this value. The advantage of the class is that it can be
+ * used as a parameter type in a function, meaning you no longer need to write
+ * overloads for void*, uint32/64_t, and so on.
+ */
 class address {
   /**
    * @brief The address of a passed pointer, or integer value.
@@ -31,12 +40,6 @@ public:
   address(address&& rhs) noexcept
       : m_address(std::exchange(rhs.m_address, 0)) {}
 
-  auto operator=(const address&) -> address& = default;
-  auto operator=(address&& rhs) noexcept -> address& {
-    std::swap(rhs.m_address, m_address);
-    return *this;
-  }
-
   template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
   address(T integral)
       : m_address(static_cast<mywr::address_t>(integral)) {}
@@ -45,11 +48,20 @@ public:
   address(T* pointer)
       : m_address(reinterpret_cast<mywr::address_t>(pointer)) {}
 
-  template<typename T = mywr::address_t>
+  /**
+   * @brief Converts an integer value to a specified integer or floating-point
+   * type.
+   */
+  template<typename T = mywr::address_t,
+           typename   = std::enable_if_t<std::is_integral_v<T> ||
+                                         std::is_floating_point_v<T>>>
   [[nodiscard]] auto value() const -> T {
     return static_cast<T>(m_address);
   }
 
+  /**
+   * @brief Converts an integer value to a specified pointer type.
+   */
   template<typename T>
   [[nodiscard]] auto pointer() const -> T* {
     // NOLINTBEGIN(*-no-int-to-ptr)
@@ -57,8 +69,24 @@ public:
     // NOLINTEND(*-no-int-to-ptr)
   }
 
+  /**
+   * @brief Checks whether this address is valid by converting it to void* and
+   * comparing it to nullptr.
+   *
+   * @return true Valid.
+   * @return false Invalid.
+   */
   [[nodiscard]] auto valid() const -> bool {
     return pointer<void>() != nullptr;
+  }
+
+  /* ---------------------- Assignment operator overloads ---------------------
+   */
+
+  auto operator=(const address&) -> address& = default;
+  auto operator=(address&& rhs) noexcept -> address& {
+    std::swap(rhs.m_address, m_address);
+    return *this;
   }
 
   template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
@@ -72,6 +100,8 @@ public:
     m_address = reinterpret_cast<mywr::address_t>(pointer);
     return *this;
   }
+
+  /* ---------------------- Logical operator overloads --------------------- */
 
   operator bool() const {
     return valid();
@@ -92,6 +122,9 @@ public:
   operator T*() const {
     return pointer<T>();
   }
+
+  /* ---------------------- Arithmetic operator overloads ---------------------
+   */
 
   auto operator++() -> address& {
     m_address++;
@@ -164,6 +197,9 @@ public:
   friend auto operator-(const address& lhs, const T& rhs) -> address {
     return {lhs.value() - rhs};
   }
+
+  /* ---------------------- Comparison operator overloads ---------------------
+   */
 
   template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
   friend auto operator>(const T& lhs, const address& rhs) -> bool {

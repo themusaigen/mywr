@@ -46,7 +46,7 @@ Same note as above.
 
 ## Usage / Demo
 
-Examples and demo project currently in development.
+For usage examples, you can look into the `tests` directory or the `demo` directory.
 
 ## Installation
 

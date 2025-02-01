@@ -52,7 +52,13 @@ public:
 
   template<typename T>
   [[nodiscard]] auto pointer() const -> T* {
+    // NOLINTBEGIN(*-no-int-to-ptr)
     return reinterpret_cast<T*>(m_address);
+    // NOLINTEND(*-no-int-to-ptr)
+  }
+
+  [[nodiscard]] auto valid() const -> bool {
+    return pointer<void>() != nullptr;
   }
 
   template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
@@ -65,6 +71,26 @@ public:
   auto operator=(T* pointer) -> address& {
     m_address = reinterpret_cast<mywr::address_t>(pointer);
     return *this;
+  }
+
+  operator bool() const {
+    return valid();
+  }
+
+  operator mywr::address_t() const {
+    return m_address;
+  }
+
+  template<typename T,
+           typename = std::enable_if_t<std::is_integral_v<T> ||
+                                       std::is_floating_point_v<T>>>
+  operator T() const {
+    return value<T>();
+  }
+
+  template<typename T>
+  operator T*() const {
+    return pointer<T>();
   }
 
   auto operator++() -> address& {
@@ -87,6 +113,140 @@ public:
     auto temp = *this;
     --*this;
     return temp;
+  }
+
+  auto operator+=(const address& rhs) -> address& {
+    *this = *this + rhs;
+    return *this;
+  }
+
+  auto operator-=(const address& rhs) -> address& {
+    *this = *this - rhs;
+    return *this;
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  auto operator+=(const T& rhs) -> address& {
+    *this = *this + rhs;
+    return *this;
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  auto operator-=(const T& rhs) -> address& {
+    *this = *this - rhs;
+    return *this;
+  }
+
+  friend auto operator+(const address& lhs, const address& rhs) -> address {
+    return {lhs.value() + rhs.value()};
+  }
+
+  friend auto operator-(const address& lhs, const address& rhs) -> address {
+    return {lhs.value() - rhs.value()};
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator+(const T& lhs, const address& rhs) -> address {
+    return {lhs + rhs.value()};
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator+(const address& lhs, const T& rhs) -> address {
+    return {lhs.value() + rhs};
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator-(const T& lhs, const address& rhs) -> address {
+    return {lhs - rhs.value()};
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator-(const address& lhs, const T& rhs) -> address {
+    return {lhs.value() - rhs};
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator>(const T& lhs, const address& rhs) -> bool {
+    return lhs > rhs.value();
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator>(const address& lhs, const T& rhs) -> bool {
+    return lhs.value() > rhs;
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator>=(const T& lhs, const address& rhs) -> bool {
+    return lhs >= rhs.value();
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator>=(const address& lhs, const T& rhs) -> bool {
+    return lhs.value() >= rhs;
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator<(const T& lhs, const address& rhs) -> bool {
+    return lhs < rhs.value();
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator<(const address& lhs, const T& rhs) -> bool {
+    return lhs.value() < rhs;
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator<=(const T& lhs, const address& rhs) -> bool {
+    return lhs <= rhs.value();
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator<=(const address& lhs, const T& rhs) -> bool {
+    return lhs.value() <= rhs;
+  }
+
+  friend auto operator>(const address& lhs, const address& rhs) -> bool {
+    return lhs.value() > rhs.value();
+  }
+
+  friend auto operator<(const address& lhs, const address& rhs) -> bool {
+    return lhs.value() < rhs.value();
+  }
+
+  friend auto operator>=(const address& lhs, const address& rhs) -> bool {
+    return lhs.value() >= rhs.value();
+  }
+
+  friend auto operator<=(const address& lhs, const address& rhs) -> bool {
+    return lhs.value() <= rhs.value();
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator==(const T& lhs, const address& rhs) -> bool {
+    return lhs == rhs.value();
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator==(const address& lhs, const T& rhs) -> bool {
+    return lhs.value() == rhs;
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator!=(const T& lhs, const address& rhs) -> bool {
+    return lhs != rhs.value();
+  }
+
+  template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  friend auto operator!=(const address& lhs, const T& rhs) -> bool {
+    return lhs.value() != rhs;
+  }
+
+  friend auto operator==(const address& lhs, const address& rhs) -> bool {
+    return lhs.value() == rhs.value();
+  }
+
+  friend auto operator!=(const address& lhs, const address& rhs) -> bool {
+    return lhs.value() != rhs.value();
   }
 };
 } // namespace mywr

@@ -12,5 +12,6 @@
 #include <shared/os.hpp>
 #include <shared/architecture.hpp>
 #include <shared/core.hpp>
+#include <shared/address.hpp>
 
 #endif

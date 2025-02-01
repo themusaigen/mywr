@@ -66,6 +66,28 @@ public:
     m_address = reinterpret_cast<mywr::address_t>(pointer);
     return *this;
   }
+
+  auto operator++() -> address& {
+    m_address++;
+    return *this;
+  }
+
+  auto operator++(int) -> address {
+    auto temp = *this;
+    ++*this;
+    return temp;
+  }
+
+  auto operator--() -> address& {
+    m_address--;
+    return *this;
+  }
+
+  auto operator--(int) -> address {
+    auto temp = *this;
+    --*this;
+    return temp;
+  }
 };
 } // namespace mywr
 

@@ -98,3 +98,27 @@ TEST(Address, PointerAssignable) {
 
   ASSERT_EQ(addr.value(), reinterpret_cast<mywr::address_t>(&some_value));
 }
+
+TEST(Address, PrefixIncrementable) {
+  mywr::address addr{};
+  ++addr;
+  ASSERT_EQ(addr.value(), 1);
+}
+
+TEST(Address, PostfixIncrementable) {
+  mywr::address addr{};
+  ASSERT_EQ((addr++).value(), 0);
+  ASSERT_EQ(addr.value(), 1);
+}
+
+TEST(Address, PrefixDecrementable) {
+  mywr::address addr{1};
+  --addr;
+  ASSERT_EQ(addr.value(), 0);
+}
+
+TEST(Address, PostfixDecrementable) {
+  mywr::address addr{1};
+  ASSERT_EQ((addr--).value(), 1);
+  ASSERT_EQ(addr.value(), 0);
+}

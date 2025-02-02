@@ -55,17 +55,17 @@ public:
   template<typename T = mywr::address_t,
            typename   = std::enable_if_t<std::is_integral_v<T> ||
                                          std::is_floating_point_v<T>>>
-  [[nodiscard]] auto value() const -> T {
-    return static_cast<T>(m_address);
+  [[nodiscard]] auto value() const {
+    return static_cast<std::remove_cv_t<T>>(m_address);
   }
 
   /**
    * @brief Converts an integer value to a specified pointer type.
    */
   template<typename T>
-  [[nodiscard]] auto pointer() const -> T* {
+  [[nodiscard]] auto pointer() const {
     // NOLINTBEGIN(*-no-int-to-ptr)
-    return reinterpret_cast<T*>(m_address);
+    return reinterpret_cast<std::remove_cv_t<T>*>(m_address);
     // NOLINTEND(*-no-int-to-ptr)
   }
 
@@ -85,7 +85,7 @@ public:
 
   auto operator=(const address&) -> address& = default;
   auto operator=(address&& rhs) noexcept -> address& {
-    std::swap(rhs.m_address, m_address);
+    m_address = std::exchange(rhs.m_address, 0);
     return *this;
   }
 

@@ -14,5 +14,8 @@
 #include <shared/core.hpp>
 #include <shared/version.hpp>
 #include <shared/address.hpp>
+#include <shared/protection_flags.hpp>
+
+#include <internal/protect.hpp>
 
 #endif

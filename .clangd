@@ -8,3 +8,5 @@ CompileFlags:
     -Wno-unused-function,
     -Wno-unused-template,
     -m32]
+Diagnostics:
+  Suppress: 'pp_including_mainfile_in_preamble'

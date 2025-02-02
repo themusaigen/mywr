@@ -43,7 +43,9 @@ endif()
 set(CLANGD_BODY
     "CompileFlags:
   CompilationDatabase: build
-  Add: [${CLANGD_FLAGS}]")
+  Add: [${CLANGD_FLAGS}]
+Diagnostics:
+  Suppress: 'pp_including_mainfile_in_preamble'")
 
 # Rewrite or create .clangd file.
 file(WRITE ${CLANGD_PATH} ${CLANGD_BODY})

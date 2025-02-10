@@ -2,15 +2,18 @@
   "version": 8,
   "configurePresets": [
     {
-      "name": "base",
+      "name": "ninja-default",
       "hidden": true,
+      "generator": "Ninja",
       "binaryDir": "${sourceDir}/build",
-      "installDir": "${sourceDir}/install"
+      "installDir": "${sourceDir}/install",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true
+      }
     },
     {
       "name": "ninja-msvc",
-      "inherits": "base",
-      "generator": "Ninja",
+      "inherits": "ninja-default",
       "hidden": true,
       "cacheVariables": {
         "CMAKE_C_COMPILER": "cl.exe",
@@ -18,33 +21,46 @@
       }
     },
     {
-      "name": "windows-msvc-debug-x86",
-      "displayName": "Windows (MSVC, Debug, x86)",
+      "name": "msvc-windows-32-debug",
+      "displayName": "Windows (MSVC, x86, Debug)",
       "inherits": "ninja-msvc",
       "architecture": {
-        "strategy": "external",
-        "value": "x86"
+        "value": "x86",
+        "strategy": "external"
       },
       "toolset": {
-        "strategy": "external",
-        "value": "host=x86"
+        "value": "host=x86",
+        "strategy": "external"
       },
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }
     },
     {
-      "name": "windows-msvc-release-x86",
-      "displayName": "Windows (MSVC, Release, x86)",
-      "inherits": "ninja-msvc",
+      "name": "msvc-windows-32-release",
+      "displayName": "Windows (MSVC, x86, Release)",
+      "inherits": "msvc-windows-32-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "msvc-windows-64-debug",
+      "displayName": "Windows (MSVC, x64, Debug)",
+      "inherits": "msvc-windows-32-debug",
       "architecture": {
-        "strategy": "external",
-        "value": "x86"
+        "value": "x64",
+        "strategy": "external"
       },
       "toolset": {
-        "strategy": "external",
-        "value": "host=x86"
-      },
+        "value": "host=x64",
+        "strategy": "external"
+      }
+    },
+    {
+      "name": "msvc-windows-64-release",
+      "displayName": "Windows (MSVC, x64, Release)",
+      "inherits": "msvc-windows-64-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }
@@ -52,14 +68,24 @@
   ],
   "buildPresets": [
     {
-      "name": "windows-msvc-debug-32",
-      "displayName": "Windows (MSVC, Debug, x86)",
-      "configurePreset": "windows-msvc-debug-x86"
+      "name": "build-msvc-windows-32-debug",
+      "displayName": "Windows (MSVC, x86, Debug)",
+      "configurePreset": "msvc-windows-32-debug"
     },
     {
-      "name": "windows-msvc-rel-32",
-      "displayName": "Windows (MSVC, Release, x86)",
-      "configurePreset": "windows-msvc-release-x86"
+      "name": "build-msvc-windows-32-release",
+      "displayName": "Windows (MSVC, x86, Release)",
+      "configurePreset": "msvc-windows-32-release"
+    },
+    {
+      "name": "build-msvc-windows-64-debug",
+      "displayName": "Windows (MSVC, x64, Debug)",
+      "configurePreset": "msvc-windows-64-debug"
+    },
+    {
+      "name": "build-msvc-windows-64-release",
+      "displayName": "Windows (MSVC, x64, Release)",
+      "configurePreset": "msvc-windows-64-release"
     }
   ]
 }

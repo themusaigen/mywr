@@ -6,6 +6,13 @@
 TEST(Address, Constructible) {
   {
     const mywr::address_t expected_result{0};
+    const mywr::address   addr{nullptr};
+
+    EXPECT_EQ(addr.value(), expected_result);
+  }
+
+  {
+    const mywr::address_t expected_result{0};
     const mywr::address   addr{};
 
     ASSERT_EQ(addr.value(), expected_result);
@@ -162,8 +169,8 @@ TEST(Address, DecrementableIncrementable) {
     const mywr::address_t expected_result{2};
     const mywr::address   addr0{1};
 
-    auto addr1 = addr0 + 1;
-    auto addr2 = 1 + addr0;
+    auto addr1 = addr0 + 1U;
+    auto addr2 = 1U + addr0;
 
     EXPECT_EQ(addr1.value(), expected_result);
     EXPECT_EQ(addr2.value(), expected_result);
@@ -173,8 +180,8 @@ TEST(Address, DecrementableIncrementable) {
     const mywr::address_t expected_result{0};
     const mywr::address   addr0{1};
 
-    auto addr1 = addr0 - 1;
-    auto addr2 = 1 - addr0;
+    auto addr1 = addr0 - 1U;
+    auto addr2 = 1U - addr0;
 
     EXPECT_EQ(addr1.value(), expected_result);
     EXPECT_EQ(addr2.value(), expected_result);
@@ -207,7 +214,7 @@ TEST(Address, DecIncAssignable) {
 
     mywr::address addr{1};
 
-    addr += 1;
+    addr += 1U;
 
     EXPECT_EQ(addr.value(), expected_result);
   }
@@ -217,7 +224,7 @@ TEST(Address, DecIncAssignable) {
 
     mywr::address addr{1};
 
-    addr -= 1;
+    addr -= 1U;
 
     EXPECT_EQ(addr.value(), expected_result);
   }

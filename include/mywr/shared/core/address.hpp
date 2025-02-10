@@ -9,9 +9,9 @@
 #ifndef MYWR_SHARED_ADDRESS_HPP_
 #define MYWR_SHARED_ADDRESS_HPP_
 
-#include <cstddef>
-#include <shared/core.hpp>
+#include "core.hpp"
 
+#include <cstddef>
 #include <type_traits>
 #include <utility>
 

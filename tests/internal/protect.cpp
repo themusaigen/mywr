@@ -1,17 +1,16 @@
-#include "shared/protection_flags.hpp"
 #include <internal/protect.hpp>
 #include <gtest/gtest.h>
 
 TEST(Protect, ProtectAcquirable) {
   {
-    const auto expected_result{mywr::protect::protection_flags::ReadWrite};
+    const auto expected_result{mywr::protect::protection::ReadWrite};
     int        value{};
 
     EXPECT_EQ(mywr::protect::get_protect(&value), expected_result);
   }
 
   {
-    const auto expected_result{mywr::protect::protection_flags::ReadWrite};
+    const auto expected_result{mywr::protect::protection::ReadWrite};
     const int  value{};
 
     // Yeah, protection of constant variable is ReadWrite :)
@@ -21,10 +20,9 @@ TEST(Protect, ProtectAcquirable) {
 
 TEST(Protect, ProtectChangeable) {
   {
-    const auto expected_result_default{
-        mywr::protect::protection_flags::ReadWrite};
+    const auto expected_result_default{mywr::protect::protection::ReadWrite};
     const auto expected_result_spoofed{
-        mywr::protect::protection_flags::ReadWriteExecute};
+        mywr::protect::protection::ReadWriteExecute};
 
     int value{};
 
@@ -37,10 +35,9 @@ TEST(Protect, ProtectChangeable) {
   }
 
   {
-    const auto expected_result_default{
-        mywr::protect::protection_flags::ReadWrite};
+    const auto expected_result_default{mywr::protect::protection::ReadWrite};
     const auto expected_result_spoofed{
-        mywr::protect::protection_flags::ReadWriteExecute};
+        mywr::protect::protection::ReadWriteExecute};
 
     int value{};
 

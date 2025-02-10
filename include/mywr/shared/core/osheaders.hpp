@@ -9,7 +9,7 @@
 #ifndef MYWR_SHARED_OS_HEADERS_HPP_
 #define MYWR_SHARED_OS_HEADERS_HPP_
 
-#include <shared/os.hpp>
+#include "os.hpp"
 
 #if defined(MYWR_WINDOWS)
   #include <Windows.h>

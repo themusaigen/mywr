@@ -9,8 +9,8 @@
 #ifndef MYWR_INTERNAL_PROTECT_HPP_
 #define MYWR_INTERNAL_PROTECT_HPP_
 
-#include <shared/address.hpp>
 #include <shared/protection_flags.hpp>
+#include <shared/core/address.hpp>
 
 #include <cstddef>
 
@@ -19,19 +19,19 @@ namespace mywr::protect {
  * @brief Gets the protect value for the specified memory area.
  */
 [[nodiscard]] static auto get_protect(const mywr::address& address)
-    -> protection_flags::Enum;
+    -> protection::Enum;
 
 /**
  * @brief Sets the protect value for the specified memory area.
  */
-static auto set_protect(const mywr::address&   address,
-                        protection_flags::Enum new_protect,
-                        std::size_t            size) -> protection_flags::Enum;
+static auto set_protect(const mywr::address& address,
+                        protection::Enum     new_protect,
+                        std::size_t          size) -> protection::Enum;
 
 class scoped_protect {
-  mywr::address          m_address;
-  std::size_t            m_size;
-  protection_flags::Enum m_protect;
+  mywr::address    m_address;
+  std::size_t      m_size;
+  protection::Enum m_protect;
 
 public:
   scoped_protect()                      = delete;
@@ -41,9 +41,9 @@ public:
       , m_size(rhs.m_size)
       , m_protect(rhs.m_protect) {}
 
-  scoped_protect(mywr::address          address,
-                 protection_flags::Enum protect,
-                 std::size_t            size)
+  scoped_protect(mywr::address    address,
+                 protection::Enum protect,
+                 std::size_t      size)
       : m_address(std::move(address))
       , m_size(size) {
     if (m_address.valid()) {
@@ -52,7 +52,7 @@ public:
   }
 
   ~scoped_protect() {
-    if (m_address.valid() && m_protect != protection_flags::None) {
+    if (m_address.valid() && m_protect != protection::None) {
       set_protect(m_address, m_protect, m_size);
     }
   }

@@ -9,40 +9,30 @@ Cross-platform multiarchitectural (in future) memhacking header-online library w
 * RAII classes memory patching, unprotecting.
 * Signature scanning.
 
-## Platforms
+## Platforms / Architectures
 
-* ✅ means supported and tested.
-* ❌ means unsupported.
-* ⚠️ means maybe supported but untested.
-* 💻 means in developing.
-
-> [!NOTE]
-Even though platforms such as "macOS" and "Android" are listed, this does not mean that in the future the task will be to implement their support in the library due to the lack of physical/material capabilities. It's worth taking this only as a cheat sheet, not a list of tasks.
+| Status | Description                                                             |
+| ------ | ----------------------------------------------------------------------- |
+| ✅      | Supported and tested.                                                   |
+| 💻      | In developing.                                                          |
+| ❌      | Unsupported.                                                            |
+| ❓      | Maybe supported but untested.                                           |
+| ❗      | Not in plans. (Due to lack of technical/physical/material capabilities) |
 
 | Platform        | Status |
 | --------------- | ------ |
 | Windows         | 💻      |
 | Linux           | ❌      |
 | Linux (FreeBSD) | ❌      |
-| Andorid         | ❌      |
-| macOS           | ❌      |
-
-## Architectures
-
-* ✅ means supported and tested.
-* ❌ means unsupported.
-* ⚠️ means maybe supported but untested.
-* 💻 means in developing.
-
-> [!NOTE]
-Same note as above.
+| Andorid         | ❗      |
+| macOS           | ❗      |
 
 | Architecture    | Status |
 | --------------- | ------ |
 | x86             | 💻      |
 | x86_64          | 💻      |
-| ARM             | ❌      |
-| ARM64 (Aarch64) | ❌      |
+| ARM             | ❗      |
+| ARM64 (Aarch64) | ❗      |
 
 ## Usage / Demo
 

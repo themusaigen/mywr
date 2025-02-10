@@ -1,5 +1,5 @@
-#include "shared/address.hpp"
-#include "shared/core.hpp"
+#include <shared/core/address.hpp>
+#include <shared/core/core.hpp>
 
 #include <gtest/gtest.h>
 

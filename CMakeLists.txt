@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5.0)
 project(
   "mywr"
   DESCRIPTION "The cross-platform multiarchitectural memhacking library"
-  VERSION 1.16.0
+  VERSION 1.161.0
   LANGUAGES C CXX)
 
 #
@@ -10,8 +10,9 @@ add_library(mywr INTERFACE)
 add_library(mywr::mywr ALIAS mywr)
 
 # Configure version.
-configure_file("${PROJECT_SOURCE_DIR}/include/mywr/shared/version.hpp.in"
-               "${PROJECT_SOURCE_DIR}/include/mywr/shared/version.hpp" @ONLY)
+configure_file(
+  "${PROJECT_SOURCE_DIR}/include/mywr/shared/core/version.hpp.in"
+  "${PROJECT_SOURCE_DIR}/include/mywr/shared/core/version.hpp" @ONLY)
 
 # Options
 option(MYWR_BUILD_TESTS "Build the mywr`s tests." ON)

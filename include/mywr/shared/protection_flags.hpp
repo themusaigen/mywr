@@ -9,7 +9,7 @@
 #ifndef MYWR_SHARED_PROTECT_PROTECTION_FLAGS_HPP_
 #define MYWR_SHARED_PROTECT_PROTECTION_FLAGS_HPP_
 
-#include <shared/os.hpp>
+#include <shared/core/os.hpp>
 
 #include <cstdint>
 
@@ -17,13 +17,14 @@
  * @brief Namespace that contating protection utilities.
  */
 namespace mywr::protect {
-class protection_flags {
+class protection {
 public:
   enum Enum : std::uint8_t {
-    None    = (1 << 0),
-    Read    = (1 << 1),
-    Write   = (1 << 2),
-    Execute = (1 << 3),
+    None     = (1 << 0),
+    NoAccess = (1 << 1),
+    Read     = (1 << 2),
+    Write    = (1 << 3),
+    Execute  = (1 << 4),
 
     ReadWrite        = (Read | Write),
     ReadExecute      = (Read | Execute),
@@ -34,14 +35,12 @@ public:
 /**
  * @brief Transforms system protection constant to `mywr` constant.
  */
-static auto to_protection_constant(std::uint32_t protect)
-    -> protection_flags::Enum;
+static auto to_protection_constant(std::uint32_t protect) -> protection::Enum;
 
 /**
  * @brief Transforms `mywr` protection constant to system protection constant.
  */
-static auto from_protection_constant(protection_flags::Enum protect)
-    -> std::uint32_t;
+static auto from_protection_constant(protection::Enum protect) -> std::uint32_t;
 
 } // namespace mywr::protect
 

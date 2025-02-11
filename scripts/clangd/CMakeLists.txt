@@ -9,7 +9,8 @@ set(CLANGD_MAIN_FLAGS
     -Wno-c++98-compat,
     -Wno-c++98-compat-pedantic,
     -Wno-unused-function,
-    -Wno-unused-template")
+    -Wno-unused-template,
+    -Wno-covered-switch-default")
 set(CLANGD_M32 "-m32")
 
 # GCC 13 used in mywr
@@ -43,9 +44,7 @@ endif()
 set(CLANGD_BODY
     "CompileFlags:
   CompilationDatabase: build
-  Add: [${CLANGD_FLAGS}]
-Diagnostics:
-  Suppress: 'pp_including_mainfile_in_preamble'")
+  Add: [${CLANGD_FLAGS}]")
 
 # Rewrite or create .clangd file.
 file(WRITE ${CLANGD_PATH} ${CLANGD_BODY})

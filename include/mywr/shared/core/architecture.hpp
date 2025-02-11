@@ -6,8 +6,7 @@
  * @copyright Copyright (c) 2025
  *
  */
-#ifndef MYWR_SHARED_ARCHITECTURE_HPP_
-#define MYWR_SHARED_ARCHITECTURE_HPP_
+#pragma once
 
 #if defined(_M_IX86) || defined(i386) || defined(__i386) ||                    \
     defined(__i386__) || defined(_X86_)
@@ -28,6 +27,4 @@
 
 #if !defined(MYWR_X86) && !defined(MYWR_X86_64)
   #error "Unsupported architecture.
-#endif
-
 #endif

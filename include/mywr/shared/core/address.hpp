@@ -6,8 +6,7 @@
  * @copyright Copyright (c) 2025
  *
  */
-#ifndef MYWR_SHARED_ADDRESS_HPP_
-#define MYWR_SHARED_ADDRESS_HPP_
+#pragma once
 
 #include "core.hpp"
 
@@ -47,17 +46,17 @@ public:
 
   template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
   address(T integral) noexcept
-      : m_address(static_cast<mywr::address_t>(integral)) {}
+      : m_address(static_cast<address_t>(integral)) {}
 
   template<typename T>
   address(T* pointer) noexcept
-      : m_address(reinterpret_cast<mywr::address_t>(pointer)) {}
+      : m_address(reinterpret_cast<address_t>(pointer)) {}
 
   /**
    * @brief Converts an integer value to a specified integer or floating-point
    * type.
    */
-  template<typename T = mywr::address_t,
+  template<typename T = address_t,
            typename   = std::enable_if_t<std::is_integral_v<T> ||
                                          std::is_floating_point_v<T>>>
   [[nodiscard]] auto value() const noexcept {
@@ -299,5 +298,3 @@ public:
   }
 };
 } // namespace mywr
-
-#endif

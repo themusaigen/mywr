@@ -1,5 +1,4 @@
-#ifndef MYWR_SHARED_VERSION_HPP_
-#define MYWR_SHARED_VERSION_HPP_
+#pragma once
 
 #include <cstdint>
 
@@ -54,5 +53,3 @@ constexpr auto check_version(uint32_t major, uint32_t minor, uint32_t patch) {
 }
 
 } // namespace mywr::version
-
-#endif

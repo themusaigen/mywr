@@ -6,8 +6,7 @@
  * @copyright Copyright (c) 2025
  *
  */
-#ifndef MYWR_SHARED_CORE_HPP_
-#define MYWR_SHARED_CORE_HPP_
+#pragma once
 
 // MYWR_32
 #include "architecture.hpp"
@@ -24,5 +23,3 @@ using address_t = std::uint32_t;
 using address_t = std::uint64_t;
 #endif
 } // namespace mywr
-
-#endif

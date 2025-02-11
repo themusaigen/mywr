@@ -12,7 +12,8 @@ Checks: '
   performance-*,
   portability-*,
   readability-*,
-  -cppcoreguidelines-pro-type-reinterpret-cast
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+  -misc-use-anonymous-namespace
 '
 WarningsAsErrors: 'clang-*'
 HeaderFilterRegex: '*'

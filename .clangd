@@ -7,6 +7,5 @@ CompileFlags:
     -Wno-c++98-compat-pedantic,
     -Wno-unused-function,
     -Wno-unused-template,
+    -Wno-covered-switch-default,
     -m32]
-Diagnostics:
-  Suppress: 'pp_including_mainfile_in_preamble'

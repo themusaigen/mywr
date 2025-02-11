@@ -5,8 +5,7 @@
  *
  * @copyright Copyright (c) 2025
  */
-#ifndef MYWR_SHARED_OS_HPP_
-#define MYWR_SHARED_OS_HPP_
+#pragma once
 
 #if defined(_WIN32) || defined(__CYGWIN__)
   #define MYWR_WINDOWS
@@ -20,6 +19,4 @@
 
 #if !defined(MYWR_WINDOWS)
   #error "Unsupported OS."
-#endif
-
 #endif

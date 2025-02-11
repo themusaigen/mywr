@@ -1,37 +1,37 @@
 /**
- * @file protect.hpp
+ * @file protect.inl
  * @author themusaigen
  * @brief Module that contains internal protection utilities
  *
  * @copyright Copyright (c) 2025
  *
  */
-#ifndef MYWR_INTERNAL_PROTECT_HPP_
-#define MYWR_INTERNAL_PROTECT_HPP_
+#pragma once
 
-#include <shared/protection_flags.hpp>
+#include <shared/core/os.hpp>
 #include <shared/core/address.hpp>
+#include <shared/protection_flags.hpp>
 
 #include <cstddef>
 
 namespace mywr::protect {
+
 /**
  * @brief Gets the protect value for the specified memory area.
  */
-[[nodiscard]] static auto get_protect(const mywr::address& address)
-    -> protection::Enum;
+[[nodiscard]] static auto get_protect(const address& address) -> protection;
 
 /**
  * @brief Sets the protect value for the specified memory area.
  */
-static auto set_protect(const mywr::address& address,
-                        protection::Enum     new_protect,
-                        std::size_t          size) -> protection::Enum;
+static auto set_protect(const address& address,
+                        protection     new_protect,
+                        size_t         size) -> protection;
 
 class scoped_protect {
-  mywr::address    m_address;
-  std::size_t      m_size;
-  protection::Enum m_protect;
+  address    m_address;
+  size_t     m_size;
+  protection m_protect;
 
 public:
   scoped_protect()                      = delete;
@@ -41,9 +41,7 @@ public:
       , m_size(rhs.m_size)
       , m_protect(rhs.m_protect) {}
 
-  scoped_protect(mywr::address    address,
-                 protection::Enum protect,
-                 std::size_t      size)
+  scoped_protect(address address, protection protect, size_t size)
       : m_address(std::move(address))
       , m_size(size) {
     if (m_address.valid()) {
@@ -72,7 +70,5 @@ public:
 } // namespace mywr::protect
 
 #if defined(MYWR_WINDOWS)
-  #include <internal/windows/protect.hpp>
-#endif
-
+  #include <internal/windows/protect.inl>
 #endif

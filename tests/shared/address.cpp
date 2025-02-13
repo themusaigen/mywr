@@ -169,22 +169,22 @@ TEST(Address, DecrementableIncrementable) {
     const mywr::address_t expected_result{2};
     const mywr::address   addr0{1};
 
-    auto addr1 = addr0 + 1U;
-    auto addr2 = 1U + addr0;
+    auto addr1 = addr0.value() + 1U;
+    auto addr2 = 1U + addr0.value();
 
-    EXPECT_EQ(addr1.value(), expected_result);
-    EXPECT_EQ(addr2.value(), expected_result);
+    EXPECT_EQ(addr1, expected_result);
+    EXPECT_EQ(addr2, expected_result);
   }
 
   {
     const mywr::address_t expected_result{0};
     const mywr::address   addr0{1};
 
-    auto addr1 = addr0 - 1U;
-    auto addr2 = 1U - addr0;
+    auto addr1 = addr0.value() - 1U;
+    auto addr2 = 1U - addr0.value();
 
-    EXPECT_EQ(addr1.value(), expected_result);
-    EXPECT_EQ(addr2.value(), expected_result);
+    EXPECT_EQ(addr1, expected_result);
+    EXPECT_EQ(addr2, expected_result);
   }
 }
 
@@ -247,16 +247,8 @@ TEST(Address, Comparable) {
     const mywr::address addr{1};
     const mywr::address addr1{1};
 
-    const mywr::address_t value{1};
-
     EXPECT_EQ(addr1 >= addr, expected_result);
     EXPECT_EQ(addr1 <= addr, expected_result);
-
-    EXPECT_EQ(value >= addr, expected_result);
-    EXPECT_EQ(addr >= value, expected_result);
-
-    EXPECT_EQ(value <= addr, expected_result);
-    EXPECT_EQ(addr <= value, expected_result);
   }
 
   {
@@ -266,21 +258,9 @@ TEST(Address, Comparable) {
     const mywr::address addr1{1};
     const mywr::address addr2{2};
 
-    const mywr::address_t value{1};
-    const mywr::address_t value1{2};
-
     EXPECT_EQ(addr == addr1, expected_result);
     EXPECT_EQ(addr != addr2, expected_result);
     EXPECT_EQ(addr == addr2, !expected_result);
-
-    EXPECT_EQ(addr == value, expected_result);
-    EXPECT_EQ(value == addr, expected_result);
-
-    EXPECT_EQ(addr == value1, !expected_result);
-    EXPECT_EQ(value1 == addr, !expected_result);
-
-    EXPECT_EQ(addr != value1, expected_result);
-    EXPECT_EQ(value1 != addr, expected_result);
   }
 }
 

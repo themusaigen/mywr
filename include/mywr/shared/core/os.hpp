@@ -1,7 +1,12 @@
 /**
  * @file os.hpp
  * @author themusaigen
- * @brief Module that contains macros of the current operating system.
+ * @brief This module contains macros for identifying the current operating
+ * system.
+ *
+ * The macros defined in this module allow for conditional compilation based on
+ * the operating system. This is useful for writing platform-independent code
+ * that can be compiled and run on different operating systems.
  *
  * @copyright Copyright (c) 2025
  */

@@ -1,10 +1,14 @@
 /**
  * @file core.hpp
  * @author themusaigen
- * @brief Module that contains the main type definitions.
+ * @brief This module contains the main type definitions for the mywr library.
+ *
+ * The module includes the definition of the byte_t type, which is an alias for
+ * std::uint8_t. It also includes the definition of the address_t type, which is
+ * an alias for std::uint32_t if the MYWR_32 macro is defined, or std::uint64_t
+ * if the MYWR_32 macro is not defined.
  *
  * @copyright Copyright (c) 2025
- *
  */
 #pragma once
 

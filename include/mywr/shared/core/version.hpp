@@ -1,3 +1,15 @@
+/**
+ * @file version.hpp
+ * @author themusaigen
+ * @brief This file contains version information and utilities for the mywr
+ * library.
+ *
+ * The version.hpp file provides version information, such as major, minor, and
+ * patch versions, as well as utility functions for checking the version against
+ * provided major, minor, and patch numbers.
+ *
+ * @copyright Copyright (c) 2025
+ */
 #pragma once
 
 #include <cstdint>
@@ -5,9 +17,9 @@
 // clang-format off
 
 #define MYWR_MAJOR (1)
-#define MYWR_MINOR (162)
+#define MYWR_MINOR (200)
 #define MYWR_PATCH (0)
-#define MYWR_VERSION_STR ("1.162.0")
+#define MYWR_VERSION_STR ("1.200.0")
 #define MYWR_CHECK_VERSION(major, minor, patch) ((major >= MYWR_MAJOR) && (minor >= MYWR_MINOR) && (patch >= MYWR_PATCH))
 
 // clang-format on

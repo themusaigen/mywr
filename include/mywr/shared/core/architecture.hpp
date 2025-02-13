@@ -1,10 +1,20 @@
 /**
  * @file architecture.hpp
  * @author themusaigen
- * @brief Module that contains macros of the architecture.
+ * @brief This module contains macros for identifying the architecture of the
+ * system.
+ *
+ * The macros defined in this module allow for conditional compilation based on
+ * the architecture. This is useful for writing architecture-specific code that
+ * can be compiled and run on different architectures.
+ *
+ * The supported architectures are:
+ * - MYWR_X86: Defined for 32-bit x86 architecture.
+ * - MYWR_X86_64: Defined for 64-bit x86 architecture.
+ * - MYWR_ARM: Defined for ARM architecture.
+ * - MYWR_AARCH64: Defined for ARM64 architecture.
  *
  * @copyright Copyright (c) 2025
- *
  */
 #pragma once
 

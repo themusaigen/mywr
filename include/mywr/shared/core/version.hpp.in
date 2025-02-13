@@ -1,3 +1,15 @@
+/**
+ * @file version.hpp
+ * @author themusaigen
+ * @brief This file contains version information and utilities for the mywr
+ * library.
+ *
+ * The version.hpp file provides version information, such as major, minor, and
+ * patch versions, as well as utility functions for checking the version against
+ * provided major, minor, and patch numbers.
+ *
+ * @copyright Copyright (c) 2025
+ */
 #pragma once
 
 #include <cstdint>

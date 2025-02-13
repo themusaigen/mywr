@@ -5,6 +5,26 @@
  *
  * @copyright Copyright (c) 2025
  *
+ * This file provides the platform-specific implementation of the
+ * `protection_flags` module for Windows. It includes the
+ * `to_protection_constant` and `from_protection_constant` functions, which
+ * convert between system-specific protection constants and the `mywr`
+ * protection constant.
+ *
+ * The `to_protection_constant` function maps Windows protection constants to
+ * the corresponding `mywr` protection constants. It uses a switch statement to
+ * handle different Windows protection constants and returns the corresponding
+ * `mywr` protection constant. If the input protection constant is not
+ * recognized, it returns `protection::None`.
+ *
+ * The `from_protection_constant` function maps `mywr` protection constants to
+ * the corresponding Windows protection constants. It uses a switch statement to
+ * handle different `mywr` protection constants and returns the corresponding
+ * Windows protection constant. If the input protection constant is not
+ * recognized, it returns 0.
+ *
+ * Note: This implementation assumes that the necessary Windows headers are
+ * included in the `shared/core/osheaders.hpp` file.
  */
 #pragma once
 

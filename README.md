@@ -1,15 +1,8 @@
 # mywr
 
-Cross-platform multiarchitectural (in future) memhacking header-online library written in C++17. The next generation of my [memwrapper](https://github.com/The-Musaigen/memwrapper) project.
+Cross-platform multiarchitectural (in future) memhacking header-only library written in C++17. The next generation of my [memwrapper](https://github.com/The-Musaigen/memwrapper) project.
 
-## Features
-
-* Memory region unprotection.
-* Read/write/copy/fill/compare memory.
-* RAII classes memory patching, unprotecting.
-* Signature scanning.
-
-## Platforms / Architectures
+## Platforms / Architectures / Features
 
 | Status | Description                                                             |
 | ------ | ----------------------------------------------------------------------- |
@@ -18,6 +11,14 @@ Cross-platform multiarchitectural (in future) memhacking header-online library w
 | ❌      | Unsupported.                                                            |
 | ❓      | Maybe supported but untested.                                           |
 | ❗      | Not in plans. (Due to lack of technical/physical/material capabilities) |
+
+| Feature                             | Windows (Internal) | Windows (External) | Linux (Internal/External) |
+| ----------------------------------- | ------------------ | ------------------ | ------------------------- |
+| Memory region unprotection          | ✅                  | ❌                  | ❌                         |
+| Read/write/copy/fill/compare memory | ✅                  | ❌                  | ❌                         |
+| RAII memory unprotecting            | ✅                  | ❌                  | ❌                         |
+| RAII memory patching                | 💻                  | ❌                  | ❌                         |
+| Signature scanning                  | 💻                  | ❌                  | ❌                         |
 
 | Platform        | Status |
 | --------------- | ------ |

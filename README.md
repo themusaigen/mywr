@@ -17,7 +17,7 @@ Cross-platform multiarchitectural (in future) memhacking header-only library wri
 | Memory region unprotection          | ✅                  | ❌                  | ❌                         |
 | Read/write/copy/fill/compare memory | ✅                  | ❌                  | ❌                         |
 | RAII memory unprotecting            | ✅                  | ❌                  | ❌                         |
-| RAII memory patching                | 💻                  | ❌                  | ❌                         |
+| RAII memory patching                | ✅                  | ❌                  | ❌                         |
 | Signature scanning                  | 💻                  | ❌                  | ❌                         |
 
 | Platform        | Status |

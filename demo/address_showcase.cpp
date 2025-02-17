@@ -2,37 +2,39 @@
 
 extern void showcase_address();
 
-// For example, you are writing a function that produces something with the
-// memory address passed to it. You need to be able to pass both pointers and
-// addresses to some part of the code in the program. Normally, you have two
-// options.: 1) write an overload with a template parameter. 2) overload the
-// function for some types, for example (uint32_t, uint64_t, void*). However, if
-// you have a mywr::address class, you don't have to worry about it anymore.
-namespace {
-void do_something_with_memory(const mywr::address& /*address*/,
-                              std::size_t /*size*/) {
-  // `valid` means it not a nullptr.
-  // if (address.valid()) {
-  //  do something.
-  // }
-}
-} // namespace
+// Define a simple class to represent a player in the game.
+// In a real-world scenario, this class might be defined in a separate header
+// file.
+class Player {
+public:
+  float m_health;
+};
 
 void showcase_address() {
-  constexpr auto PlayerNicknameBuffer        = 0x1337;
-  constexpr auto PlayerNicknameBufferMaxSize = 24;
+  // Define a constant for a really big health value.
+  // This value will be used to demonstrate the manipulation of the player's
+  // health.
+  constexpr float kReallyBigHealth = 99999.F;
 
-  // This function is called via an address that points to the character buffer
-  // of the player's nickname.
-  do_something_with_memory(PlayerNicknameBuffer, PlayerNicknameBufferMaxSize);
+  // Declare an instance of the Player class.
+  // In a real-world scenario, this instance might be created in the game's
+  // memory.
+  Player player{};
+  player.m_health = 100.F;
 
-  // NOLINTBEGIN(*-no-int-to-ptr)
-  char* nick = *reinterpret_cast<char**>(PlayerNicknameBuffer);
-  // NOLINTEND(*-no-int-to-ptr)
+  // Simulate a situation where a plugin (DLL) is being injected into the game
+  // process.
+  // In a real-world scenario, this might be done using a technique like DLL
+  // injection. Here, we're using the mywr library to create an address object
+  // that points to the player instance.
+  mywr::address player_address{&player};
 
-  // However, this function is called via a pointer to the player's nickname
-  // buffer. The 'address` class will "swallow" this without problems, and the
-  // `do_something_with_memory` function does not need to worry about what is
-  // passed to it.
-  do_something_with_memory(nick, PlayerNicknameBufferMaxSize);
+  // Now, we can use the player_address object to safely access and manipulate
+  // the player instance's data.
+  // In this case, we're using it to set the player's health to a really big
+  // value.
+  if (player_address) {
+    Player* local_player{player_address};
+    local_player->m_health = kReallyBigHealth;
+  }
 }

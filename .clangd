@@ -8,4 +8,5 @@ CompileFlags:
     -Wno-unused-function,
     -Wno-unused-template,
     -Wno-covered-switch-default,
+    -Wno-unsafe-buffer-usage,
     -m32]

@@ -1,304 +1,274 @@
-#include <shared/core/address.hpp>
-#include <shared/core/core.hpp>
-
 #include <gtest/gtest.h>
 
-TEST(Address, Constructible) {
-  {
-    const mywr::address_t expected_result{0};
-    const mywr::address   addr{nullptr};
+#include <shared/core/address.hpp>
 
-    EXPECT_EQ(addr.value(), expected_result);
-  }
+using namespace mywr;
 
-  {
-    const mywr::address_t expected_result{0};
-    const mywr::address   addr{};
+static_assert(sizeof(address_t) == sizeof(void*),
+              "address_t should be the same size as a pointer");
+static_assert(sizeof(address) == sizeof(address_t),
+              "address should be the same size as address_t");
 
-    ASSERT_EQ(addr.value(), expected_result);
-  }
+TEST(Address, DefaultConstruct) {
+  const address_t expected_result{address_t{0}};
+  const address   object{};
 
-  {
-    const mywr::address_t expected_result{1};
-    const mywr::address   addr{expected_result};
-
-    EXPECT_EQ(addr.value(), expected_result);
-  }
-
-  {
-    const mywr::address_t  value{0};
-    const mywr::address_t* ptr{&value};
-    const mywr::address_t  expected_result{
-        reinterpret_cast<mywr::address_t>(ptr)};
-    const mywr::address addr{ptr};
-
-    EXPECT_EQ(addr.value(), expected_result);
-  }
-
-  {
-    const mywr::address addr0{1};
-    const mywr::address addr1{addr0};
-
-    EXPECT_EQ(addr0.value(), addr1.value());
-  }
-
-  {
-    const mywr::address_t expected_result0{0};
-    const mywr::address_t expected_result1{1};
-
-    mywr::address addr0{1};
-    mywr::address addr1{std::move(addr0)};
-
-    EXPECT_EQ(addr0.value(), expected_result0);
-    EXPECT_EQ(addr1.value(), expected_result1);
-  }
+  EXPECT_EQ(object.value(), expected_result)
+      << "Default constructed address should be 0, but was " << object.value();
 }
 
-TEST(Address, Assignable) {
-  {
-    const mywr::address_t expected_result{64};
+TEST(Address, NullptrConstruct) {
+  const address_t expected_result{0};
+  const address   object{nullptr};
 
-    // Empty bro.
-    mywr::address addr{};
-
-    // Do assignment.
-    addr = expected_result;
-
-    EXPECT_EQ(addr.value(), expected_result);
-  }
-
-  {
-    const mywr::address_t  value{};
-    const mywr::address_t* ptr{&value};
-    const mywr::address_t  expected_result{
-        reinterpret_cast<mywr::address_t>(ptr)};
-
-    mywr::address addr{};
-
-    addr = ptr;
-
-    EXPECT_EQ(addr.value(), expected_result);
-  }
-
-  {
-    mywr::address addr0{1};
-    mywr::address addr1{};
-
-    addr1 = addr0;
-
-    EXPECT_EQ(addr0.value(), addr1.value());
-  }
-
-  {
-    const mywr::address_t expected_result0{0};
-    const mywr::address_t expected_result1{1};
-
-    mywr::address addr0{1};
-    mywr::address addr1{};
-
-    addr1 = std::move(addr0);
-
-    EXPECT_EQ(addr0.value(), expected_result0);
-    EXPECT_EQ(addr1.value(), expected_result1);
-  }
+  EXPECT_EQ(object.value(), expected_result)
+      << "Constructed from nullptr address should be 0, but was "
+      << object.value();
 }
 
-TEST(Address, PrepostfixDecIncrementable) {
-  {
-    const mywr::address_t expected_result{1};
+TEST(Address, IntegerConstruct) {
+  const address_t expected_result{1};
+  const address   object{expected_result};
 
-    mywr::address addr{};
-    ++addr;
-
-    EXPECT_EQ(addr.value(), expected_result);
-  }
-
-  {
-    const mywr::address_t expected_result0{0};
-    const mywr::address_t expected_result1{1};
-
-    mywr::address addr{};
-
-    EXPECT_EQ((addr++).value(), expected_result0);
-    EXPECT_EQ(addr.value(), expected_result1);
-  }
-
-  {
-    const mywr::address_t expected_result{0};
-
-    mywr::address addr{1};
-
-    --addr;
-
-    EXPECT_EQ(addr.value(), expected_result);
-  }
-
-  {
-    const mywr::address_t expected_result0{1};
-    const mywr::address_t expected_result1{0};
-
-    mywr::address addr{1};
-
-    EXPECT_EQ((addr--).value(), expected_result0);
-    EXPECT_EQ(addr.value(), expected_result1);
-  }
+  EXPECT_EQ(object.value(), expected_result)
+      << "Constructed from integer address should be " << expected_result
+      << ", but was " << object.value();
 }
 
-TEST(Address, DecrementableIncrementable) {
-  {
-    const mywr::address_t expected_result{2};
-    const mywr::address   addr0{1};
-    const mywr::address   addr1{addr0};
+TEST(Address, PointerConstruct) {
+  const int       data{};
+  const address_t expected_result{reinterpret_cast<address_t>(&data)};
+  const address   object{&data};
 
-    auto addr2 = addr1 + addr0;
-
-    EXPECT_EQ(addr2.value(), expected_result);
-  }
-
-  {
-    const mywr::address_t expected_result{0};
-    const mywr::address   addr0{1};
-    const mywr::address   addr1{addr0};
-
-    auto addr2 = addr1 - addr0;
-
-    EXPECT_EQ(addr2.value(), expected_result);
-  }
-
-  {
-    const mywr::address_t expected_result{2};
-    const mywr::address   addr0{1};
-
-    auto addr1 = addr0.value() + 1U;
-    auto addr2 = 1U + addr0.value();
-
-    EXPECT_EQ(addr1, expected_result);
-    EXPECT_EQ(addr2, expected_result);
-  }
-
-  {
-    const mywr::address_t expected_result{0};
-    const mywr::address   addr0{1};
-
-    auto addr1 = addr0.value() - 1U;
-    auto addr2 = 1U - addr0.value();
-
-    EXPECT_EQ(addr1, expected_result);
-    EXPECT_EQ(addr2, expected_result);
-  }
+  EXPECT_EQ(object.value(), expected_result)
+      << "Constructed from pointer address should be " << expected_result
+      << ", but was " << object.value();
 }
 
-TEST(Address, DecIncAssignable) {
-  {
-    const mywr::address_t expected_result{2};
+TEST(Address, Copyable) {
+  const address_t expected_result{1};
+  const address   object_1{expected_result};
+  const address   object_2{object_1};
 
-    mywr::address addr{1};
-
-    addr += addr;
-
-    EXPECT_EQ(addr.value(), expected_result);
-  }
-
-  {
-    const mywr::address_t expected_result{0};
-
-    mywr::address addr{1};
-
-    addr -= addr;
-
-    EXPECT_EQ(addr.value(), expected_result);
-  }
-
-  {
-    const mywr::address_t expected_result{2};
-
-    mywr::address addr{1};
-
-    addr += 1U;
-
-    EXPECT_EQ(addr.value(), expected_result);
-  }
-
-  {
-    const mywr::address_t expected_result{0};
-
-    mywr::address addr{1};
-
-    addr -= 1U;
-
-    EXPECT_EQ(addr.value(), expected_result);
-  }
+  EXPECT_EQ(object_1.value(), expected_result)
+      << "Copied address should be " << expected_result << ", but was "
+      << object_1.value();
+  EXPECT_EQ(object_2.value(), expected_result)
+      << "Copied address should be " << expected_result << ", but was "
+      << object_2.value();
 }
 
-TEST(Address, Comparable) {
-  {
-    const bool expected_result = true;
+TEST(Address, Moveable) {
+  const address_t expected_result_for_object_1{0};
+  const address_t expected_result_for_object_2{1};
 
-    const mywr::address addr{1};
-    const mywr::address addr1{2};
+  address object_1{expected_result_for_object_2};
+  address object_2{std::move(object_1)};
 
-    EXPECT_EQ(addr1 > addr, expected_result);
-    EXPECT_EQ(addr1 < addr, !expected_result);
-  }
-
-  {
-    const bool expected_result = true;
-
-    const mywr::address addr{1};
-    const mywr::address addr1{1};
-
-    EXPECT_EQ(addr1 >= addr, expected_result);
-    EXPECT_EQ(addr1 <= addr, expected_result);
-  }
-
-  {
-    const bool expected_result = true;
-
-    const mywr::address addr{1};
-    const mywr::address addr1{1};
-    const mywr::address addr2{2};
-
-    EXPECT_EQ(addr == addr1, expected_result);
-    EXPECT_EQ(addr != addr2, expected_result);
-    EXPECT_EQ(addr == addr2, !expected_result);
-  }
+  EXPECT_EQ(object_1.value(), expected_result_for_object_1)
+      << "Moved-from address should be 0, but was " << object_1.value();
+  EXPECT_EQ(object_2.value(), expected_result_for_object_2)
+      << "Moved-to address should be " << expected_result_for_object_2
+      << ", but was " << object_2.value();
 }
 
-TEST(Address, Validatable) {
-  {
-    const int  value = 1;
-    const int* ptr   = &value;
+TEST(Address, CopyAssignment) {
+  const address_t expected_result{1};
 
-    const mywr::address addr{};
-    const mywr::address addr1{ptr};
+  address object_1{expected_result};
+  address object_2{0};
 
-    EXPECT_FALSE(addr.valid());
-    EXPECT_TRUE(addr1.valid());
-    EXPECT_FALSE(addr);
-    EXPECT_TRUE(addr1);
-  }
+  object_2 = object_1;
+
+  EXPECT_EQ(object_1.value(), expected_result)
+      << "Copied-from address should be " << expected_result << ", but was "
+      << object_1.value();
+  EXPECT_EQ(object_2.value(), expected_result)
+      << "Copied-to address should be " << expected_result << ", but was "
+      << object_2.value();
 }
 
-TEST(Address, ExplicitConvertable) {
-  {
-    const mywr::address_t expected_result{1};
-    const mywr::address   addr{1};
-    const mywr::address_t value{addr};
+TEST(Address, MoveAssignment) {
+  const address_t expected_result_for_object_1{0};
+  const address_t expected_result_for_object_2{1};
 
-    EXPECT_EQ(value, expected_result);
-  }
+  address object_1{expected_result_for_object_2};
+  address object_2{0};
 
-  {
-    const mywr::address_t  value{64};
-    const mywr::address_t* ptr0{&value};
-    const mywr::address    addr{ptr0};
-    const mywr::address_t* ptr1{addr};
+  object_2 = std::move(object_1);
 
-    const mywr::address_t expected_address{
-        reinterpret_cast<mywr::address_t>(ptr0)};
-    const mywr::address_t expected_result{64};
+  EXPECT_EQ(object_1.value(), expected_result_for_object_1)
+      << "Moved-from address should be 0, but was " << object_1.value();
+  EXPECT_EQ(object_2.value(), expected_result_for_object_2)
+      << "Moved-to address should be " << expected_result_for_object_2
+      << ", but was " << object_2.value();
+}
 
-    ASSERT_EQ(reinterpret_cast<mywr::address_t>(ptr1), expected_address);
-    EXPECT_EQ(*ptr1, expected_result);
-  }
+TEST(Address, IntegerAssignment) {
+  const address_t expected_result{1};
+
+  address object{0};
+
+  object = expected_result;
+
+  EXPECT_EQ(object.value(), expected_result)
+      << "Assigned integer address should be " << expected_result
+      << ", but was " << object.value();
+}
+
+TEST(Address, PointerAssignment) {
+  const int       data{};
+  const address_t expected_result{reinterpret_cast<address_t>(&data)};
+
+  address object{0};
+
+  object = &data;
+
+  EXPECT_EQ(object.value(), expected_result)
+      << "Assigned pointer address should be " << expected_result
+      << ", but was " << object.value();
+}
+
+TEST(Address, Valid) {
+  const address_t data_1{0x0000};
+  const address_t data_2{0x1000};
+
+  const address object_1{data_1};
+  const address object_2{data_2};
+
+  EXPECT_FALSE(object_1.valid());
+  EXPECT_TRUE(object_2.valid());
+}
+
+TEST(Address, IntegerCast) {
+  const address_t expected_result{1};
+  const address   object{expected_result};
+
+  EXPECT_EQ(address_t{object}, expected_result)
+      << "Implicitly converted address should be " << expected_result
+      << ", but was " << address_t{object};
+}
+
+TEST(Address, PointerCast) {
+  const address_t  expected_result{1};
+  const address_t  data{expected_result};
+  const address    object{&data};
+  const address_t* pointer{object};
+
+  EXPECT_EQ(*pointer, expected_result);
+}
+
+TEST(Address, PreIncrement) {
+  const address_t expected_result{1};
+
+  address object{};
+
+  EXPECT_EQ((++object).value(), expected_result);
+}
+
+TEST(Address, PostIncrement) {
+  const address_t expected_result_pre{0};
+  const address_t expected_result_post{1};
+
+  address object{};
+
+  EXPECT_EQ((object++).value(), expected_result_pre);
+  EXPECT_EQ(object.value(), expected_result_post);
+}
+
+TEST(Address, PreDecrement) {
+  const address_t expected_result{0};
+
+  address object{1};
+
+  EXPECT_EQ((--object).value(), expected_result);
+}
+
+TEST(Address, PostDecrement) {
+  const address_t expected_result_pre{1};
+  const address_t expected_result_post{0};
+
+  address object{1};
+
+  EXPECT_EQ((object--).value(), expected_result_pre);
+  EXPECT_EQ(object.value(), expected_result_post);
+}
+
+TEST(Address, Addition) {
+  const address_t expected_result{2};
+  const address   object_1{1};
+  const address   object_2{1};
+
+  EXPECT_EQ((object_1 + object_2).value(), expected_result);
+}
+
+TEST(Address, Subtraction) {
+  const address_t expected_result{0};
+  const address   object_1{1};
+  const address   object_2{1};
+
+  EXPECT_EQ((object_1 - object_2).value(), expected_result);
+}
+
+TEST(Address, Modulo) {
+  const address_t expected_result{1};
+  const address   object_1{3};
+  const address   object_2{2};
+
+  EXPECT_EQ((object_1 % object_2).value(), expected_result);
+}
+
+TEST(Address, BitwiseAnd) {
+  const address_t expected_result{1};
+  const address   object_1{1};
+  const address   object_2{1};
+
+  EXPECT_EQ((object_1 & object_2).value(), expected_result);
+}
+
+TEST(Address, BitwiseOr) {
+  const address_t expected_result{3};
+  const address   object_1{3};
+  const address   object_2{2};
+
+  EXPECT_EQ((object_1 | object_2).value(), expected_result);
+}
+
+TEST(Address, BitwiseXor) {
+  const address_t expected_result{1};
+  const address   object_1{3};
+  const address   object_2{2};
+
+  EXPECT_EQ((object_1 ^ object_2).value(), expected_result);
+}
+
+TEST(Address, BitwiseNot) {
+  const address_t expected_result{0b11111111111111111111111111111100};
+  const address   object{3};
+
+  EXPECT_EQ((~object).value(), expected_result);
+}
+
+TEST(Address, BitwiseLeftShift) {
+  const address_t expected_result{0x06};
+  const address   object_1{3};
+  const address   object_2{1};
+
+  EXPECT_EQ((object_1 << object_2).value(), expected_result);
+}
+
+TEST(Address, BitwiseRightShift) {
+  const address_t expected_result{1};
+  const address   object_1{3};
+  const address   object_2{1};
+
+  EXPECT_EQ((object_1 >> object_2).value(), expected_result);
+}
+
+TEST(Address, Equality) {
+  const address object_1{0x0000};
+  const address object_2{0x1000};
+
+  EXPECT_FALSE(object_1 == object_2);
+  EXPECT_TRUE(object_1 != object_2);
 }

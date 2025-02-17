@@ -656,7 +656,7 @@ public:
    */
   friend constexpr auto operator>=(const address& lhs,
                                    const address& rhs) noexcept -> bool {
-    return !(lhs < rhs);
+    return lhs.value() >= rhs.value();
   }
 };
 

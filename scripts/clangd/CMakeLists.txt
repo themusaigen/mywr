@@ -10,7 +10,8 @@ set(CLANGD_MAIN_FLAGS
     -Wno-c++98-compat-pedantic,
     -Wno-unused-function,
     -Wno-unused-template,
-    -Wno-covered-switch-default")
+    -Wno-covered-switch-default,
+    -Wno-unsafe-buffer-usage")
 set(CLANGD_M32 "-m32")
 
 # GCC 13 used in mywr

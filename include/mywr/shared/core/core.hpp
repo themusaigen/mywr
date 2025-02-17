@@ -12,6 +12,16 @@
  */
 #pragma once
 
+#if defined(_MSC_VER)
+  #pragma warning(disable : 4068) // Disable unknown pragmas warning.
+#elif defined(__GNUC__)
+  #pragma GCC diagnostic ignored "-Wunknown-pragmas"
+  #pragma GCC diagnostic ignored "-Wunsafe-buffer-usage"
+#elif defined(__clang__)
+  #pragma clang diagnostic ignored "-Wunknown-pragmas"
+  #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
+
 // MYWR_32
 #include "architecture.hpp"
 

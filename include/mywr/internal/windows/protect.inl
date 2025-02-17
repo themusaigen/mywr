@@ -37,12 +37,42 @@
 
 namespace mywr::protect {
 
+/**
+ * @brief Retrieves the current memory protection flags for a given address.
+ *
+ * This function uses the `VirtualQuery` function to obtain the memory basic
+ * information for the specified address. It then converts the protection flags
+ * from the `MEMORY_BASIC_INFORMATION` structure to the `protection` enum type
+ * and returns the result.
+ *
+ * @param address The address for which to retrieve the memory protection flags.
+ * @return The current memory protection flags for the specified address.
+ *
+ * @note This function is specific to the Windows platform and uses the
+ *       Windows API function `VirtualQuery`.
+ */
 [[nodiscard]] static auto get_protect(const address& address) -> protection {
   MEMORY_BASIC_INFORMATION mbi{};
   VirtualQuery(address, &mbi, sizeof(mbi));
   return to_protection_constant(mbi.Protect);
 }
 
+/**
+ * @brief Modifies the memory protection flags for a specified address and size.
+ *
+ * This function uses the `VirtualProtect` function to change the protection
+ * flags for the specified address and size. It returns the old protection flags
+ * as the result of the function.
+ *
+ * @param address The address for which to modify the memory protection flags.
+ * @param new_protect The new memory protection flags to set.
+ * @param size The size of the memory region for which to modify the protection
+ * flags.
+ * @return The old memory protection flags for the specified address.
+ *
+ * @note This function is specific to the Windows platform and uses the
+ *       Windows API function `VirtualProtect`.
+ */
 static auto set_protect(const address& address,
                         protection     new_protect,
                         size_t         size) -> protection {

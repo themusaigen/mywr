@@ -70,7 +70,7 @@ For other usage examples, you can look into the `tests` directory or the `demo` 
 | Thread-safety                            | ❌ / ❌                 | ❌ / ❌               |
 | Thread-enumeration                       | ❌ / ❌                 | ❌ / ❌               |
 | Segment (.text, .data, etc) interaction  | ❌ / ❌                 | ❌ / ❌               |
-| Function invoking                        | ❌ / ❌                 | ❌ / ❌               |
+| Function invoking                        | 💻 / ❌                 | ❌ / ❌               |
 | Memory allocation/deallocation           | ❌ / ❌                 | ❌ / ❌               |
 | Disassembling (By third-party libraries) | ❌ / ❌                 | ❌ / ❌               |
 | Bit utilities                            | ❌ / ❌                 | ❌ / ❌               |

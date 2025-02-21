@@ -2,6 +2,31 @@
  * @file function_traits.hpp
  * @brief Provides template meta-programming utilities for extracting and
  * manipulating function type information.
+ *
+ * @details This header file is part of the `mywr` library. It defines a set of
+ * template structures and type aliases that facilitate the extraction and
+ * manipulation of function type information using template meta-programming
+ * techniques. The file is designed to be part of a header-only library, as
+ * indicated by the use of `#pragma once` to prevent multiple inclusions.
+ *
+ * The functionality is encapsulated within the `mywr::detail` namespace, which
+ * suggests that it is intended for internal use within the library. The file
+ * includes headers from the `shared` directory, which likely provide ABI
+ * definitions and calling convention utilities.
+ *
+ * The main components of this file are the `function_trait` and
+ * `function_traits` template structures, which extract return types, argument
+ * types, and calling conventions from function types. Additionally, the file
+ * provides meta-functions for concatenating calling conventions with function
+ * signatures.
+ *
+ * The file also defines several type aliases and constexpr variables for
+ * simplified usage of the extracted function type information.
+ *
+ * @note The file includes specializations for different calling conventions,
+ * such as Cdecl, Stdcall, Thiscall, and Fastcall, as well as for
+ * `std::function` and member function pointers.
+ *
  * @author themusaigen
  */
 #pragma once
@@ -15,22 +40,38 @@
 
 namespace mywr::detail {
 
+/**
+ * @brief Primary template for extracting function type information.
+ *
+ * @tparam F The function type.
+ */
 template<typename F>
 struct function_trait;
 
+/**
+ * @brief Primary template for extracting function type information with
+ * additional specializations.
+ *
+ * @tparam F The function type.
+ */
 template<typename F>
 struct function_traits;
 
 // Implementation of function_trait.
 template<typename R, typename... A>
 struct function_trait<R(A...)> {
-  using return_type = R;
-  using arguments   = std::tuple<A...>;
+  using return_type = R;                ///< The return type of the function.
+  using arguments   = std::tuple<A...>; ///< A tuple of argument types.
 
+  /**
+   * @brief Extracts the type of the I-th argument.
+   *
+   * @tparam I The index of the argument.
+   */
   template<std::size_t I>
   using argument = std::tuple_element<I, std::tuple<A...>>;
 
-  static constexpr auto args_count = sizeof...(A);
+  static constexpr auto args_count = sizeof...(A); ///< The number of arguments.
 };
 
 // Additional specializations for std::function and different calling
@@ -130,5 +171,17 @@ struct concat_function_signature<R, calling_conventions::Win64, A...> {
 template<typename R, calling_conventions C, typename... A>
 using concat_function_signature_t =
     typename concat_function_signature<R, C, A...>::signature;
+
+template<typename R, calling_conventions C, typename Tuple>
+struct concat_function_signature_by_args_tuple;
+
+template<typename R, calling_conventions C, typename... A>
+struct concat_function_signature_by_args_tuple<R, C, std::tuple<A...>> {
+  using signature = concat_function_signature_t<R, C, A...>;
+};
+
+template<typename R, calling_conventions C, typename Tuple>
+using concat_function_signature_by_args_tuple_t =
+    typename concat_function_signature_by_args_tuple<R, C, Tuple>::signature;
 
 } // namespace mywr::detail

@@ -56,6 +56,7 @@ namespace mywr::invoker {
 template<typename F, typename In, typename... A>
 inline auto invoke(In fun, A&&... args) noexcept -> detail::return_type_t<F> {
   using namespace detail;
+  using namespace utility;
 
   // Determine the function signature using the calling convention and
   // arguments.
@@ -66,7 +67,7 @@ inline auto invoke(In fun, A&&... args) noexcept -> detail::return_type_t<F> {
 
   // Invoke the function at the given memory address using the determined
   // signature.
-  return reinterpret_cast<signature_t>(utility::get_function_address(fun))(
+  return reinterpret_cast<signature_t>(get_function_address(fun))(
       std::forward<A>(args)...);
 }
 } // namespace mywr::invoker

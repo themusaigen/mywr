@@ -2,6 +2,10 @@
 
 #include <shared/calling_conventions.hpp>
 
+#include <internal/invoker.hpp>
+
+using namespace mywr::invoker;
+
 static auto MYWR_CDECL sum_cdecl(int lhs, int rhs) -> int {
   return lhs + rhs;
 }
@@ -27,10 +31,6 @@ using sum_cdecl_t    = decltype(&sum_cdecl);
 using sum_stdcall_t  = decltype(&sum_stdcall);
 using sum_fastcall_t = decltype(&sum_fastcall);
 using sum_thiscall_t = decltype(&A::sum_thiscall);
-
-#include <internal/invoker.hpp>
-
-using namespace mywr::invoker;
 
 TEST(Invoker, Cdecl) {
   auto lhs{2};

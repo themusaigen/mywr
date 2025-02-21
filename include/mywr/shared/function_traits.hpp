@@ -84,11 +84,15 @@ struct function_traits<R(A...)> : function_trait<R(A...)> {
 };
 
 template<typename R, typename... A>
-struct function_traits<std::function<R(A...)>> : function_trait<R(A...)> {
-  static constexpr auto convention =
-      calling_convention_by_abi_v<calling_conventions::Cdecl>;
-};
+struct function_traits<std::function<R(A...)>> : function_traits<R(A...)> {};
 
+#if defined(MYWR_64)
+template<typename R, typename... A>
+struct function_traits<R (*)(A...)> : function_traits<R(A...)> {};
+#endif
+
+// On 64 bit arhitectures, the compiler will be ignore MYWR_*CALL.
+#if defined(MYWR_32)
 template<typename R, typename... A>
 struct function_traits<R(MYWR_CDECL*)(A...)> : function_trait<R(A...)> {
   static constexpr auto convention =
@@ -112,6 +116,7 @@ struct function_traits<R(MYWR_FASTCALL*)(A...)> : function_trait<R(A...)> {
   static constexpr auto convention =
       calling_convention_by_abi_v<calling_conventions::Fastcall>;
 };
+#endif
 
 template<typename R, typename C, typename... A>
 struct function_traits<R (C::*)(A...)> : function_trait<R(C*, A...)> {
@@ -164,7 +169,7 @@ struct concat_function_signature<R, calling_conventions::Fastcall, A...> {
 
 template<typename R, typename... A>
 struct concat_function_signature<R, calling_conventions::Win64, A...> {
-  using signature = R(A...);
+  using signature = R (*)(A...);
 };
 
 // Type alias for simplified usage of concat_function_signature.

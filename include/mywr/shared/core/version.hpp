@@ -17,9 +17,9 @@
 // clang-format off
 
 #define MYWR_MAJOR (1)
-#define MYWR_MINOR (222)
+#define MYWR_MINOR (230)
 #define MYWR_PATCH (0)
-#define MYWR_VERSION_STR ("1.222.0")
+#define MYWR_VERSION_STR ("1.230.0")
 #define MYWR_CHECK_VERSION(major, minor, patch) ((major >= MYWR_MAJOR) && (minor >= MYWR_MINOR) && (patch >= MYWR_PATCH))
 
 // clang-format on

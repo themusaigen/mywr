@@ -57,24 +57,25 @@ For other usage examples, you can look into the `tests` directory or the `demo` 
 | ❓      | Maybe supported but untested.                                           |
 | ❗      | Not in plans. (Due to lack of technical/physical/material capabilities) |
 
-| Feature                                  | Windows (Int. / Ext.) | Linux (Int. / Ext.) |
-| ---------------------------------------- | --------------------- | ------------------- |
-| Memory unprotection + RAII               | ✅ / ❌                 | ❌ / ❌               |
-| Read/write/copy/fill/compare memory      | ✅ / ❌                 | ❌ / ❌               |
-| RAII memory patching                     | ✅ / ❌                 | ❌ / ❌               |
-| Signature scanning                       | ✅ / ❌                 | ❌ / ❌               |
-| Modules interaction                      | ✅ / ❌                 | ❌ / ❌               |
-| Modules enumeration                      | ❌ / ❌                 | ❌ / ❌               |
-| Processes enumeration                    | ❌ / ❌                 | ❌ / ❌               |
-| Hooking                                  | ❌ / ❌                 | ❌ / ❌               |
-| Thread-safety                            | ❌ / ❌                 | ❌ / ❌               |
-| Thread-enumeration                       | ❌ / ❌                 | ❌ / ❌               |
-| Segment (.text, .data, etc) interaction  | ❌ / ❌                 | ❌ / ❌               |
-| Function invoking                        | ✅ / ❌                 | ❌ / ❌               |
-| Memory allocation/deallocation           | ❌ / ❌                 | ❌ / ❌               |
-| Disassembling (By third-party libraries) | ❌ / ❌                 | ❌ / ❌               |
-| Bit utilities                            | ❌ / ❌                 | ❌ / ❌               |
-| Virtual table interaction                | ❌ / ❌                 | ❌ / ❌               |
+| Feature                                     | Windows (Int. / Ext.) | Linux (Int. / Ext.) |
+| ------------------------------------------- | --------------------- | ------------------- |
+| Memory unprotection + RAII                  | ✅ / ❌                 | ❌ / ❌               |
+| Read/write/copy/fill/compare memory         | ✅ / ❌                 | ❌ / ❌               |
+| RAII memory patching                        | ✅ / ❌                 | ❌ / ❌               |
+| Signature scanning                          | ✅ / ❌                 | ❌ / ❌               |
+| Modules interaction                         | ✅ / ❌                 | ❌ / ❌               |
+| Modules enumeration                         | ❌ / ❌                 | ❌ / ❌               |
+| Processes enumeration                       | ❌ / ❌                 | ❌ / ❌               |
+| Hooking                                     | ❌ / ❌                 | ❌ / ❌               |
+| Thread-safety                               | ❌ / ❌                 | ❌ / ❌               |
+| Thread-enumeration                          | ❌ / ❌                 | ❌ / ❌               |
+| Segment (.text, .data, etc) interaction     | ❌ / ❌                 | ❌ / ❌               |
+| Function invoking                           | ✅ / ❌                 | ❌ / ❌               |
+| System info (page size, granularity, etc..) | ✅ / ✅                 | ❌ / ❌               |
+| Memory allocation/deallocation              | ❌ / ❌                 | ❌ / ❌               |
+| Disassembling (By third-party libraries)    | ❌ / ❌                 | ❌ / ❌               |
+| Bit utilities                               | ❌ / ❌                 | ❌ / ❌               |
+| Virtual table interaction                   | ❌ / ❌                 | ❌ / ❌               |
 
 | Platform        | Status |
 | --------------- | ------ |

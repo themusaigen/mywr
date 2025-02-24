@@ -57,25 +57,34 @@ For other usage examples, you can look into the `tests` directory or the `demo` 
 | ❓      | Maybe supported but untested.                                           |
 | ❗      | Not in plans. (Due to lack of technical/physical/material capabilities) |
 
-| Feature                                     | Windows (Int. / Ext.) | Linux (Int. / Ext.) |
-| ------------------------------------------- | --------------------- | ------------------- |
-| Memory unprotection + RAII                  | ✅ / ❌                 | ❌ / ❌               |
-| Read/write/copy/fill/compare memory         | ✅ / ❌                 | ❌ / ❌               |
-| RAII memory patching                        | ✅ / ❌                 | ❌ / ❌               |
-| Signature scanning                          | ✅ / ❌                 | ❌ / ❌               |
-| Modules interaction                         | ✅ / ❌                 | ❌ / ❌               |
-| Modules enumeration                         | ❌ / ❌                 | ❌ / ❌               |
-| Processes enumeration                       | ❌ / ❌                 | ❌ / ❌               |
-| Hooking                                     | ❌ / ❌                 | ❌ / ❌               |
-| Thread-safety                               | ❌ / ❌                 | ❌ / ❌               |
-| Thread-enumeration                          | ❌ / ❌                 | ❌ / ❌               |
-| Segment (.text, .data, etc) interaction     | ❌ / ❌                 | ❌ / ❌               |
-| Function invoking                           | ✅ / ❌                 | ❌ / ❌               |
-| System info (page size, granularity, etc..) | ✅ / ✅                 | ❌ / ❌               |
-| Memory allocation/deallocation              | ❌ / ❌                 | ❌ / ❌               |
-| Disassembling (By third-party libraries)    | ❌ / ❌                 | ❌ / ❌               |
-| Bit utilities                               | ❌ / ❌                 | ❌ / ❌               |
-| Virtual table interaction                   | ❌ / ❌                 | ❌ / ❌               |
+
+| Feature                                                      | Windows (I/E) | Linux (I/E) | Description                                                     |
+| ------------------------------------------------------------ | ------------- | ----------- | --------------------------------------------------------------- |
+| **1. Memory Operations**                                     |
+| &nbsp;&nbsp;&nbsp;&nbsp;1.1 Read/Write/Copy/Fill/Compare     | ✅/❌           | ❌/❌         | Basic memory manipulation operations                            |
+| &nbsp;&nbsp;&nbsp;&nbsp;1.2 Unprotection + RAII              | ✅/❌           | ❌/❌         | Temporarily change memory protection with automatic restoration |
+| &nbsp;&nbsp;&nbsp;&nbsp;1.3 RAII Patching                    | ✅/❌           | ❌/❌         | Automatically revert memory changes when going out of scope     |
+| &nbsp;&nbsp;&nbsp;&nbsp;1.4 Allocation/Deallocation + RAII   | ✅/❌           | ❌/❌         | Memory management with automatic cleanup                        |
+| &nbsp;&nbsp;&nbsp;&nbsp;1.5 Utilities (occupied, free, etc.) | ✅/❌           | ❌/❌         | Helper functions for memory status checks                       |
+| **2. Code Interaction**                                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;2.1 Signature Scanning               | ✅/❌           | ❌/❌         | Find specific byte patterns in memory                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;2.2 Function Invoking                | ✅/❌           | ❌/❌         | Call functions dynamically at runtime                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;2.3 Hooking                          | ❌/❌           | ❌/❌         | Intercept function calls                                        |
+| &nbsp;&nbsp;&nbsp;&nbsp;2.4 Disassembling                    | ❌/❌           | ❌/❌         | Getting information about ASM instructions                      |
+| **3. Module & Process**                                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;3.1 Module Interaction               | ✅/❌           | ❌/❌         | Work with loaded modules (DLLs/shared libraries)                |
+| &nbsp;&nbsp;&nbsp;&nbsp;3.2 Module Enumeration               | ❌/❌           | ❌/❌         | List all loaded modules in a process                            |
+| &nbsp;&nbsp;&nbsp;&nbsp;3.3 Process Enumeration              | ❌/❌           | ❌/❌         | List all running processes                                      |
+| **4. Threading**                                             |
+| &nbsp;&nbsp;&nbsp;&nbsp;4.1 Thread-safety                    | ❌/❌           | ❌/❌         | Ensure operations are safe in multi-threaded environments       |
+| &nbsp;&nbsp;&nbsp;&nbsp;4.2 Thread-enumeration               | ❌/❌           | ❌/❌         | List all threads in a process                                   |
+| **5. Advanced Features**                                     |
+| &nbsp;&nbsp;&nbsp;&nbsp;5.1 Segment Interaction              | ❌/❌           | ❌/❌         | Work with specific memory segments (.text, .data, etc.)         |
+| &nbsp;&nbsp;&nbsp;&nbsp;5.2 Virtual Table Interaction        | ❌/❌           | ❌/❌         | Manipulate C++ virtual function tables                          |
+| &nbsp;&nbsp;&nbsp;&nbsp;5.3 Bit Utilities                    | ❌/❌           | ❌/❌         | Bit-level operations and manipulations                          |
+| **6. System**                                                |
+| &nbsp;&nbsp;&nbsp;&nbsp;6.1 System Info                      | ✅/✅           | ❌/❌         | Retrieve system-specific information (e.g., page size)          |
+| &nbsp;&nbsp;&nbsp;&nbsp;6.2 Cross-platform error-handling    | ✅/✅           | ❌/❌         | Unified error handling across different platforms               |
 
 | Platform        | Status |
 | --------------- | ------ |

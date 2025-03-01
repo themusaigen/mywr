@@ -310,7 +310,7 @@ public:
     while (current < end) {
       bool match{true};
       for (size_t i = 0U; i < pattern.size(); ++i) {
-        if (mask[i] && *current != pattern[i]) {
+        if (mask[i] && current[i] != pattern[i]) {
           match = false;
           break;
         }

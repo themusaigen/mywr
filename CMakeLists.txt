@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5.0)
 project(
   "mywr"
   DESCRIPTION "The cross-platform multiarchitectural memhacking library"
-  VERSION 1.240.2
+  VERSION 1.250.0
   LANGUAGES C CXX)
 
 #

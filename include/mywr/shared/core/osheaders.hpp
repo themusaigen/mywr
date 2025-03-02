@@ -19,5 +19,9 @@
 #include "os.hpp"
 
 #if defined(MYWR_WINDOWS)
+  #ifndef NOMINMAX
+    #define NOMINMAX
+  #endif
+
   #include <Windows.h>
 #endif

@@ -62,6 +62,57 @@ namespace mywr::memmap {
  */
 [[nodiscard]] inline auto is_memory_page_reserved(const address& base) noexcept
     -> bool;
+
+/**
+ * @brief Finds the previous free memory page before the given page.
+ *
+ * This function searches for a free memory page in the range from the given
+ * page to the minimum address, moving backwards in memory. The granularity
+ * parameter specifies the alignment of memory pages.
+ *
+ * @param page The base address of the memory page to start searching from.
+ * @param min_address The minimum address to search for a free memory page.
+ * @param granularity The alignment of memory pages.
+ * @return The base address of the previous free memory page, or 0 if no free
+ * page is found.
+ */
+[[nodiscard]] static auto find_prev_free_page(const address& page,
+                                              const address& min_address,
+                                              size_t granularity) noexcept
+    -> address;
+
+/**
+ * @brief Finds the next free memory page after the given page.
+ *
+ * This function searches for a free memory page in the range from the given
+ * page to the maximum address, moving forwards in memory. The granularity
+ * parameter specifies the alignment of memory pages.
+ *
+ * @param page The base address of the memory page to start searching from.
+ * @param max_address The maximum address to search for a free memory page.
+ * @param granularity The alignment of memory pages.
+ * @return The base address of the next free memory page, or 0 if no free page
+ * is found.
+ */
+[[nodiscard]] static auto find_next_free_page(const address& page,
+                                              const address& max_address,
+                                              size_t granularity) noexcept
+    -> address;
+
+/**
+ * @brief Finds a free memory page within the specified range.
+ *
+ * This function searches for a free memory page within the range from the
+ * given page to the specified range. The granularity parameter specifies the
+ * alignment of memory pages.
+ *
+ * @param page The base address of the memory page to start searching from.
+ * @param range The range within which to search for a free memory page.
+ * @return The base address of the free memory page, or 0 if no free page is
+ * found.
+ */
+[[nodiscard]] static auto find_free_page(const address& page,
+                                         size_t range) noexcept -> address;
 } // namespace mywr::memmap
 
 #if defined(MYWR_WINDOWS)

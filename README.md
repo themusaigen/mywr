@@ -70,7 +70,7 @@ For other usage examples, you can look into the `tests` directory or the `demo` 
 | &nbsp;&nbsp;&nbsp;&nbsp;2.1 Signature Scanning               | ✅/❌           | ❌/❌         | Find specific byte patterns in memory                           |
 | &nbsp;&nbsp;&nbsp;&nbsp;2.2 Function Invoking                | ✅/❌           | ❌/❌         | Call functions dynamically at runtime                           |
 | &nbsp;&nbsp;&nbsp;&nbsp;2.3 Hooking                          | ❌/❌           | ❌/❌         | Intercept function calls                                        |
-| &nbsp;&nbsp;&nbsp;&nbsp;2.4 Disassembling                    | ❌/❌           | ❌/❌         | Getting information about ASM instructions                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;2.4 Disassembling                    | ✅/✅           | ❌/❌         | Getting information about ASM instructions                      |
 | **3. Module & Process**                                      |
 | &nbsp;&nbsp;&nbsp;&nbsp;3.1 Module Interaction               | ✅/❌           | ❌/❌         | Work with loaded modules (DLLs/shared libraries)                |
 | &nbsp;&nbsp;&nbsp;&nbsp;3.2 Module Enumeration               | ❌/❌           | ❌/❌         | List all loaded modules in a process                            |
@@ -111,6 +111,7 @@ For other usage examples, you can look into the `tests` directory or the `demo` 
 * [google/googletest](https://github.com/google/googletest) (BSD 3-Clause "New" or "Revised" License)
 * [TartanLlama/expected](https://github.com/TartanLlama/expected) (CC0-1.0 license)
 * [moonpotato/zstring_view](https://github.com/moonpotato/zstring_view) (Apache-2.0 license)
+* [zyantific/zydis](https://github.com/zyantific/zydis) (MIT license)
 
 ## See also
 

@@ -5,8 +5,13 @@ add_executable("mywr_tests")
 
 # Define a list of source files for the test target
 set(MYWR_TEST_SOURCES
-    "shared/address.cpp" "internal/protect.cpp" "internal/llmo.cpp"
-    "internal/patch.cpp" "internal/scanner.cpp" "internal/allocator.cpp")
+    "shared/address.cpp"
+    "shared/disassembler.cpp"
+    "internal/protect.cpp"
+    "internal/llmo.cpp"
+    "internal/patch.cpp"
+    "internal/scanner.cpp"
+    "internal/allocator.cpp")
 
 # Check the size of void pointer to determine the architecture
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)

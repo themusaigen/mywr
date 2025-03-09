@@ -39,7 +39,15 @@
     {
       "name": "msvc-windows-32-release",
       "displayName": "Windows (MSVC, x86, Release)",
-      "inherits": "msvc-windows-32-debug",
+      "inherits": "ninja-msvc",
+      "architecture": {
+        "value": "x86",
+        "strategy": "external"
+      },
+      "toolset": {
+        "value": "host=x86",
+        "strategy": "external"
+      },
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }
@@ -47,7 +55,7 @@
     {
       "name": "msvc-windows-64-debug",
       "displayName": "Windows (MSVC, x64, Debug)",
-      "inherits": "msvc-windows-32-debug",
+      "inherits": "ninja-msvc",
       "architecture": {
         "value": "x64",
         "strategy": "external"
@@ -55,12 +63,23 @@
       "toolset": {
         "value": "host=x64",
         "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
       }
     },
     {
       "name": "msvc-windows-64-release",
       "displayName": "Windows (MSVC, x64, Release)",
-      "inherits": "msvc-windows-64-debug",
+      "inherits": "ninja-msvc",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "toolset": {
+        "value": "host=x64",
+        "strategy": "external"
+      },
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }

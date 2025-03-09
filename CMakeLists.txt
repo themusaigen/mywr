@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5.0)
 project(
   "mywr"
   DESCRIPTION "The cross-platform multiarchitectural memhacking library"
-  VERSION 1.251.0
+  VERSION 1.300.0
   LANGUAGES C CXX)
 
 #
@@ -28,7 +28,7 @@ target_compile_features("mywr" INTERFACE cxx_std_17)
 target_include_directories(
   "mywr" INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/mywr>
                    $<INSTALL_INTERFACE:include/mywr>)
-target_link_libraries("mywr" INTERFACE expected zstring_view zydis)
+target_link_libraries("mywr" INTERFACE expected zstring_view Zydis)
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   # Export compile commands for clangd.

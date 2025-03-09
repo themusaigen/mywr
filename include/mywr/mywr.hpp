@@ -21,6 +21,9 @@
  * - shared/function_traits.hpp: Function traits and type manipulation
  * utilities.
  * - shared/utility.hpp: Various utility functions and classes.
+ * - shared/disassembler.hpp: Machine code disassembler implementation using
+ * Zydis backend for x86 and x86-64 architectures, providing instruction
+ * analysis capabilities.
  * - internal/protect.hpp: Internal implementation details for protection.
  * - internal/llmo.hpp: Low-level memory operations.
  * - internal/module.hpp: Module management utilities.
@@ -48,6 +51,7 @@
 #include <shared/error_handling.hpp>
 #include <shared/function_traits.hpp>
 #include <shared/utility.hpp>
+#include <shared/disassembler.hpp>
 
 #include <internal/protect.hpp>
 #include <internal/llmo.hpp>

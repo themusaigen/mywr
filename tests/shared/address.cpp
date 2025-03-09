@@ -243,8 +243,13 @@ TEST(Address, BitwiseXor) {
 }
 
 TEST(Address, BitwiseNot) {
+#if defined(MYWR_32)
   const address_t expected_result{0b11111111111111111111111111111100};
-  const address   object{3};
+#elif defined(MYWR_64)
+  const address_t expected_result{
+      0b1111111111111111111111111111111111111111111111111111111111111100};
+#endif
+  const address object{3};
 
   EXPECT_EQ((~object).value(), expected_result);
 }

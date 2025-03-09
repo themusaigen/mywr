@@ -65,5 +65,5 @@ inline auto get_allocation_granularity() noexcept -> uint32_t;
 } // namespace mywr::sys
 
 #if defined(MYWR_WINDOWS)
-  #include <shared/windows/sys.inl>
+  #include <shared/platform/windows/sys.inl>
 #endif

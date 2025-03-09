@@ -116,5 +116,5 @@ namespace mywr::memmap {
 } // namespace mywr::memmap
 
 #if defined(MYWR_WINDOWS)
-  #include <internal/windows/memmap.inl>
+  #include <internal/platform/windows/memmap.inl>
 #endif

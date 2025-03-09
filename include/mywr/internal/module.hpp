@@ -109,5 +109,5 @@ namespace mywr::module {
 } // namespace mywr::module
 
 #if defined(MYWR_WINDOWS)
-  #include <internal/windows/module.inl>
+  #include <internal/platform/windows/module.inl>
 #endif

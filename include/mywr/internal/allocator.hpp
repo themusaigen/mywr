@@ -189,5 +189,5 @@ public:
 } // namespace mywr::allocator
 
 #if defined(MYWR_WINDOWS)
-  #include <internal/windows/allocator.inl>
+  #include <internal/platform/windows/allocator.inl>
 #endif

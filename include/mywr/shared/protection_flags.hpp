@@ -86,5 +86,5 @@ static auto from_protection_constant(protection protect) -> uint32_t;
 } // namespace mywr::protect
 
 #if defined(MYWR_WINDOWS)
-  #include <shared/windows/protection_flags.inl>
+  #include <shared/platform/windows/protection_flags.inl>
 #endif

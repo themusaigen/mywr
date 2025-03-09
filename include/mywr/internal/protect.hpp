@@ -219,5 +219,5 @@ public:
 } // namespace mywr::protect
 
 #if defined(MYWR_WINDOWS)
-  #include <internal/windows/protect.inl>
+  #include <internal/platform/windows/protect.inl>
 #endif

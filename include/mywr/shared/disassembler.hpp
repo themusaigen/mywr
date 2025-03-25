@@ -71,7 +71,7 @@ namespace mywr::detail {
  * Defines the machine mode for the Zydis disassembler when targeting 32-bit x86
  * architecture.
  */
-constexpr auto kMywrDisassemblerBackendMachineMode =
+inline constexpr auto kMywrDisassemblerBackendMachineMode =
     ZYDIS_MACHINE_MODE_LONG_COMPAT_32;
 
 /**
@@ -80,7 +80,7 @@ constexpr auto kMywrDisassemblerBackendMachineMode =
  * Defines the stack width for the Zydis disassembler when targeting 32-bit x86
  * architecture.
  */
-constexpr auto kMywrDisassemblerBackendStackWidth = ZYDIS_STACK_WIDTH_32;
+inline constexpr auto kMywrDisassemblerBackendStackWidth = ZYDIS_STACK_WIDTH_32;
 #elif defined(MYWR_X86_64)
 /**
  * @brief Machine mode constant for x86-64 architecture.
@@ -88,7 +88,8 @@ constexpr auto kMywrDisassemblerBackendStackWidth = ZYDIS_STACK_WIDTH_32;
  * Defines the machine mode for the Zydis disassembler when targeting 64-bit
  * x86-64 architecture.
  */
-constexpr auto kMywrDisassemblerBackendMachineMode = ZYDIS_MACHINE_MODE_LONG_64;
+inline constexpr auto kMywrDisassemblerBackendMachineMode =
+    ZYDIS_MACHINE_MODE_LONG_64;
 
 /**
  * @brief Stack width constant for x86-64 architecture.
@@ -96,7 +97,7 @@ constexpr auto kMywrDisassemblerBackendMachineMode = ZYDIS_MACHINE_MODE_LONG_64;
  * Defines the stack width for the Zydis disassembler when targeting 64-bit
  * x86-64 architecture.
  */
-constexpr auto kMywrDisassemblerBackendStackWidth = ZYDIS_STACK_WIDTH_64;
+inline constexpr auto kMywrDisassemblerBackendStackWidth = ZYDIS_STACK_WIDTH_64;
 #endif
 
 } // namespace mywr::detail

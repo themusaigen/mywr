@@ -11,14 +11,20 @@
  * protection constants and the `mywr` protection constant.
  *
  * The `protection` enum class contains the following flags:
- * - None: No access to the memory or code section.
+ * - None: No protection (used as a placeholder or default value).
  * - NoAccess: No access to the memory or code section.
  * - Read: Read access to the memory or code section.
  * - Write: Write access to the memory or code section.
  * - Execute: Execute access to the memory or code section.
+ * - Copy: Copy-on-write access (includes Read access).
+ * - WriteCopy: Combination of Write and Copy access.
  * - ReadWrite: Combination of Read and Write access.
  * - ReadExecute: Combination of Read and Execute access.
  * - ReadWriteExecute: Combination of Read, Write, and Execute access.
+ * - ReadWriteCopyExecute: Combination of Execute and WriteCopy access.
+ *
+ * The module also provides a bitwise AND operator for the `protection` enum
+ * class.
  *
  * The `to_protection_constant` function converts a system-specific protection
  * constant to a `mywr` protection constant.
@@ -46,12 +52,24 @@ enum class protection : uint8_t {
   Read     = (1 << 2),
   Write    = (1 << 3),
   Execute  = (1 << 4),
+  Copy     = (1 << 5) | Read,
 
-  ReadWrite        = (Read | Write),
-  ReadExecute      = (Read | Execute),
-  ReadWriteExecute = (Read | Write | Execute)
+  WriteCopy = (Write | Copy),
+
+  ReadWrite   = (Read | Write),
+  ReadExecute = (Read | Execute),
+
+  ReadWriteExecute     = (Read | Write | Execute),
+  ReadWriteCopyExecute = (Execute | WriteCopy)
 };
 
+/**
+ * @brief Bitwise AND operator for protection flags.
+ *
+ * @param lhs Left-hand side protection flag.
+ * @param rhs Right-hand side protection flag.
+ * @return Result of bitwise AND operation as uint8_t.
+ */
 inline auto operator&(const protection& lhs, const protection& rhs) noexcept
     -> uint8_t {
   return static_cast<uint8_t>(lhs) & static_cast<uint8_t>(rhs);

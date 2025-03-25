@@ -136,10 +136,10 @@ template<typename F, std::size_t I>
 using argument_t = typename function_traits<F>::template argument<I>;
 
 template<typename F>
-constexpr auto args_count_v = function_traits<F>::args_count;
+inline constexpr auto args_count_v = function_traits<F>::args_count;
 
 template<typename F>
-constexpr auto convention_v = function_traits<F>::convention;
+inline constexpr auto convention_v = function_traits<F>::convention;
 
 // Meta-function to concatenate calling convention with function signature.
 template<typename R, calling_conventions C, typename... A>

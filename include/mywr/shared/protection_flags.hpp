@@ -46,10 +46,15 @@ enum class protection : uint8_t {
   Read     = (1 << 2),
   Write    = (1 << 3),
   Execute  = (1 << 4),
+  Copy     = (1 << 5) | Read,
 
-  ReadWrite        = (Read | Write),
-  ReadExecute      = (Read | Execute),
-  ReadWriteExecute = (Read | Write | Execute)
+  WriteCopy = (Write | Copy),
+
+  ReadWrite   = (Read | Write),
+  ReadExecute = (Read | Execute),
+
+  ReadWriteExecute     = (Read | Write | Execute),
+  ReadWriteCopyExecute = (Execute | WriteCopy)
 };
 
 inline auto operator&(const protection& lhs, const protection& rhs) noexcept

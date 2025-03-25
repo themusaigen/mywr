@@ -38,9 +38,11 @@ static auto to_protection_constant(uint32_t protect) -> protection {
   case PAGE_NOACCESS: return protection::NoAccess;
   case PAGE_READONLY: return protection::Read;
   case PAGE_READWRITE: return protection::ReadWrite;
+  case PAGE_WRITECOPY: return protection::WriteCopy;
   case PAGE_EXECUTE: return protection::Execute;
   case PAGE_EXECUTE_READ: return protection::ReadExecute;
   case PAGE_EXECUTE_READWRITE: return protection::ReadWriteExecute;
+  case PAGE_EXECUTE_WRITECOPY: return protection::ReadWriteCopyExecute;
   default: return protection::None;
   }
 }
@@ -50,10 +52,13 @@ static auto from_protection_constant(protection protect) -> uint32_t {
   case protection::NoAccess: return PAGE_NOACCESS;
   case protection::Read: return PAGE_READONLY;
   case protection::Execute: return PAGE_EXECUTE;
+  case protection::WriteCopy: return PAGE_WRITECOPY;
   case protection::ReadWrite: return PAGE_READWRITE;
   case protection::ReadExecute: return PAGE_EXECUTE_READ;
   case protection::ReadWriteExecute: return PAGE_EXECUTE_READWRITE;
+  case protection::ReadWriteCopyExecute: return PAGE_EXECUTE_WRITECOPY;
   case protection::Write:
+  case protection::Copy:
   case protection::None:
   default: return 0;
   }

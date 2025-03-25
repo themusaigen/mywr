@@ -71,4 +71,17 @@ template<typename In>
 constexpr auto get_function_address(In input) -> address_t {
   return force_cast<address_t>(input);
 }
+
+constexpr auto get_relative_address(const address& destination,
+                                    const address& source,
+                                    size_t         size) noexcept -> address {
+  return (destination - source).value() - size;
+}
+
+constexpr auto restore_absolute_address(const address& relative,
+                                        const address& base,
+                                        size_t size) noexcept -> address {
+  return (relative + base).value() + size;
+}
+
 } // namespace mywr::utility

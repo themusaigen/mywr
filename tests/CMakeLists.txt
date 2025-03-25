@@ -21,7 +21,15 @@ if(CMAKE_SIZEOF_VOID_P EQUAL 8)
 else()
   # If the architecture is 32-bit, append the 32-bit invoker source file to the
   # list
-  list(APPEND MYWR_TEST_SOURCES "internal/x32/invoker32.cpp")
+  list(
+    APPEND
+    MYWR_TEST_SOURCES
+    "internal/x32/invoker32.cpp"
+    "internal/x32/hook32.cpp"
+    "internal/x32/hook32_cdecl.cpp"
+    "internal/x32/hook32_stdcall.cpp"
+    "internal/x32/hook32_fastcall.cpp"
+    "internal/x32/hook32_thiscall.cpp")
 endif()
 
 # Set the C++ standard for the target to C++17

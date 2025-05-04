@@ -17,6 +17,7 @@
  * - shared/protection_flags.hpp: Protection flags and constants.
  * - shared/abi.hpp: Application Binary Interface (ABI) utilities.
  * - shared/calling_conventions.hpp: Calling conventions utilities.
+ * - shared/compiler_macroses.hpp: Compiler macros utilities.
  * - shared/error_handling.hpp: Error handling utilities.
  * - shared/function_traits.hpp: Function traits and type manipulation
  * utilities.
@@ -48,6 +49,7 @@
 #include <shared/protection_flags.hpp>
 #include <shared/abi.hpp>
 #include <shared/calling_conventions.hpp>
+#include <shared/compiler_macroses.hpp>
 #include <shared/error_handling.hpp>
 #include <shared/function_traits.hpp>
 #include <shared/utility.hpp>
